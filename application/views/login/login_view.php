@@ -13,7 +13,7 @@
 
                 <div id="login_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
 
-                <form id ="login_form" class="form-horizontal" role="form" method="post" action="<?=site_url("employee/login")?>">
+                <form id ="login_form" class="form-horizontal" role="form" method="post" action="<?=site_url("api/login")?>">
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Email:</label>
                         <div class="col-sm-6">

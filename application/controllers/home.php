@@ -15,8 +15,7 @@ class Home extends CI_Controller {
     {
         parent::__construct();
 
-        $employee_id = $this->session->userdata('employee_id');
-        if(!$employee_id) {
+        if($this->session->userdata('employee_id') == false) {
             $this->logout();
         }
 

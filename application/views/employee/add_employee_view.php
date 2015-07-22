@@ -14,7 +14,7 @@
 
                 <div id="register_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
 
-                <form id="register_form" class="form" method="post" action="<?=site_url('employee/register')?>">
+                <form id="register_form" class="form" method="post" action="<?=site_url('api/register')?>">
                     <div class="form-group col-xs-12">
                         <input type="text" class="form-control" name="name" placeholder="John Smith">
                     </div>
