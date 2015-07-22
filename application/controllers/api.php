@@ -111,6 +111,32 @@ class Api extends CI_Controller
 
     }
 
+    public function get_employee($employee_id = null)
+    {
+        $this->_require_login();
+
+        $cur_eid = $this->session->userdata('employee_id');
+
+        $this->load->model('employee_model');
+        $result = $this->employee_model->get([
+            'eid' => $cur_eid
+        ]);
+
+        if($result && $result[0]['role'] == 'Manager') {
+            $result = $this->employee_model->get($employee_id);
+            $this->output->set_output(json_encode($result));
+            //print_r($result);
+        }
+
+        //$this->db->where('eid', $this->session->userdata('employee_id'));
+//        $this->db->where('eid', 2);
+//        $query = $this->db->get('employee');
+//        $result = $query->result_array();
+//
+//        print_r($result);
+    }
+
+
     public function update_employee()
     {
 

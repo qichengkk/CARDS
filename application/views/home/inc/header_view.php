@@ -16,6 +16,19 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?=base_url()?>public/css/style.css">
 
+    <!-- Custom javascript -->
+    <script src="<?=base_url()?>public/js/home/template.js"> </script>
+    <script src="<?=base_url()?>public/js/home/home.js"> </script>
+    <script src="<?=base_url()?>public/js/home/event.js"> </script>
+    <script src="<?=base_url()?>public/js/home/result.js"> </script>
+
+    <script>
+        $(function() {
+            // init the hoome application
+            var home = new Home();
+        });
+    </script>
+
 </head>
 
 <body>
@@ -50,7 +63,7 @@
                 <li><a href='<?=site_url('home')?>'><span class='glyphicon glyphicon-home'></span></a></li>
                 <li><a href='../cars/index.html'>Cars</a></li>
                 <li><a href='../reports/index.html'>Reports</a></li>
-                <li><a href='<?=site_url('employee/index')?>'>Employees</a></li>
+                <li><a href='<?=site_url('employee')?>'>Employees</a></li>
             </ul>
 
         </div><!-- /.container-fluid -->
