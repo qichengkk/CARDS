@@ -11,16 +11,25 @@ var Result = function() {
 
     this.success = function(msg) {
         if(typeof msg === 'undefined') {
-            console.log('success');
+            $("#success").html("Success").fadeIn();
         };
-      console.log(msg);
+        $("#success").html(msg).fadeIn();
+
+        setTimeout(function() {
+           $("#success").fadeOut();
+        }, 5000);
     };
 
-    this.error = function() {
+    this.error = function(msg) {
         if(typeof msg === 'undefined') {
-            console.log('error');
+            $("#error").html("Error").fadeIn();
         };
-        console.log(msg);
+        $("#error").html(msg).fadeIn();
+
+        setTimeout(function() {
+            $("#error").fadeOut();
+        }, 5000);
+
     };
 
     //---------------------------------------------------------------------------

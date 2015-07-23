@@ -18,6 +18,9 @@
 
                 <hr>
 
+                <div id="success" class="alert alert-success"></div>
+                <div id="error" class="alert alert-danger"></div>
+
                 <table class="table">
                     <thead>
                     <tr>
@@ -39,3 +42,21 @@
     </div>
 
 </div><!-- end of page-content-wrapper -->
+
+
+<!-- Custom javascript -->
+<script src="<?=base_url()?>public/js/home/template.js"> </script>
+<script src="<?=base_url()?>public/js/home/event.js"> </script>
+<script src="<?=base_url()?>public/js/home/result.js"> </script>
+<script src="<?=base_url()?>public/js/home/employee.js"> </script>
+
+<script>
+    $(function() {
+        // init the hoome application
+        var employee = new Employee();
+
+        $("#success").hide();
+        $("#error").hide();
+    });
+</script>
+

@@ -24,7 +24,7 @@ class Employee_model extends CI_Model
             $query = $this->db->get_where('employee', $employee_id);
         }
         else {
-            $query = $this->db->get_where('employee', ['eid' => $employee_id]);
+            $query = $this->db->get_where('employee', ['EId' => $employee_id]);
         }
 
         return $query->result_array();
@@ -46,13 +46,30 @@ class Employee_model extends CI_Model
 
     }
 
-    public function update()
+    /**
+     *
+     * @parameter array $data
+     *
+     * @usage $result = $this->employee_model->update(['name' => 'Peggy'], 3);
+     *
+     */
+    public function update($data, $employee_id)
     {
-
+        $this->db->where(['EId' => $employee_id]);
+        $this->db->update('employee', $data);
+        return $this->db->affected_rows();
     }
 
-    public function delete()
+    /**
+     *
+     * @parameter type employee_id
+     *
+     * @usage $result = $this->employee_model->delete(1);
+     *
+     */
+    public function delete($employee_id)
     {
-
+        $this->db->delete('employee', ['EId' => $employee_id]);
+        return $this->db->affected_rows();
     }
 }

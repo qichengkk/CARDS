@@ -90,6 +90,10 @@ body {
     background-size: 1440px 800px;
 }
 
+.hide {
+    display: none;
+}
+
 .brand {
   color: #C0392B;
   font-family: 'Racing Sans One';

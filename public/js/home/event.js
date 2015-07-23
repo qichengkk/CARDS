@@ -8,7 +8,7 @@ var Event = function() {
     this.__contruct = function() {
         console.log("Event Created");
 
-        Result_event = new Result();
+        //Result_event = new Result();
     };
 
 

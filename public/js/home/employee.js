@@ -2,19 +2,20 @@
  * Created by qichenglao on 2015-07-22.
  */
 
-var Home = function() {
+var Employee = function() {
 
     this.__contruct = function() {
-        console.log("Home Created");
+        console.log("Employee Created");
         Template = new Template();
-        Result_home = new Result();
         Event = new Event();
+        Result = new Result();
 
         //console.log(
         //    Template.employee({employee_id: 1, content: "this is life"})
         //);
 
         load_employee();
+        delete_employee();
 
     };
 
@@ -31,6 +32,27 @@ var Home = function() {
 
         }, 'json');
 
+    };
+
+    var delete_employee = function() {
+        $("body").on('click', '.employee_delete', function(evt) {
+            evt.preventDefault();
+
+            var self = $(this).closest('tr');
+            var url = $(this).attr('href');
+            var postData = {
+                'employee_id': $(this).attr('employee_id')
+            };
+
+            $.post(url, postData, function(o) {
+                if(o.result == 1) {
+                    Result.success('Employee successfully deleted.');
+                    self.remove();
+                } else {
+                    Result.error(o.error);
+                }
+            }, 'json');
+        });
     };
 
     //---------------------------------------------------------------------------

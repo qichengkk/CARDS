@@ -18,7 +18,7 @@ class Employee extends CI_Controller {
 
     }
 
-    public function assert()
+    private function assert()
     {
         $employee_id = $this->session->userdata('employee_id');
         if(!$employee_id) {
@@ -39,6 +39,15 @@ class Employee extends CI_Controller {
         $this->assert();
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/add_employee_view');
+        $this->load->view('home/inc/footer_view');
+
+    }
+
+    public function update()
+    {
+        $this->assert();
+        $this->load->view('home/inc/header_view');
+        $this->load->view('employee/update_employee_view');
         $this->load->view('home/inc/footer_view');
 
     }

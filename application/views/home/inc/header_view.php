@@ -16,19 +16,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?=base_url()?>public/css/style.css">
 
-    <!-- Custom javascript -->
-    <script src="<?=base_url()?>public/js/home/template.js"> </script>
-    <script src="<?=base_url()?>public/js/home/home.js"> </script>
-    <script src="<?=base_url()?>public/js/home/event.js"> </script>
-    <script src="<?=base_url()?>public/js/home/result.js"> </script>
-
-    <script>
-        $(function() {
-            // init the hoome application
-            var home = new Home();
-        });
-    </script>
-
 </head>
 
 <body>
@@ -50,8 +37,8 @@
 
             <ul class='nav navbar-nav navbar-right'>
                 <li>
-                    <a href='../users/edit.html'>
-                        <span class='glyphicon glyphicon-user'></span> John Smith
+                    <a href='<?=site_url('employee/update')?>'>
+                        <span class='glyphicon glyphicon-user'></span> <?= $this->session->userdata('name');?>
                     </a>
                 </li>
                 <li>

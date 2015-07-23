@@ -12,9 +12,9 @@
 
                 <hr>
 
-                <div id="register_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
+                <div id="update_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
 
-                <form id="register_form" class="form" method="post" action="<?=site_url('api/register')?>">
+                <form id="update_form" class="form" method="post" action="<?=site_url('api/update_employee')?>">
                     <div class="form-group col-xs-12">
                         <input type="text" class="form-control" name="name" placeholder="John Smith">
                     </div>
@@ -32,9 +32,9 @@
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Update">
 
-                        <a href="<?=site_url('employee')?>" class="btn btn-link">Cancel</a>
+                        <a href="<?=site_url('home')?>" class="btn btn-link">Cancel</a>
                     </div>
                 </form>
 
@@ -48,9 +48,9 @@
 <script type="text/javascript">
     $(function() {
 
-        $("#register_form_error").hide();
+        $("#update_form_error").hide();
 
-        $("#register_form").submit(function(event) {
+        $("#update_form").submit(function(event) {
 
             event.preventDefault();
 
@@ -60,7 +60,7 @@
             $.post(url, postData, function(o) {
 
                 if(o.result == 1) {
-                    window.location.href = '<?=site_url('employee')?>';
+                    window.location.href = '<?=site_url('home')?>';
                 } else {
                     $("#register_form_error").show();
                     var output = '<ul>';
