@@ -164,6 +164,43 @@ class Api extends CI_Controller
 
     public function update_employee()
     {
+        if($this->_require_login() == false) {
+            return false;
+        }
+
+        $this->output->set_content_type('application_json');
+
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[16]');
+        //$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[employee.email]');
+        $this->form_validation->set_rules('pwd', 'Password', 'required|min_length[4]');
+        $this->form_validation->set_rules('role', 'Role', 'required');
+
+        if($this->form_validation->run() == false) {
+            $this->output->set_output(json_encode(['result' => 0, 'error' => $this->form_validation->error_array()]));
+            return false;
+        }
+
+        $employee_id = $this->session->userdata('employee_id');
+        $name = $this->input->post('name');
+        $email = $this->input->post('email');
+        $pwd = $this->input->post('pwd');
+        $role= $this->input->post('role');
+
+        $this->load->model('employee_model');
+        //$result = $this->employee_model->update(['name' => 'Peggy'], 3);
+        $result = $this->employee_model->update([
+            'name' => $name,
+            'password' => hash('sha256', $pwd. SALT),
+            'email' => $email,
+            'role' => $role
+        ], $employee_id);
+
+        if($result) {
+            $this->output->set_output(json_encode(['result' => 1]));
+            return false;
+        }
+
+        $this->output->set_output(json_encode(['result' => 0, 'error' => 'Employee not updated']));
 
     }
 
@@ -192,7 +229,7 @@ class Api extends CI_Controller
             return false;
         }
 
-        $this->output->set_output(json_encode(['result' => 0, 'error' => 'Employee could not delete.']));
+        $this->output->set_output(json_encode(['result' => 0, 'error' => 'Employee not deleted.']));
 
     }
 

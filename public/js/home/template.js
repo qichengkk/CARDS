@@ -23,7 +23,7 @@ var Template = function() {
         output += '<td>' + obj['role'] + '</td>';
         output += '<td>';
         output += '<a href="show.html"><span class="glyphicon glyphicon-search"></span></a>';
-        output += '<a href="edit.html"><span class="glyphicon glyphicon-pencil"></span></a>';
+        output += '<a "class="employee_update" href="employee/update/' + obj['EId'] + '"><span class="glyphicon glyphicon-pencil"></span></a>';
         output += '<a employee_id="' + obj['EId'] + '"class="employee_delete" href="api/delete_employee/"><span class="glyphicon glyphicon-remove"></span></a>';
         output += '</td>';
         output += '</tr>';

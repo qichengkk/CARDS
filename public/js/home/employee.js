@@ -16,7 +16,7 @@ var Employee = function() {
 
         load_employee();
         delete_employee();
-        update_employee();
+        //update_employee();
 
     };
 
@@ -56,26 +56,24 @@ var Employee = function() {
         });
     };
 
-    var update_employee = function() {
-        //$("body").on('click', '.employee_delete', function(evt) {
-        //    evt.preventDefault();
-        //
-        //    var self = $(this).closest('tr');
-        //    var url = $(this).attr('href');
-        //    var postData = {
-        //        'employee_id': $(this).attr('employee_id')
-        //    };
-        //
-        //    $.post(url, postData, function(o) {
-        //        if(o.result == 1) {
-        //            Result.success('Employee successfully deleted.');
-        //            self.remove();
-        //        } else {
-        //            Result.error(o.error);
-        //        }
-        //    }, 'json');
-        //});
-    };
+    /*var update_employee = function() {
+        $("body").on('click', '.employee_update', function(evt) {
+            evt.preventDefault();
+
+            var url = $(this).attr('href');
+            var postData = {
+                'employee_id': $(this).attr('employee_id')
+            };
+
+            $.post(url, postData, function(o) {
+                if(o.result == 1) {
+                    Result.success('Employee successfully updated.');
+                } else {
+                    Result.error(o.error);
+                }
+            }, 'json');
+        });
+    };*/
 
     //---------------------------------------------------------------------------
 

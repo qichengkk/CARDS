@@ -4,9 +4,15 @@
         <div class='row'>
             <div class='col-md-12'>
 
-                <h1 class="">
-                    My profile
-                </h1>
+                <?php if($id_update == $this->session->userdata('employee_id')) {?>
+                    <h1 class="">
+                        My profile
+                    </h1>
+                <?php } else { ?>
+                    <h1 class="">
+                        others profile
+                    </h1>
+                <?php } ?>
 
                 <p>The following form can be used to create new employees as well.</p>
 
@@ -34,7 +40,7 @@
                     <div class="form-group col-xs-12">
                         <input type="submit" class="btn btn-primary" value="Update">
 
-                        <a href="<?=site_url('home')?>" class="btn btn-link">Cancel</a>
+                        <a href="<?=site_url('employee')?>" class="btn btn-link">Cancel</a>
                     </div>
                 </form>
 
@@ -60,16 +66,16 @@
             $.post(url, postData, function(o) {
 
                 if(o.result == 1) {
-                    window.location.href = '<?=site_url('home')?>';
+                    window.location.href = '<?=site_url('employee')?>';
                 } else {
-                    $("#register_form_error").show();
+                    $("#update_form_error").show();
                     var output = '<ul>';
                     for(var key in o.error) {
                         var value = o.error[key];
                         output += '<li>' + value + '</li>';
                     }
                     output += '</ul>';
-                    $("#register_form_error").html(output);
+                    $("#update_form_error").html(output);
                 }
 
             }, 'json');

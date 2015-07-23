@@ -37,7 +37,7 @@
 
             <ul class='nav navbar-nav navbar-right'>
                 <li>
-                    <a href='<?=site_url('employee/update')?>'>
+                    <a href='<?=base_url()?>employee/update/<?=$this->session->userdata('employee_id')?>'>
                         <span class='glyphicon glyphicon-user'></span> <?= $this->session->userdata('name');?>
                     </a>
                 </li>

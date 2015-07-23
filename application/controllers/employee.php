@@ -37,6 +37,7 @@ class Employee extends CI_Controller {
     public function index()
     {
         $this->_require_manager();
+
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/employee_view');
         $this->load->view('home/inc/footer_view');
@@ -45,18 +46,21 @@ class Employee extends CI_Controller {
     public function add()
     {
         $this->_require_manager();
+
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/add_employee_view');
         $this->load->view('home/inc/footer_view');
 
     }
 
-    public function update()
+    public function update($id_update = null)
     {
         $this->_require_login();
+
         $this->load->view('home/inc/header_view');
-        $this->load->view('employee/update_employee_view');
+        $this->load->view('employee/update_employee_view', ['id_update' => $id_update]);
         $this->load->view('home/inc/footer_view');
+
 
     }
 
