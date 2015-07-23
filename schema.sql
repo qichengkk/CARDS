@@ -10,7 +10,7 @@ USE cards;
 -- 1. Create table employee
 -- ------------------------
 CREATE TABLE IF NOT EXISTS employee (
-  EId INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  EId INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   password VARCHAR(64) NOT NULL,
   email VARCHAR(64) NOT NULL,

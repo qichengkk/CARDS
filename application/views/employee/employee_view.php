@@ -18,8 +18,15 @@
 
                 <hr>
 
+                <!-- Dynamic messages-->
                 <div id="success" class="alert alert-success"></div>
                 <div id="error" class="alert alert-danger"></div>
+                <script>
+                    $(function() {
+                        $("#success").hide();
+                        $("#error").hide();
+                    });
+                </script>
 
                 <table class="table">
                     <thead>
@@ -54,9 +61,6 @@
     $(function() {
         // init the hoome application
         var employee = new Employee();
-
-        $("#success").hide();
-        $("#error").hide();
     });
 </script>
 

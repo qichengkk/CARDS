@@ -163,8 +163,15 @@ class Api extends CI_Controller
     {
         $this->_require_manager();
 
+        $id_delete = $this->input->post("employee_id");
+
+        if($id_delete == $this->session->userdata('employee_id')) {
+            $this->output->set_output(json_encode(['result' => 0, 'error' => 'You can not delete yourself.']));
+            return false;
+        }
+
         $this->load->model('employee_model');
-        $result = $this->employee_model->delete($this->input->post("employee_id"));
+        $result = $this->employee_model->delete($id_delete);
 
 //        $result = $this->db->delete('employee', [
 //            'EId' => $this->input->post("employee_id")
