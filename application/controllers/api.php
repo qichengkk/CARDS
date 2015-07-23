@@ -17,17 +17,24 @@ class Api extends CI_Controller
     private function _require_login()
     {
         if($this->session->userdata('employee_id') == false) {
-            $this->output->set_output(json_encode(['result' => 0, 'error' => 'You are not authorized.']));
+            $this->output->set_output(json_encode(['result' => 0, 'error' => 'Please login.']));
             return false;
+        } else {
+            return true;
         }
     }
 
     private function _require_manager()
     {
-        $this->_require_login();
+        if($this->_require_login() == false) {
+            echo 1;
+            return false;
+        }
         if($this->session->userdata('role') != "Manager") {
             $this->output->set_output(json_encode(['result' => 0, 'error' => 'You are not authorized.']));
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -91,7 +98,9 @@ class Api extends CI_Controller
 
     public function register()
     {
-        $this->_require_manager();
+        if($this->_require_manager() == false) {
+            return false;
+        }
 
         $this->output->set_content_type('application_json');
 
@@ -129,14 +138,13 @@ class Api extends CI_Controller
 
     public function get_employee($employee_id = null)
     {
-        $this->_require_login();
-
-        if($this->session->userdata('role') == 'Manager') {
-            $this->load->model('employee_model');
-            $result = $this->employee_model->get($employee_id);
-            $this->output->set_output(json_encode($result));
-            //print_r($result);
+        if($this->_require_manager() == false) {
+            return false;
         }
+
+        $this->load->model('employee_model');
+        $result = $this->employee_model->get($employee_id);
+        $this->output->set_output(json_encode($result));
 
         /*$cur_eid = $this->session->userdata('employee_id');
 
@@ -145,7 +153,7 @@ class Api extends CI_Controller
             'eid' => $cur_eid
         ]);*/
 
-        //$this->db->where('eid', $this->session->userdata('employee_id'));
+//        $this->db->where('eid', $this->session->userdata('employee_id'));
 //        $this->db->where('eid', 2);
 //        $query = $this->db->get('employee');
 //        $result = $query->result_array();
@@ -161,7 +169,9 @@ class Api extends CI_Controller
 
     public function delete_employee()
     {
-        $this->_require_manager();
+        if($this->_require_manager() == false) {
+            return false;
+        }
 
         $id_delete = $this->input->post("employee_id");
 

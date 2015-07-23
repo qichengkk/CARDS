@@ -18,17 +18,25 @@ class Employee extends CI_Controller {
 
     }
 
-    private function assert()
+    private function _require_login()
     {
-        $employee_id = $this->session->userdata('employee_id');
-        if(!$employee_id) {
+        if($this->session->userdata('employee_id') == false) {
             redirect('/');
         }
     }
 
+    private function _require_manager()
+    {
+        $this->_require_login();
+        if($this->session->userdata('role') != "Manager") {
+            redirect('/home');
+        }
+    }
+
+
     public function index()
     {
-        $this->assert();
+        $this->_require_manager();
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/employee_view');
         $this->load->view('home/inc/footer_view');
@@ -36,7 +44,7 @@ class Employee extends CI_Controller {
 
     public function add()
     {
-        $this->assert();
+        $this->_require_manager();
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/add_employee_view');
         $this->load->view('home/inc/footer_view');
@@ -45,7 +53,7 @@ class Employee extends CI_Controller {
 
     public function update()
     {
-        $this->assert();
+        $this->_require_login();
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/update_employee_view');
         $this->load->view('home/inc/footer_view');

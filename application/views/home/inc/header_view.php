@@ -50,7 +50,10 @@
                 <li><a href='<?=site_url('home')?>'><span class='glyphicon glyphicon-home'></span></a></li>
                 <li><a href='../cars/index.html'>Cars</a></li>
                 <li><a href='../reports/index.html'>Reports</a></li>
-                <li><a href='<?=site_url('employee')?>'>Employees</a></li>
+                <?php if($this->session->userdata('role') == 'Manager') { ?>
+                    <li><a href='<?=site_url('employee')?>'>Employees</a></li>
+                <?php } ?>
+
             </ul>
 
         </div><!-- /.container-fluid -->
