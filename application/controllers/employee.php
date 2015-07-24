@@ -57,6 +57,9 @@ class Employee extends CI_Controller {
     {
         $this->_require_login();
 
+        //$data = array('foo' => 'Hello', 'bar' => 'world');
+        //$this->load->view('main_view', $data);
+
         $this->load->view('home/inc/header_view');
         $this->load->view('employee/update_employee_view', ['id_update' => $id_update]);
         $this->load->view('home/inc/footer_view');
