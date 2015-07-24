@@ -1,0 +1,38 @@
+controllers and models should be first-letter capital;
+
+always use https:// in stead of http:// for servers only support https;
+
+do the following 2 things in order to remove index.php
+e.g. "https://emaple.com/api" for "https://emaple.com/index.php/api"
+
+1.create .htaccess file
+DirectoryIndex index.php
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|css|js|robots\.txt|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php/$1 [L,QSA]
+
+2.change in config.php $config['index_page'] = 'index.php'; to $config['index_page'] = '';
+
+for xampp:
+access mysql for xampp: /Applications/xampp/xamppfiles/bin/mysql -u root -p
+
+on the server:
+set permissions on the server;
+set base_url in config/config.php manually because of https stuff;
+set database in config/database.php
+
+session problem:
+1.set in config.php file
+$config['sess_driver'] = 'database';
+$config['sess_save_path'] = 'ci_sessions';
+2.in database
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+          `id` varchar(40) NOT NULL,
+          `ip_address` varchar(45) NOT NULL,
+          `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
+          `data` blob NOT NULL,
+          PRIMARY KEY (id),
+          KEY `ci_sessions_timestamp` (`timestamp`)
+  );

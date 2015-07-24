@@ -9,7 +9,7 @@
     <script src="<?=base_url()?>public/js/bootstrap.min.js"></script>
 
     <!-- Custom fonts library -->
-    <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?=base_url()?>public/css/bootstrap.min.css">

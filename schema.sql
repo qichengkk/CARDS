@@ -1,10 +1,22 @@
 -- Qicheng 2015-07-21
 
 -- --------------------------------
--- 0. Create database cards
+-- Create database cards
 -- --------------------------------
 CREATE DATABASE IF NOT EXISTS cards DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE cards;
+
+-- ---------------------------
+-- 0. Create table ci_sessions
+-- ---------------------------
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `id` varchar(40) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
+  `data` blob NOT NULL,
+  PRIMARY KEY (id),
+  KEY `ci_sessions_timestamp` (`timestamp`)
+);
 
 -- ------------------------
 -- 1. Create table employee
