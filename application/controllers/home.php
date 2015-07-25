@@ -35,6 +35,8 @@ class Home extends CI_Controller {
         redirect('/');
     }
 
+    // ------------------------------------------------------------------------
+
     public function test()
     {
         echo 1;

@@ -10,31 +10,37 @@
                     </h1>
                 <?php } else { ?>
                     <h1 class="">
-                        others profile
+                        <?php echo $name_update ?> profile
                     </h1>
                 <?php } ?>
 
-                <p>The following form can be used to create new employees as well.</p>
+
+                <p>Note: you can not update email. If you have to, please contact bjc55311@encs.concordia.ca. </p>
 
                 <hr>
 
                 <div id="update_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
 
-                <form id="update_form" class="form" method="post" action="<?=site_url('api/update_employee')?>">
+                <form id="update_form" class="form" method="post" action="<?=site_url('api/update_employee/'.$id_update)?>">
                     <div class="form-group col-xs-12">
-                        <input type="text" class="form-control" name="name" placeholder="John Smith">
+                        <input type="text" class="form-control" name="name" value=<?php echo $name_update?>>
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="email" class="form-control" name="email" placeholder="john.smith@johnsmithporsche.com">
+                        <input type="email" class="form-control" name="email" readonly value=<?php echo $email_update?>>
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="password" class="form-control" name="pwd" placeholder="Password">
+                        <input type="password" class="form-control" name="pwd" placeholder="Leave password blank if no changes">
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="text" class="form-control" name="role" placeholder="Role">
+                        <?php if($this->session->userdata('role') == "Manager") {?>
+                            <input type="text" class="form-control" name="role" value=<?php echo $role_update?>>
+                        <?php } else { ?>
+                            <input type="text" class="form-control" name="role" readonly value=<?php echo $role_update?>>
+                        <?php } ?>
+
                     </div>
 
                     <div class="form-group col-xs-12">

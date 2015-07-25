@@ -14,7 +14,7 @@
                     <!-- end -->
                 </h1>
 
-                <p>This shows the list of employees and it should be visible by managers only!</p>
+                <p>This shows the list of employees and it is visible to managers only!</p>
 
                 <hr>
 
@@ -59,7 +59,7 @@
 
 <script>
     $(function() {
-        // init the hoome application
+        // init the employee application
         var employee = new Employee();
     });
 </script>

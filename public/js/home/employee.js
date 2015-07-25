@@ -14,7 +14,7 @@ var Employee = function() {
         //    Template.employee({employee_id: 1, content: "this is life"})
         //);
 
-        load_employee();
+        get_employee();
         delete_employee();
         //update_employee();
 
@@ -22,7 +22,7 @@ var Employee = function() {
 
     //---------------------------------------------------------------------------
 
-    var load_employee = function() {
+    var get_employee = function() {
         $.get('api/get_employee', function(o) {
 
             var output = '';

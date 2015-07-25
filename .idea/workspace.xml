@@ -62,41 +62,7 @@
     <favorites_list name="cards" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Api.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-120.0" vertical-offset="0" max-vertical-offset="4800">
-              <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="840">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="note.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/note.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51339287" vertical-offset="0" max-vertical-offset="672">
-              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -118,24 +84,27 @@
         <option value="$PROJECT_DIR$/application/controllers/home.php" />
         <option value="$PROJECT_DIR$/public/js/home/home.js" />
         <option value="$PROJECT_DIR$/application/views/employee/edit_employee_view.php" />
-        <option value="$PROJECT_DIR$/application/views/employee/add_employee_view.php" />
         <option value="$PROJECT_DIR$/public/js/home/event.js" />
         <option value="$PROJECT_DIR$/application/models/employee_model.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/js/home/result.js" />
-        <option value="$PROJECT_DIR$/application/views/employee/employee_view.php" />
         <option value="$PROJECT_DIR$/application/controllers/api.php" />
-        <option value="$PROJECT_DIR$/public/js/home/employee.js" />
         <option value="$PROJECT_DIR$/public/js/home/template.js" />
-        <option value="$PROJECT_DIR$/application/views/employee/update_employee_view.php" />
         <option value="$PROJECT_DIR$/application/controllers/employee.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/system/core/CodeIgniter.php" />
         <option value="$PROJECT_DIR$/application/views/login/inc/header_view.php" />
-        <option value="$PROJECT_DIR$/application/views/home/inc/header_view.php" />
         <option value="$PROJECT_DIR$/note.txt" />
-        <option value="$PROJECT_DIR$/schema.sql" />
         <option value="$PROJECT_DIR$/application/config/config.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Home.php" />
+        <option value="$PROJECT_DIR$/public/js/home/employee.js" />
+        <option value="$PROJECT_DIR$/application/views/employee/update_employee_view.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Employee.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Api.php" />
+        <option value="$PROJECT_DIR$/application/views/employee/add_employee_view.php" />
+        <option value="$PROJECT_DIR$/application/views/home/inc/header_view.php" />
+        <option value="$PROJECT_DIR$/application/views/employee/employee_view.php" />
+        <option value="$PROJECT_DIR$/schema.sql" />
       </list>
     </option>
   </component>
@@ -198,38 +167,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cards" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cards" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cards" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cards" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -251,6 +188,28 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cards" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cards" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -377,6 +336,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="inc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cards" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cards" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="employee" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -475,10 +456,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22778675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22778675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -691,14 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/home/home_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24336283" vertical-offset="0" max-vertical-offset="678">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/home/result.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
@@ -722,32 +695,6 @@
         <state vertical-scroll-proportion="0.38053098" vertical-offset="447" max-vertical-offset="1125">
           <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="78" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/employee/add_employee_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5516224" vertical-offset="556" max-vertical-offset="1320">
-          <caret line="62" column="71" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/employee/employee_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7787611" vertical-offset="402" max-vertical-offset="1080">
-          <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/home/employee.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.34188035" vertical-offset="480" max-vertical-offset="1365">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#47#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,22 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Employee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3274336" vertical-offset="0" max-vertical-offset="1290">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/employee/update_employee_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31578946" vertical-offset="0" max-vertical-offset="1410">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10683761" vertical-offset="0" max-vertical-offset="702">
@@ -821,14 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.067669176" vertical-offset="0" max-vertical-offset="750">
           <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3539823" vertical-offset="0" max-vertical-offset="780">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -870,6 +793,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/note.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51339287" vertical-offset="0" max-vertical-offset="672">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84070796" vertical-offset="0" max-vertical-offset="810">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3539823" vertical-offset="0" max-vertical-offset="840">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/employee/update_employee_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42857143" vertical-offset="315" max-vertical-offset="1500">
+          <caret line="40" column="89" selection-start-line="40" selection-start-column="89" selection-end-line="40" selection-end-column="89" />
+          <folding>
+            <marker date="1437798332000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1437798332000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1437798332000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1437798332000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1437798332000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1437798332000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/employee/add_employee_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22556391" vertical-offset="0" max-vertical-offset="1320">
+          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="dbDummy://dbtable:/42816bef/96b73a8f-ffe9-4273-bcae-8f37cbd6cef0/cards..employee">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -885,45 +858,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30478954" vertical-offset="0" max-vertical-offset="750">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.5428157" vertical-offset="61" max-vertical-offset="750">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/employee/employee_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7714286" vertical-offset="402" max-vertical-offset="1080">
+          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/home/inc/header_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="990">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.47368422" vertical-offset="0" max-vertical-offset="1020">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/home/home_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24336283" vertical-offset="0" max-vertical-offset="678">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Employee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5575221" vertical-offset="672" max-vertical-offset="1410">
+          <caret line="70" column="92" selection-start-line="70" selection-start-column="92" selection-end-line="70" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/home/employee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6196581" vertical-offset="150" max-vertical-offset="1365">
+          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-120.0" vertical-offset="0" max-vertical-offset="4800">
-          <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.7218045" vertical-offset="2625" max-vertical-offset="5025">
+          <caret line="212" column="15" selection-start-line="212" selection-start-column="15" selection-end-line="212" selection-end-column="15" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="840">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51339287" vertical-offset="0" max-vertical-offset="672">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
   </component>

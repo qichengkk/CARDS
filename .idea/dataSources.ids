@@ -24,6 +24,8 @@
       <column name="date_added" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="EId"/>
+      <index name="EId" unique="true" columns="EId"/>
+      <index name="email" unique="true" columns="email"/>
     </table>
   </data-source>
 </component>

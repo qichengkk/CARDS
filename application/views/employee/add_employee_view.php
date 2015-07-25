@@ -8,7 +8,7 @@
                     My profile
                 </h1>
 
-                <p>The following form can be used to create new employees as well.</p>
+                <p>The following form can be used to create new employees.</p>
 
                 <hr>
 
@@ -16,11 +16,11 @@
 
                 <form id="register_form" class="form" method="post" action="<?=site_url('api/register')?>">
                     <div class="form-group col-xs-12">
-                        <input type="text" class="form-control" name="name" placeholder="John Smith">
+                        <input type="text" class="form-control" name="name" placeholder="Name">
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="email" class="form-control" name="email" placeholder="john.smith@johnsmithporsche.com">
+                        <input type="email" class="form-control" name="email" placeholder="Email">
                     </div>
 
                     <div class="form-group col-xs-12">
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Add">
 
                         <a href="<?=site_url('employee')?>" class="btn btn-link">Cancel</a>
                     </div>

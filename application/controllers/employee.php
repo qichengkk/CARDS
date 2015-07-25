@@ -53,15 +53,23 @@ class Employee extends CI_Controller {
 
     }
 
-    public function update($id_update = null)
+    public function update($employee_id = null)
     {
         $this->_require_login();
 
-        //$data = array('foo' => 'Hello', 'bar' => 'world');
-        //$this->load->view('main_view', $data);
+        $this->load->model('employee_model');
+        $result = $this->employee_model->get($employee_id);
+
+        $data = array(
+            'id_update' => $employee_id,
+            'name_update' => $result[0]['name'],
+            'email_update' => $result[0]['email'],
+            'role_update' => $result[0]['role']
+        );
 
         $this->load->view('home/inc/header_view');
-        $this->load->view('employee/update_employee_view', ['id_update' => $id_update]);
+        //$this->load->view('employee/update_employee_view', ['id_update' => $employee_id]);
+        $this->load->view('employee/update_employee_view', $data);
         $this->load->view('home/inc/footer_view');
 
 

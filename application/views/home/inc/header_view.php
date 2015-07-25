@@ -49,6 +49,8 @@
             <ul class='nav navbar-nav navbar-center'>
                 <li><a href='<?=site_url('home')?>'><span class='glyphicon glyphicon-home'></span></a></li>
                 <li><a href='../cars/index.html'>Cars</a></li>
+                <li><a href='../clients/index.html'>Clients</a></li>
+                <li><a href='../transactions/index.html'>Transactions</a></li>
                 <li><a href='../reports/index.html'>Reports</a></li>
                 <?php if($this->session->userdata('role') == 'Manager') { ?>
                     <li><a href='<?=site_url('employee')?>'>Employees</a></li>
