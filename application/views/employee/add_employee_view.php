@@ -5,7 +5,7 @@
             <div class='col-md-12'>
 
                 <h1 class="">
-                    My profile
+                    Add an Employee
                 </h1>
 
                 <p>The following form can be used to create new employees.</p>
