@@ -43,3 +43,19 @@ VALUES
 -- ------------------------
 -- 2. Create table car
 -- ------------------------
+
+-- ------------------------
+-- 3. Create table make
+-- ------------------------
+CREATE TABLE IF NOT EXISTS make (
+  id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  date_added DATETIME,
+  date_modified DATETIME,
+
+  PRIMARY KEY (id)
+
+) ENGINE = InnoDB;
+
+INSERT INTO make (name)
+VALUES ('Porsche');
