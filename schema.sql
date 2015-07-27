@@ -95,3 +95,5 @@ VALUES
   ('1', 'Panamera', 'S', 'Coupe', '1999', '2017'),
   ('1', 'Panamera', '4S', 'Coupe', '1999', '2017'),
   ('1', 'Panamera', 'GTS', 'Coupe', '1999', '2017');
+
+ALTER TABLE model ADD image VARCHAR(255);

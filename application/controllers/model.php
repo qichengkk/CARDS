@@ -77,10 +77,36 @@ class Model extends CI_Controller
 				'serie' => $this->input->post('serie'),
 				'type' => $this->input->post('type'),
 				'from_year' => $this->input->post('from_year'),
-				'to_year' => $this->input->post('to_year'),
+				'to_year' => $this->input->post('to_year')
 			);
-			$this->model_model->insert($data);
-			redirect('/model/');
+			if ($this->upload_image()) {
+				$file = $this->upload->data();
+				$data['image'] = $file['file_name'];
+				$this->model_model->insert($data);
+				redirect('/model/');
+			} else {
+				echo "Something went wrong!";
+			}
+		}
+	}
+
+	/*
+   * To upload files
+   */
+	public function upload_image()
+	{
+		$config =  array(
+      'upload_path'     => './uploads/model/',
+      'allowed_types' 		=> 'gif|jpg|png',
+      'overwrite'       => FALSE
+    );
+
+    $this->load->library('upload', $config);
+
+		if ($this->upload->do_upload()) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -106,8 +132,23 @@ class Model extends CI_Controller
 				'from_year' => $this->input->post('from_year'),
 				'to_year' => $this->input->post('to_year'),
 			);
-			$this->model_model->update($data, $model_id);
-			redirect('/model/');
+			// $this->model_model->update($data, $model_id);
+			// redirect('/model/');
+
+			// TO DO: File upload not working!!!
+			if (empty($_POST['userfile'])) {
+				$this->model_model->update($data, $model_id);
+				redirect('/model/');
+			} else {
+				if ($this->upload_image()) {
+					$file = $this->upload->data();
+					$data['image'] = $file['file_name'];
+					$this->model_model->update($data, $model_id);
+					redirect('/model/');
+				} else {
+					echo "Something went wrong!";
+				}
+			}
 		}
 
 	}
@@ -115,7 +156,14 @@ class Model extends CI_Controller
 	public function delete()
 	{
 		$model_id = $this->input->get('id');
+		$model = $this->model_model->get($model_id);
+
+		// Delete the record in db
 		$this->model_model->delete($model_id);
+
+		// Delete the file
+		$this->load->helper('url');
+		unlink('./uploads/model/'.$model[0]['image']);
 		redirect('/model/');
 	}
 
