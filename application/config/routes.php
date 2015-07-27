@@ -56,3 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['home'] = 'home';
 $route['employee'] = 'employee';
 $route['make'] = 'make';
+$route['model'] = 'model';

@@ -50,7 +50,7 @@ VALUES
 CREATE TABLE IF NOT EXISTS make (
   id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
-  date_added DATETIME,
+  date_added TIMESTAMP,
   date_modified DATETIME,
 
   PRIMARY KEY (id)
@@ -59,3 +59,39 @@ CREATE TABLE IF NOT EXISTS make (
 
 INSERT INTO make (name)
 VALUES ('Porsche');
+
+-- ------------------------
+-- 4. Create table model
+-- ------------------------
+CREATE TABLE IF NOT EXISTS model (
+  id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+  make_id INT UNSIGNED,
+  name VARCHAR(50) NOT NULL,
+  serie VARCHAR(50),
+  type VARCHAR(50),
+  from_year YEAR(4) NOT NULL,
+  to_year YEAR(4) NOT NULL,
+  date_added TIMESTAMP,
+  date_modified DATETIME,
+
+  PRIMARY KEY(id),
+  FOREIGN KEY(make_id) REFERENCES make(id) ON DELETE CASCADE
+) ENGINE = InnoDB;
+
+INSERT INTO model (make_id, name, serie, type, from_year, to_year)
+VALUES
+  ('1', 'Boxster', '', 'Roadster', '1996', '2017'),
+  ('1', 'Boxster', 'S', 'Roadster', '1996', '2017'),
+  ('1', 'Boxster', 'GTS', 'Roadster', '1996', '2017'),
+  ('1', 'Cayman', '', 'Coupe', '2006', '2017'),
+  ('1', 'Cayman', 'S', 'Coupe', '2006', '2017'),
+  ('1', 'Cayman', 'GTS', 'Coupe', '2006', '2017'),
+  ('1', 'Cayman', 'GT4', 'Coupe', '2006', '2017'),
+  ('1', '911 Carrera', '', 'Coupe', '1964', '2017'),
+  ('1', '911 Carrera', 'S', 'Coupe', '1964', '2017'),
+  ('1', '911 Carrera', 'GTS', 'Coupe', '1964', '2017'),
+  ('1', 'Panamera', '', 'Coupe', '1999', '2017'),
+  ('1', 'Panamera', '4', 'Coupe', '1999', '2017'),
+  ('1', 'Panamera', 'S', 'Coupe', '1999', '2017'),
+  ('1', 'Panamera', '4S', 'Coupe', '1999', '2017'),
+  ('1', 'Panamera', 'GTS', 'Coupe', '1999', '2017');
