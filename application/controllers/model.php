@@ -41,7 +41,10 @@ class Model extends CI_Controller
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
+		// Validation display style
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+
+		// Validation rules
 		$this->form_validation->set_rules('name', 'Production Start Year', 'required');
 		$this->form_validation->set_rules('type', 'Type', 'required');
 		$this->form_validation->set_rules('name', 'Make', 'required');
@@ -66,11 +69,14 @@ class Model extends CI_Controller
 		$this->_load_form_helper();
 
 		if ($this->form_validation->run() == false) {
+
 			$data['make'] = $this->make_model->get(); 
 			$this->load->view('home/inc/header_view');
 			$this->load->view('model/add', $data);
 			$this->load->view('home/inc/footer_view');
+
 		} else {
+
 			$data = array(
 				'make_id' => $this->input->post('make_id'),
 				'name' => $this->input->post('name'),
@@ -79,13 +85,32 @@ class Model extends CI_Controller
 				'from_year' => $this->input->post('from_year'),
 				'to_year' => $this->input->post('to_year')
 			);
-			if ($this->upload_image()) {
-				$file = $this->upload->data();
-				$data['image'] = $file['file_name'];
+
+			if (empty($_FILES['userfile']['name'])) {
+				// User did NOT attach a file!
+
 				$this->model_model->insert($data);
 				redirect('/model/');
+
 			} else {
-				echo "Something went wrong!";
+				// User attached a file!
+
+				if ($this->upload_image()) {
+					// File is uploaded successfully!
+					// Get file data
+					$file = $this->upload->data();
+					// Get file name
+					$data['image'] = $file['file_name'];
+
+					$this->model_model->insert($data);
+					redirect('/model/');
+
+				} else {
+
+					echo "Oops, something went wrong! The file you attached cannot be uploaded.";
+
+				}
+
 			}
 		}
 	}
@@ -132,22 +157,41 @@ class Model extends CI_Controller
 				'from_year' => $this->input->post('from_year'),
 				'to_year' => $this->input->post('to_year'),
 			);
-			// $this->model_model->update($data, $model_id);
-			// redirect('/model/');
 
-			// TO DO: File upload not working!!!
-			if (empty($_POST['userfile'])) {
+			if (empty($_FILES['userfile']['name'])) {
+				// User did NOT attach a file!
+
 				$this->model_model->update($data, $model_id);
 				redirect('/model/');
+
 			} else {
-				if ($this->upload_image()) {
-					$file = $this->upload->data();
-					$data['image'] = $file['file_name'];
-					$this->model_model->update($data, $model_id);
-					redirect('/model/');
-				} else {
-					echo "Something went wrong!";
+				// User attached a file!
+
+				// First, delete the previous file.
+				$model = $this->model_model->get($model_id);
+				if (!empty($model[0]['image'])) {
+					// Delete only if there is a previous file.
+					$this->load->helper('url');
+					unlink('./uploads/model/'.$model[0]['image']);
 				}
+
+				// Second, upload the new file.
+				if ($this->upload_image()) {
+					// File is uploaded successfully!
+					// Get file data
+					$file = $this->upload->data();
+					// Get file name
+					$data['image'] = $file['file_name'];
+
+					$this->model_model->update($data);
+					redirect('/model/');
+
+				} else {
+
+					echo "Oops, something went wrong! The file you attached cannot be uploaded.";
+
+				}
+
 			}
 		}
 
@@ -162,8 +206,10 @@ class Model extends CI_Controller
 		$this->model_model->delete($model_id);
 
 		// Delete the file
-		$this->load->helper('url');
-		unlink('./uploads/model/'.$model[0]['image']);
+		if (!empty($model[0]['image'])) {
+			$this->load->helper('url');
+			unlink('./uploads/model/'.$model[0]['image']);
+		}
 		redirect('/model/');
 	}
 

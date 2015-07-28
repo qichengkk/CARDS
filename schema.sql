@@ -1,8 +1,8 @@
 -- Qicheng 2015-07-21
 
--- --------------------------------
+-- ---------------------
 -- Create database cards
--- --------------------------------
+-- ---------------------
 CREATE DATABASE IF NOT EXISTS cards DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE cards;
 
@@ -34,19 +34,16 @@ CREATE TABLE IF NOT EXISTS employee (
 
 ) ENGINE = InnoDB;
 
+-- TODO: Need to change 'date_added' to TIMESTAMP
+
 INSERT INTO employee (name, password, email, role)
 VALUES
   ('admin', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'bjc55311@encs.concordia.ca', 'Manager'),
   ('John Smith', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'john.smith@johnsmithporsche.com', 'Manager');
 
-
--- ------------------------
--- 2. Create table car
--- ------------------------
-
--- ------------------------
--- 3. Create table make
--- ------------------------
+-- --------------------
+-- 2. Create table make
+-- --------------------
 CREATE TABLE IF NOT EXISTS make (
   id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
@@ -60,9 +57,9 @@ CREATE TABLE IF NOT EXISTS make (
 INSERT INTO make (name)
 VALUES ('Porsche');
 
--- ------------------------
--- 4. Create table model
--- ------------------------
+-- ---------------------
+-- 3. Create table model
+-- ---------------------
 CREATE TABLE IF NOT EXISTS model (
   id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
   make_id INT UNSIGNED,
@@ -97,3 +94,8 @@ VALUES
   ('1', 'Panamera', 'GTS', 'Coupe', '1999', '2017');
 
 ALTER TABLE model ADD image VARCHAR(255);
+-- TODO: Include 'image' in CREATE TABLE for final version.
+
+-- -------------------
+-- 3. Create table car
+-- -------------------
