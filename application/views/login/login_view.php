@@ -5,29 +5,30 @@
 
     <div class='container'>
         <div class='row'>
-            <div class='col-md-12'>
 
-                <h1>Login</h1>
+            <div class='col-md-12'>
 
                 <hr>
 
                 <div id="login_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
 
                 <form id ="login_form" class="form-horizontal" role="form" method="post" action="<?=site_url("api/login")?>">
+                    <div class="col-md-9">
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="email">Email:</label>
-                        <div class="col-sm-6">
+                        <label class="control-label col-sm-3 col-sm-offset-1" for="email">Email:</label>
+                        <div class="col-sm-8">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="pwd">Password:</label>
-                        <div class="col-sm-6">
+                        <label class="control-label col-sm-3 col-sm-offset-1" for="pwd">Password:</label>
+                        <div class="col-sm-8">
                             <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
                         </div>
                     </div>
+                    </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-1" style="padding: 30px;">
                         <div class="col-sm-12">
                             <button type="submit" class="btn btn-lg btn-primary center-block">Login</button>
                         </div>
@@ -36,6 +37,7 @@
 
             </div>
         </div>
+
     </div>
 
 </div><!-- end of page-content-wrapper -->

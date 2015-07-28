@@ -84,10 +84,9 @@ hr {
  * Custom styles
  * -------------*/
 
-body {
+.body {
     margin: 0;
-    background: url('');
-    background-size: 1440px 800px;
+
 }
 
 .hide {

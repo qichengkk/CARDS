@@ -2,7 +2,6 @@
 
     <div class='container'>
         <div class='row'>
-            <div class='col-md-12'>
 
                 <?php if($id_update == $this->session->userdata('employee_id')) {?>
                     <h1 class="">
@@ -19,8 +18,7 @@
 
                 <hr>
 
-                <div class="col-md-1"></div>
-                <img class='col-md-2 ' src="<?php echo $image_url; ?>" alt="profile image" />
+                <img class='col-md-2 col-md-offset-1' src="<?php echo $image_url; ?>" alt="profile image" />
 
                 <div class="col-md-9">
 
@@ -55,10 +53,9 @@
                         <a href="<?=site_url('employee')?>" class="btn btn-link">Cancel</a>
                     </div>
                 </form>
-                    </div>
+                </div>
 
 
-            </div>
         </div>
     </div>
 
