@@ -10,6 +10,8 @@ class Make_model extends CI_Model
 
 	public function get($make_id = null)
 	{
+		$this->db->order_by('name', 'ASC');
+		
 		if ($make_id === null) {
 			$query = $this->db->get('make');
 		} else if (is_array($make_id)) {

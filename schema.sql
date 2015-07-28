@@ -99,3 +99,24 @@ ALTER TABLE model ADD image VARCHAR(255);
 -- -------------------
 -- 3. Create table car
 -- -------------------
+CREATE TABLE IF NOT EXISTS car (
+  VIN CHAR(17) NOT NULL,
+  model_id INT NOT NULL,
+  year YEAR(4) NOT NULL,
+  mileage INT NOT NULL,
+  color VARCHAR(50) NOT NULL,
+  estimated_price INT,
+  description VARCHAR(255),
+  date_added TIMESTAMP,
+  date_modified DATETIME,
+
+  PRIMARY KEY (VIN)
+) ENGINE = InnoDB;
+
+ALTER TABLE car MODIFY COLUMN model_id INT UNSIGNED NOT NULL;
+ALTER TABLE car ADD FOREIGN KEY (model_id) REFERENCES model(id);
+ALTER TABLE car MODIFY COLUMN estimated_price DECIMAL(12, 2) NOT NULL;
+-- TODO: Include this in CREATE TABLE for final version.
+
+INSERT INTO car (VIN, model_id, year, mileage, color, estimated_price, description)
+VALUES ('2P4GH5539NR525672', 12, 2012, 24910, 'Black', 101900.00, 'New Pirelli P-Zero tires on custom after-market wheels, orignal wheels also included. Meticulously maintained and collection worthy.');

@@ -10,6 +10,8 @@ class Model_model extends CI_Model
 
 	public function get($model_id = null)
 	{
+		$this->db->order_by('name', 'ASC');
+		
 		if ($model_id === null) {
 			$query = $this->db->get('model');
 		} else if (is_array($model_id)) {
