@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Car extends CI_Controller
 {
-	protected $colors = array(
+	private $colors = array(
 		'Black', 'Jet Black',
 		'Blue', 'Blue Metalic', 'Dark Blue Metalic',
 		'Mahogany',
@@ -26,6 +26,7 @@ class Car extends CI_Controller
 		$this->load->model('make_model');
 		$this->load->model('model_model');
 		$this->load->model('car_model');
+		$this->load->model('feature_model');
 	}
 
 	private function _require_login()
@@ -80,6 +81,23 @@ class Car extends CI_Controller
 			);
 	}
 
+	private function _get_feature_input()
+	{
+		return array(
+				'engine' 		=> $this->input->post('engine'),
+				'transmission' 		=> $this->input->post('transmission'),
+				'powertrain' 		=> $this->input->post('powertrain'),
+				'city_fuel_consumption' 		=> $this->input->post('city_fuel_consumption'),
+				'hw_fuel_consumption' 		=> $this->input->post('hw_fuel_consumption'),
+				'cruise_control' 		=> $this->input->post('cruise_control'),
+				'air_conditioner' 		=> $this->input->post('air_conditioner'),
+				'airbags' 		=> $this->input->post('airbags'),
+				'satellite_radio' 		=> $this->input->post('satellite_radio'),
+				'sunroof' 		=> $this->input->post('sunroof'),
+				'interior' 		=> $this->input->post('interior')
+			);
+	}
+
 	public function index()
 	{
 		$this->_require_login();
@@ -101,6 +119,7 @@ class Car extends CI_Controller
 
 			$data['makes'] = $this->make_model->get();
 			$data['models'] = $this->model_model->get();
+			$data['colors'] = $this->colors;
 
 			$this->load->view('home/inc/header_view');
 			$this->load->view('car/add', $data);
@@ -108,10 +127,14 @@ class Car extends CI_Controller
 			
 		} else {
 
-			$data = $this->_get_car_input();
+			$data['car'] = $this->_get_car_input();
+			$data['feature'] = $this->_get_feature_input();
+			$data['feature']['car_id'] = $data['car']['VIN'];
 
-			$this->car_model->insert($data);
-			redirect('/car/');
+			$this->car_model->insert($data['car']);
+			$this->feature_model->insert($data['feature']);
+
+			redirect('/car/show/'.$data['car']['VIN']);
 
 		}
 	}
@@ -123,6 +146,7 @@ class Car extends CI_Controller
 		$data['car'] = $this->car_model->get($VIN)[0];
 		$data['model'] = $this->model_model->get($data['car']['model_id'])[0];
 		$data['make'] = $this->make_model->get($data['model']['make_id'])[0];
+		$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
 
 		$this->load->view('home/inc/header_view');
 		$this->load->view('car/show', $data);
@@ -134,18 +158,24 @@ class Car extends CI_Controller
 		$this->_require_manager(); 	// Only manager can edit
 		$this->_load_form_helper();
 
-		$data['cars'] = $this->car_model->get($VIN);
+		$data['car'] = $this->car_model->get($VIN)[0];
+		$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
+		$data['colors'] = $this->colors;
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('home/inc/header_view');
 			$this->load->view('car/update', $data);
 			$this->load->view('home/inc/footer_view');
 		} else {
-			$data = $this->_get_car_input();
+			$data['car'] = $this->_get_car_input();
 
-			$this->car_model->update($data, $VIN);
+			$feature = $this->feature_model->get_by_car_id($VIN)[0];
+			$data['feature'] = $this->_get_feature_input();
 
-			redirect('car');
+			$this->car_model->update($data['car'], $VIN);
+			$this->feature_model->update($data['feature'], $feature['id']);
+
+			redirect('car/show/'.$VIN);
 		}
 	}
 
