@@ -4,7 +4,7 @@
 
     <hr>
 
-    <footer class="navbar-fixed-bottom center">
+    <footer class="center">
         This is a footer
         <!--&copy; --><?/*=date('Y')*/?>
     </footer>
