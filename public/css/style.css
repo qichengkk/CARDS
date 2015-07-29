@@ -198,6 +198,13 @@ ul.status-bar {
   width: 100%;
   max-width: 500px;
   margin: auto; }
+  .form fieldset:first-child legend {
+    padding-top: 0px; }
+  .form legend {
+    padding-top: 20px; }
+  .form label {
+    color: #777;
+    font-weight: 400; }
   .form textarea {
     min-height: 100px; }
 

@@ -47,9 +47,24 @@
                     <p><em><?php echo $car['description'] ?></em></p>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-3">
+                    <h2>Specs</h2>
+                    <p>
+                        Engine: <?php echo $feature['engine'] ?><br/>
+                        Transmission: <?php echo $feature['transmission'] ?><br/>
+                        Drivetrain: <?php echo $feature['powertrain'] ?>
+                    </p>
+                </div>
+
+                <div class="col-sm-3">
                     <h2>Features</h2>
-                    <p>Some features</p>
+                    <p>
+                        Cruise control: <?php if ($feature['cruise_control'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        A/C: <?php if ($feature['air_conditioner'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Sunroof: <?php if ($feature['sunroof'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Satellite radio: <?php if ($feature['satellite_radio'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Airbags: <?php if ($feature['airbags'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                    </p>
                 </div>
 
                 <hr />
