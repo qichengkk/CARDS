@@ -39,10 +39,6 @@
 							</select>
 						</div>
 
-						<div class="form-group col-xs-12">
-							<input type="text" class="form-control" name="color" value="<?php echo $car['color'] ?>">
-						</div>
-
 						<div class="form-group col-xs-4">
 							<label for="year">Year</label>
 							<input type="number" class="form-control right" name="year" min="1900" max="2027" value="<?php echo $car['year'] ?>">
@@ -56,6 +52,14 @@
 						<div class="form-group col-xs-4">
 							<label for="mileage">Estimated price</label>
 							<input type="text" class="form-control right" name="estimated_price" value="<?php echo $car['estimated_price'] ?>">
+						</div>
+
+						<div class="form-group col-xs-12">
+							<select class="form-control" name="color">
+								<?php foreach ($colors as $color): ?>
+								<option value="<?php echo $color ?>" <?php if ($car['color'] == $color) { echo "selected"; } ?>><?php echo $color ?></option>
+								<?php endforeach ?>
+							</select>
 						</div>						
 
 						<div class="form-group col-xs-12">

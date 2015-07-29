@@ -58,7 +58,11 @@
 						</div>
 
 						<div class="form-group col-xs-12">
-							<input type="text" class="form-control" name="color" placeholder="Color">
+							<select class="form-control" name="color">
+								<?php foreach ($colors as $color): ?>
+								<option value="<?php echo $color ?>"><?php echo $color ?></option>
+								<?php endforeach ?>
+							</select>
 						</div>						
 
 						<div class="form-group col-xs-12">

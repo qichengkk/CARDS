@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Car extends CI_Controller
 {
-	protected $colors = array(
+	private $colors = array(
 		'Black', 'Jet Black',
 		'Blue', 'Blue Metalic', 'Dark Blue Metalic',
 		'Mahogany',
@@ -119,6 +119,7 @@ class Car extends CI_Controller
 
 			$data['makes'] = $this->make_model->get();
 			$data['models'] = $this->model_model->get();
+			$data['colors'] = $this->colors;
 
 			$this->load->view('home/inc/header_view');
 			$this->load->view('car/add', $data);
@@ -159,6 +160,7 @@ class Car extends CI_Controller
 
 		$data['car'] = $this->car_model->get($VIN)[0];
 		$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
+		$data['colors'] = $this->colors;
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('home/inc/header_view');
