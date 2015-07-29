@@ -53,11 +53,16 @@
                             <td><?php echo $model_item['type'] ?></td>
                             <td><?php echo $model_item['from_year'] ?></td>
                             <td><?php echo $model_item['to_year'] ?></td>
-                            <td>
+                            <td class="right">
+                                <?php if (!empty($model_item['image'])) { ?>
+                                <a href="./uploads/model/<?php echo $model_item['image'] ?>" target="blank">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </a>
+                                <?php } ?>
                                 <a href="<?= site_url('model/update') ?>/<?php echo $model_item['id'] ?>">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="<?= site_url('model/delete') ?>?id=<?php echo $model_item['id'] ?>">
+                                <a href="<?= site_url('model/delete') ?>?id=<?php echo $model_item['id'] ?>" class="delete-link">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>
@@ -71,3 +76,16 @@
     </div>
 
 </div><!-- end of page-content-wrapper -->
+
+<script>
+/*
+$(document).ready(function(){
+
+    // Delete with AJAX
+    $(".delete-link").click(function(e){
+        e.preventDefault;
+        $(this).parent().parent().hide();
+    });
+});
+*/
+</script>

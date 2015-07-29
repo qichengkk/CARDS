@@ -11,7 +11,9 @@
 				<!-- div id="new_make_form_error" class="alert alert-danger center" --><!-- Dynamic --><!-- /div -->
 				<?php echo validation_errors(); ?>
 
-				<form id="edit_model_form" class="form" method="post" accept-charset="utf-8" action="<?= site_url('model/update') ?>/<?php echo $result[0]['id'] ?>">
+				<!-- form id="edit_model_form" class="form" method="post" accept-charset="utf-8" action="<?= site_url('model/update') ?>/<?php echo $result[0]['id'] ?>" -->
+
+				<?php echo form_open_multipart('model/update/'.$result[0]['id'], ['class' => 'form']);?>
 
 					<div class="form-group col-xs-12">
 						<select class="form-control" name="make_id">
@@ -48,6 +50,10 @@
 					<div class="form-group col-xs-6">
 						<label for="from_year">Production end year</label>
 						<input type="number" class="form-control" name="to_year" min="1900" max="2027" value="<?php echo $result[0]['to_year'] ?>">
+					</div>
+
+					<div class="form-group col-xs-12">
+						<input type="file" class="form-control" name="userfile">
 					</div>
 
 					<div class="form-group col-xs-12">
