@@ -64,6 +64,15 @@
 .navbar-fixed-top + #page-content-wrapper {
   margin-top: 46px; }
 
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    position: absolute;
+    right: 0;
+    left: auto; } }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
     background: #fff;
@@ -188,6 +197,14 @@ ul.status-bar {
     width: 16px;
     margin: 2px; }
   .icon .icon-bar:first-child {
+    margin-top: 1px; }
+  .icon .icon-dot {
+    display: block;
+    background: #777;
+    height: 3px;
+    width: 3px;
+    margin: 3px; }
+  .icon .icon-dot:first-child {
     margin-top: 1px; }
 
 /* ---------------

@@ -74,11 +74,21 @@
             <ul class='nav navbar-nav navbar-center hidden-xs'>
                 <li><a href='<?=site_url('home')?>'><span class='glyphicon glyphicon-home'></span></a></li>
                 <li><a href='<?=site_url('car')?>'>Cars</a></li>
-                <li><a href='../clients/index.html'>Clients</a></li>
-                <li><a href='../transactions/index.html'>Transactions</a></li>
-                <li><a href='../reports/index.html'>Reports</a></li>
+                <li><a href='<?=site_url('transaction')?>'>Transactions</a></li>
+                <li><a href='<?=site_url('report')?>'>Reports</a></li>
                 <?php if($this->session->userdata('role') == 'Manager') { ?>
-                    <li><a href='<?=site_url('employee')?>'>Employees</a></li>
+                <li>
+                    <a href='#' class='dropdown-toggle' data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        more <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href='<?=site_url('employee')?>'>Employees</a></li>
+                        <li><a href='<?=site_url('client')?>'>Client & Supplier</a></li>
+                        <li class="divider"></li>
+                        <li><a href='<?=site_url('make')?>'>Vehicle make</a></li>
+                        <li><a href='<?=site_url('model')?>'>Vehicle model</a></li>
+                    </ul>
+                </li>
                 <?php } ?>
 
             </ul>
