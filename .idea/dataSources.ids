@@ -15,6 +15,26 @@
       <primary-key name="PRIMARY" columns="id"/>
       <index name="ci_sessions_timestamp" unique="false" columns="timestamp"/>
     </table>
+    <table name="client" schema="" catalog="cards" type="TABLE">
+      <column name="CId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="J0NhbmFkYSc="/>
+      <column name="phone" sqlType="VARCHAR" precision="24" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date_added" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="CId"/>
+      <foreign-key name="client_ibfk_1" columns="country" ref-table="country" ref-schema="" ref-catalog="cards" ref-columns="name" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="CId" unique="true" columns="CId"/>
+    </table>
+    <table name="country" schema="" catalog="cards" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cut_off_year" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="name"/>
+      <exported-key name="client_ibfk_1" table="client" schema="" catalog="cards" columns="country"/>
+      <index name="name" unique="true" columns="name"/>
+    </table>
     <table name="employee" schema="" catalog="cards" type="TABLE">
       <column name="EId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
@@ -26,6 +46,29 @@
       <primary-key name="PRIMARY" columns="EId"/>
       <index name="EId" unique="true" columns="EId"/>
       <index name="email" unique="true" columns="email"/>
+    </table>
+    <table name="make" schema="" catalog="cards" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="model_ibfk_1" table="model" schema="" catalog="cards" columns="make_id"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="model" schema="" catalog="cards" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="make_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="serie" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="from_year" sqlType="YEAR" precision="0" scale="0" nullable="false" jdbcType="91"/>
+      <column name="to_year" sqlType="YEAR" precision="0" scale="0" nullable="false" jdbcType="91"/>
+      <column name="date_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="model_ibfk_1" columns="make_id" ref-table="make" ref-schema="" ref-catalog="cards" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="id" unique="true" columns="id"/>
     </table>
   </data-source>
 </component>

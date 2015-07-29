@@ -47,13 +47,37 @@ var Template = function() {
 
     //---------------------------------------------------------------------------
 
-    this.car = function(obj) {
+
+    /*<tr>
+    <th></th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Address</th>
+    <th>Country (Canada if not a port)</th>
+    <th>Cut_off_year</th>
+    <th>Phone</th>
+    </tr>*/
+
+    this.client = function(obj) {
 
         var output = '';
-        output += '<div id="'+ obj.car_id +'">';
+        output += '<tr id="'+ obj['CId'] +'">';
 
-        output += '<span>' + obj.content + '</span>';
-        output += '</div>';
+        output += '<td><span class="glyphicon glyphicons-nameplate-alt"></span></td>td>';
+        output += '<td>' + obj['CId'] + '</td>';
+        output += '<td>' + obj['name'] + '</td>';
+        output += '<td>' + obj['type'] + '</td>';
+        output += '<td>' + obj['address'] + '</td>';
+        output += '<td>' + obj['country'] + '</td>';
+        output += '<td>' + obj['cut_off_year'] + '</td>';
+        output += '<td>' + obj['phone'] + '</td>';
+        output += '<td>';
+        output += '<a href="client/show/' + obj['CId'] + '"><span class="glyphicon glyphicon-search"></span></a>';
+        output += '<a "class="client_update" href="client/update/' + obj['EId'] + '"><span class="glyphicon glyphicon-pencil"></span></a>';
+        output += '<a client_id="' + obj['CId'] + '"class="client_delete" href="api/delete_client/"><span class="glyphicon glyphicon-remove"></span></a>';
+        output += '</td>';
+        output += '</tr>';
 
         return output;
     };

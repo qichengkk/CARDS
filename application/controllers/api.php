@@ -286,6 +286,19 @@ class Api extends CI_Controller
      *************************************************************
      */
 
+    public function get_client($client_id = null)
+    {
+        if($this->_require_manager() == false) {
+            return false;
+        }
+
+        $this->load->model('client_model');
+        $result = $this->client_model->get($client_id);
+        $this->output->set_output(json_encode($result));
+
+    }
+
+
     public function create_client()
     {
         $this->_require_login();

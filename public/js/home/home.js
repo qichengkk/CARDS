@@ -2,10 +2,10 @@
  * Created by qichenglao on 2015-07-22.
  */
 
-var Employee = function() {
+var Home = function() {
 
     this.__contruct = function() {
-        console.log("Employee Created");
+        console.log("Home Created");
         Template = new Template();
         Event = new Event();
         Result = new Result();
@@ -17,6 +17,8 @@ var Employee = function() {
         get_employee();
         delete_employee();
         //update_employee();
+        get_client();
+        delete_client();
 
     };
 
@@ -74,6 +76,44 @@ var Employee = function() {
             }, 'json');
         });
     };*/
+
+
+    //---------------------------------------------------------------------------
+
+    var get_client = function() {
+        $.get('api/get_client', function(o) {
+
+            var output = '';
+            for(var i = 0; i < o.length; i++) {
+                output += Template.client(o[i]);
+            }
+            $("#client_table").html(output);
+
+        }, 'json');
+
+    };
+
+    var delete_client = function() {
+        $("body").on('click', '.client_delete', function(evt) {
+            evt.preventDefault();
+
+            var self = $(this).closest('tr');
+            var url = $(this).attr('href');
+            var postData = {
+                'employee_id': $(this).attr('client_id')
+            };
+
+            $.post(url, postData, function(o) {
+                if(o.result == 1) {
+                    Result.success('Client successfully deleted.');
+                    self.remove();
+                } else {
+                    Result.error(o.error);
+                }
+            }, 'json');
+        });
+    };
+
 
     //---------------------------------------------------------------------------
 
