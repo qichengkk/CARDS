@@ -10,9 +10,11 @@ class Car_model extends CI_Model
 
 	public function get($VIN = null)
 	{
+		$this->db->order_by('date_added', 'DESC');
+		
 		if ($VIN === null) {
 			$query = $this->db->get('car');
-		} else if (is_array($car_id)) {
+		} else if (is_array($VIN)) {
 			$query = $this->db->get_where('car', $VIN);
 		} else {
 			$query = $this->db->get_where('car', ['VIN' => $VIN]);

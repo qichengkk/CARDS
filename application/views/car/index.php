@@ -7,9 +7,11 @@
                 <h1 class="">
                     Cars
                     <!-- Link or button to add a new car -->
+                    <?php if ($this->session->userdata('role') == "Salesman" || $this->session->userdata('role') == "Manager") { ?>
                     <a href="<?= site_url('car/add') ?>" class="btn btn-success float-right">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
+                    <?php } ?>
                     <!-- end -->
                 </h1>
 
@@ -25,13 +27,12 @@
                     });
                 </script>
 
-                <table class="cars table">
+                <table class="table">
                     <thead>
                     <tr>
-                        <th><!-- Picture --></th>
+                        <th></th>
                         <th><!-- Year, Make, Model, Series, Color, VIN, Description --></th>
-                        <th>Est. Price</th>
-                        <th>Status</th>
+                        <th>Price</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -39,7 +40,11 @@
                     <tbody id="make_table" >
                         <?php foreach ($cars as $car): ?>
                         <tr>
-                            <td>Pictures!</td>
+                            <td>
+                                <a href="<?= site_url('car/show') ?>/<?php echo $car['VIN'] ?>">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </a>
+                            </td>
                             <td>
                                 <?php
                                 // Get model information
@@ -51,6 +56,9 @@
                                 echo $car_make[0]['name']." ";
                                 echo $car_model[0]['name']." ";
                                 echo $car_model[0]['serie'];
+                                echo " <span class='label label-info'>";
+                                echo "In-inventory";
+                                echo "</span>";
                                 echo "</h4>";
 
                                 echo "<p>";
@@ -64,19 +72,15 @@
                                 echo "</p>";
                                 ?>
                             </td>
-                            <td><strong><?php echo "$".number_format($car['estimated_price'], 2, '.', ',') ?></strong></td>
-                            <td>In-inventory</td>
+                            <td><h4><?php echo "$".number_format($car['estimated_price'], 2, '.', ',') ?></h4></td>
                             <td>
                                 <!-- Action: sold, in-transit, delivered -->
                                 <a href="#" class="btn btn-primary">Sold?</a>
                             </td>
                             <td class="right">
-                                <a href="<?= site_url('car/show') ?>/<?php echo $car['VIN'] ?>">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </a>
                                 <a href="<?= site_url('car/update') ?>/<?php echo $car['VIN'] ?>">
                                     <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
+                                </a><br/>
                                 <a href="<?= site_url('car/delete') ?>?VIN=<?php echo $car['VIN'] ?>" class="delete-link">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>

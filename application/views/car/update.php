@@ -13,58 +13,55 @@
 
 				<!-- form id="new_model_form" class="form" method="post" accept-charset="utf-8" action="add" enctype="multipart/form-data" -->
 
-				<form id="new_car_form" class="form" method="post" accept-charset="utf-8" action="<?= site_url('car/add') ?>">
+				<form id="new_car_form" class="form" method="post" accept-charset="utf-8" action="<?= site_url('car/update') ?>/<?php echo $cars[0]['VIN'] ?> ">
 
 					<!-- Car information -->
 					<fieldset>
 						<legend>Vehicle information</legend>
 
 						<div class="form-group col-xs-12">
-							<input type="text" class="form-control" name="VIN" placeholder="VIN">
+							<input type="text" class="form-control" name="VIN" value="<?php echo $cars[0]['VIN'] ?>">
 						</div>
 
 						<div class="form-group col-xs-12">
-							<select class="form-control" name="make_id">
-								<?php foreach ($makes as $make): ?>
-								<option value="<?php echo $make['id'] ?>"><?php echo $make['name'] ?></option>
-								<?php endforeach ?>
+							<select class="form-control" name="make_id" disabled>
+								<?php 
+									$model = $this->model_model->get($car[0]['model_id']);
+									$make = $this->make_model->get($model[0]['make_id'])
+								?>
+								<option value="<?php echo $make[0]['id'] ?>" selected><?php echo $make[0]['name'] ?></option>
 							</select>
 						</div>
 
 						<div class="form-group col-xs-12">
 							<select class="form-control" name="model_id">
-								<option>Select a model...</option>
-								<option class="divider"></option>
-
-								<?php foreach ($models as $model): ?>
-								<option value="<?php echo $model['id'] ?>"><?php echo $model['name']." ".$model['serie'] ?></option>
-								<?php endforeach ?>
+								<option value="<?php echo $model[0]['id'] ?>" selected><?php echo $model[0]['name']." ".$model[0]['serie'] ?></option>
 							</select>
 						</div>
 
 						<div class="form-group col-xs-12">
-							<input type="text" class="form-control" name="color" placeholder="Color">
+							<input type="text" class="form-control" name="color" value="<?php echo $cars[0]['color'] ?>">
 						</div>
 
 						<div class="form-group col-xs-4">
 							<label for="year">Year</label>
-							<input type="number" class="form-control" name="year" min="1900" max="2027">
+							<input type="number" class="form-control right" name="year" min="1900" max="2027" value="<?php echo $cars[0]['year'] ?>">
 						</div>
 
 						<div class="form-group col-xs-4">
 							<label for="mileage">Mileage</label>
-							<input type="number" class="form-control" name="mileage" min="0" max="1000000">
+							<input type="number" class="form-control right" name="mileage" min="0" max="1000000" value="<?php echo $cars[0]['mileage'] ?>">
 						</div>
 
 						<div class="form-group col-xs-4">
 							<label for="mileage">Estimated price</label>
-							<input type="text" class="form-control" name="estimated_price" placeholder="Estimated Price">
+							<input type="text" class="form-control right" name="estimated_price" value="<?php echo $cars[0]['estimated_price'] ?>">
 						</div>
 
 					</fieldset>
 
 					<div class="center">
-						<a href="#fields-for-features" id="add-more-features" class="btn btn-link">Add more feature...</a>
+						<a href="#" id="add-more-features" class="btn btn-link">Add more feature...</a>
 						<br />
 						<br />
 					</div>
@@ -81,7 +78,7 @@
 						<legend>Vehicle description</legend>						
 
 						<div class="form-group col-xs-12">
-							<textarea class="form-control" name="description" placeholder="Description (optional)"></textarea>
+							<textarea class="form-control" name="description"><?php echo $cars[0]['description'] ?></textarea>
 						</div>
 					</fieldset>
 
@@ -157,7 +154,7 @@
 					<hr />
 
 					<div class="form-group col-xs-12">
-						<input type="submit" class="btn btn-primary" value="Add">
+						<input type="submit" class="btn btn-primary" value="Update">
 						<a href="<?= site_url('car') ?>" class="btn btn-link">Cancel</a>
 					</div>
 
@@ -175,7 +172,7 @@ $(document).ready(function(){
 	// Hide feature form
 	// -----------------
 	$('#fields-for-features').hide();
-	$('#add-more-features').click(function(e) {
+	$('#add-more-features').click(function() {
 		$(this).parent().hide();
 		$('#fields-for-features').show();
 	});
