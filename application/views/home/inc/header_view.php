@@ -46,11 +46,11 @@
                     <ul class="dropdown-menu">
                         <li><a href='<?=site_url('home')?>'>Home</a></li>
                         <li><a href='<?=site_url('car')?>'>Cars</a></li>
-                        <li><a href='../clients/index.html'>Clients</a></li>
+                        <li><a href='<?=site_url('client')?>'>Clients</a></li>
                         <li><a href='../transactions/index.html'>Transactions</a></li>
                         <li><a href='../reports/index.html'>Reports</a></li>
                         <?php if($this->session->userdata('role') == 'Manager') { ?>
-                        <li><a href='<?=site_url('employee')?>'>Employees</a></li>
+                            <li><a href='<?=site_url('employee')?>'>Employees</a></li>
                         <?php } ?>
                     </ul>
                 </li>

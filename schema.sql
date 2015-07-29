@@ -34,12 +34,16 @@ CREATE TABLE IF NOT EXISTS employee (
 
 ) ENGINE = InnoDB;
 
--- TODO: Need to change 'date_added' to TIMESTAMP
 
-INSERT INTO employee (name, password, email, role)
+INSERT INTO employee (name, password, email, role, date_added, date_modified)
 VALUES
-  ('admin', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'bjc55311@encs.concordia.ca', 'Manager'),
-  ('John Smith', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'john.smith@johnsmithporsche.com', 'Manager');
+  ('admin', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'bjc55311@encs.concordia.ca', 'Manager', NOW(), NOW()),
+  ('Qicheng Lao', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'qi_lao@encs.concordia.ca', 'Salesman', NOW(), NOW()),
+  ('Gaganpreet Singh Sodhi', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'g_sodh@encs.concordia.ca', 'Salesman', NOW(), NOW()),
+  ('Dagoberto Ramirez Gaxiola', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'dago_g@encs.concordia.ca', 'Salesman', NOW(), NOW()),
+  ('Lee Ho', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'le_ho@encs.concordia.ca', 'Driver', NOW(), NOW()),
+  ('Amritpal Singh', 'c7f5867734c1bb80892e13302d96a222e2ef25e8e0657c9d4b20e37b83e5f0af', 'amri_s@encs.concordia.ca', 'Driver', NOW(), NOW());
+
 
 -- --------------------
 -- 2. Create table make
@@ -103,7 +107,7 @@ ALTER TABLE model ADD image VARCHAR(255);
 -- TODO: Include 'image' in CREATE TABLE for final version.
 
 -- -------------------
--- 3. Create table car
+-- 4. Create table car
 -- -------------------
 CREATE TABLE IF NOT EXISTS car (
   VIN CHAR(17) NOT NULL,
@@ -128,7 +132,7 @@ INSERT INTO car (VIN, model_id, year, mileage, color, estimated_price, descripti
 VALUES ('2P4GH5539NR525672', 12, 2012, 24910, 'Black', 101900.00, 'New Pirelli P-Zero tires on custom after-market wheels, orignal wheels also included. Meticulously maintained and collection worthy.');
 
 -- ------------------------
--- 4. Create table features
+-- 5. Create table features
 -- ------------------------
 CREATE TABLE IF NOT EXISTS feature (
   id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
@@ -158,3 +162,47 @@ ALTER TABLE feature ADD date_modified DATETIME;
 
 ALTER TABLE feature MODIFY COLUMN city_fuel_consumption DECIMAL(3, 1);
 ALTER TABLE feature MODIFY COLUMN hw_fuel_consumption DECIMAL(3, 1);
+
+
+
+-- ----------------------------
+-- 6. Create table country
+-- country(name, cut_off_year)
+-- ----------------------------
+CREATE TABLE IF NOT EXISTS country (
+  name VARCHAR(50) UNIQUE NOT NULL,
+  cut_off_year INT UNSIGNED NOT NULL,
+
+  PRIMARY KEY(name)
+) ENGINE = InnoDB;
+
+INSERT INTO country (name, cut_off_year)
+VALUES ('Canada', 100), ('USA', 10), ('Mexico', 15);
+
+
+-- ------------------------
+-- 7. Create table client
+-- client(id, name, type(showroom, auction, person, port), address, country, phone, date_added, date_modified)
+-- ------------------------
+CREATE TABLE IF NOT EXISTS client (
+  CId INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  type VARCHAR(10) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  country VARCHAR(50) NOT NULL DEFAULT 'Canada',
+  phone VARCHAR(24) NOT NULL,
+  date_added DATETIME,
+  date_modified DATETIME,
+
+  PRIMARY KEY (CId),
+  FOREIGN KEY(country) REFERENCES country(name) ON DELETE CASCADE ON UPDATE CASCADE
+
+) ENGINE = InnoDB;
+
+INSERT INTO client (name, type, address, country, phone, date_added, date_modified)
+VALUES
+  ('Palais des congrès de Montréal', 'showroom', '201, avenue Viger West, Montreal', 'Canada', '514-123-4567', NOW(), NOW()),
+  ('CANADIAN INTERNATIONAL AUTOSHOW', 'showroom', '85 RENFREW DRIVE MARKHAM ONTARIO', 'Canada', '905-940-2800', NOW(), NOW()),
+  ('ADESA Montreal', 'auction', '300 Albert Mondou St. Eustache, QC', 'Canada', '450-472-4400', NOW(), NOW());
+
+
