@@ -38,6 +38,10 @@
   .navbar-nav > li > a {
     padding-top: 13px;
     padding-bottom: 13px; } }
+@media (max-width: 767px) {
+  .navbar-nav > li > a {
+    padding-top: 6px;
+    padding-bottom: 6px; } }
 .navbar-center {
   float: none !important;
   margin: 0 auto;
@@ -46,9 +50,29 @@
 .navbar-right {
   margin-right: 0; }
 
+@media (max-width: 767px) {
+  .navbar-left, .navbar-right, .navbar-center {
+    display: inline-block; }
+    .navbar-left > li, .navbar-right > li, .navbar-center > li {
+      display: inline-block; }
+
+  .navbar-left {
+    float: left; }
+
+  .navbar-right {
+    float: right; } }
 .navbar-fixed-top + #page-content-wrapper {
   margin-top: 46px; }
 
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    position: absolute;
+    right: auto;
+    left: 0; } }
 /* -----
  * Forms
  * -----*/
@@ -155,6 +179,17 @@ ul.status-bar {
     width: 35px;
     padding: 12px 0;
     font-size: 12px; } }
+.icon {
+  display: inline-block; }
+  .icon .icon-bar {
+    display: block;
+    background: #C0392B;
+    height: 3px;
+    width: 16px;
+    margin: 2px; }
+  .icon .icon-bar:first-child {
+    margin-top: 1px; }
+
 /* ---------------
  * Custom elements
  * ---------------*/

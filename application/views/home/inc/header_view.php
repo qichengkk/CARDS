@@ -32,21 +32,46 @@
         <div class="container-fluid center">
 
             <ul class='nav navbar-nav navbar-left'>
-                <li><a href='<?=base_url()?>home' class='brand'>CARDS</a></li>
+                <li class="hidden-xs"><a href='<?=base_url()?>home' class='brand'>CARDS</a></li>
+                <li class="visible-xs dropdown">
+                    <a href='<?=base_url()?>home' class='brand dropdown-toggle' data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="icon">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </span>
+                        CARDS
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href='<?=site_url('home')?>'>Home</a></li>
+                        <li><a href='<?=site_url('car')?>'>Cars</a></li>
+                        <li><a href='../clients/index.html'>Clients</a></li>
+                        <li><a href='../transactions/index.html'>Transactions</a></li>
+                        <li><a href='../reports/index.html'>Reports</a></li>
+                        <?php if($this->session->userdata('role') == 'Manager') { ?>
+                        <li><a href='<?=site_url('employee')?>'>Employees</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
             </ul>
 
             <ul class='nav navbar-nav navbar-right'>
                 <li>
                     <a href='<?=base_url()?>employee/update/<?=$this->session->userdata('employee_id')?>'>
-                        <span class='glyphicon glyphicon-user'></span> <?= $this->session->userdata('name');?>
+                        <span class='glyphicon glyphicon-user'></span>
+                        <span class="hidden-xs"><?= $this->session->userdata('name');?></span>
                     </a>
                 </li>
                 <li>
-                    <a href='<?=site_url('home/logout')?>'><span class='glyphicon glyphicon-log-out'></span> Logout </a>
+                    <a href='<?=site_url('home/logout')?>'>
+                        <span class='glyphicon glyphicon-off'></span>
+                        <span class="hidden-xs">Log out</span>
+                    </a>
                 </li>
             </ul>
 
-            <ul class='nav navbar-nav navbar-center'>
+            <ul class='nav navbar-nav navbar-center hidden-xs'>
                 <li><a href='<?=site_url('home')?>'><span class='glyphicon glyphicon-home'></span></a></li>
                 <li><a href='<?=site_url('car')?>'>Cars</a></li>
                 <li><a href='../clients/index.html'>Clients</a></li>
