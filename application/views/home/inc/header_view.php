@@ -73,7 +73,7 @@
                 <?php if($this->session->userdata('role') == 'Manager' || $this->session->userdata('role') == 'Salesman') : ?>
                 <li>
                     <a href='<?=site_url('home')?>'>
-                        <span class='glyphicon glyphicon-home'></span> Cars
+                        <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
 
