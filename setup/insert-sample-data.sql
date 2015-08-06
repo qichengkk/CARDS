@@ -99,14 +99,17 @@ INSERT INTO transaction(type, car_id, client_id, price, employee_id, date_added)
 VALUES
 	('purchased', '1P4GH5539NR525672', 5, 87990.00, 2, '2015-08-01 00:00:00'),
 	('sold', '1P4GH5539NR525672', 3, 99500.00, 3, '2015-08-02 14:32:00'),
-	('in-transit', '1P4GH5539NR525672', 3, '', 5, '2015-08-02 21:10:00'),
-	('delivered', '1P4GH5539NR525672', 3, '', 5, '2015-08-03 18:00:00'),
+	('in-transit', '1P4GH5539NR525672', 3, NULL, 5, '2015-08-02 21:10:00'),
+	('delivered', '1P4GH5539NR525672', 3, NULL, 5, '2015-08-03 18:00:00'),
 
 	('purchased', '1GTV2UEH3EZ156199', 4, 27000.00, 2, '2015-08-01 00:00:00'),
 	('sold', '1GTV2UEH3EZ156199', 1, 35800.00, 3, '2015-08-02 17:59:00'),
-	('in-transit', '1GTV2UEH3EZ156199', 1, '', 6, '2015-08-03 14:10:00'),
+	('in-transit', '1GTV2UEH3EZ156199', 1, NULL, 6, '2015-08-03 14:10:00'),
 
 	('purchased', '1P4GH5539NR738621', 4, 95250.00, 2, '2015-08-01 00:00:00'),
 	('sold', '1P4GH5539NR738621', 2, 115800.00, 3, '2015-08-03 13:07:00'),
 
 	('purchased', '1LNHL2GC5BR785426', 5, 95250.00, 2, '2015-08-01 00:00:00');
+
+-- Proof of delivery attached
+UPDATE transaction SET document='1P4GH5539NR525672-POD.txt' WHERE id=4;

@@ -35,7 +35,7 @@ class Car_model extends CI_Model
 						m.name AS model, m.serie AS serie, m.type AS type,
 						ma.name AS make,
 						f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-						t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+						t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 						cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 						e.name AS employee_name
 					FROM car AS c
@@ -64,7 +64,7 @@ class Car_model extends CI_Model
 						m.name AS model, m.serie AS serie, m.type AS type,
 						ma.name AS make,
 						f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-						t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+						t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 						cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 						e.name AS employee_name
 					FROM car AS c
@@ -94,7 +94,7 @@ class Car_model extends CI_Model
 						m.name AS model, m.serie AS serie, m.type AS type,
 						ma.name AS make,
 						f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-						t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+						t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 						cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 						e.name AS employee_name
 					FROM car AS c
@@ -129,7 +129,7 @@ class Car_model extends CI_Model
 					m.name AS model, m.serie AS serie, m.type AS type,
 					ma.name AS make,
 					f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-					t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+					t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 					cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 					e.name AS employee_name
 				FROM car AS c
@@ -161,7 +161,7 @@ class Car_model extends CI_Model
 					m.name AS model, m.serie AS serie, m.type AS type,
 					ma.name AS make,
 					f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-					t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+					t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 					cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 					e.name AS employee_name
 				FROM car AS c
@@ -194,7 +194,7 @@ class Car_model extends CI_Model
 					m.name AS model, m.serie AS serie, m.type AS type,
 					ma.name AS make,
 					f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-					t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+					t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 					cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 					e.name AS employee_name
 				FROM car AS c
@@ -227,7 +227,7 @@ class Car_model extends CI_Model
 					m.name AS model, m.serie AS serie, m.type AS type,
 					ma.name AS make,
 					f.engine AS engine, f.transmission AS transmission, f.cruise_control AS cruise_control, f.powertrain AS powertrain, f.city_fuel_consumption AS cfc, f.hw_fuel_consumption AS hfc, f.air_conditioner AS ac, f.interior AS interior, f.sunroof AS sunroof, f.satellite_radio AS radio, f.airbags AS airbags,
-					t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
+					t.id AS TId, t.type AS transaction, t.client_id AS client_id, t.price AS price, t.tax AS tax, t.employee_id AS employee_id, t.document AS document, t.date_added AS date,
 					cl.CId AS client_id, cl.name AS client_name, cl.address AS client_address, cl.phone AS client_phone, cl.country AS client_country,
 					e.name AS employee_name
 				FROM car AS c

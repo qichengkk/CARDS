@@ -58,3 +58,5 @@ $route['employee'] = 'employee';
 $route['make'] = 'make';
 $route['model'] = 'model';
 $route['client'] = 'client';
+$route['car'] = 'car';
+$route['transaction'] = 'transaction';

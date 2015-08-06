@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS transaction (
   type VARCHAR(50) NOT NULL,
   car_id CHAR(17) NOT NULL,
   client_id INT UNSIGNED NOT NULL,
-  price DECIMAL(12, 2),
+  price DECIMAL(12, 2) DEFAULT NULL,
   tax DECIMAL(12, 2),
   employee_id INT UNSIGNED NOT NULL,
   document VARCHAR(255),

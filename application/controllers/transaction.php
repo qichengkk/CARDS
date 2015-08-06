@@ -45,6 +45,7 @@ class Transaction extends CI_Controller
 
 		// Rules
 		$this->form_validation->set_rules('sell_price', 'Price', 'required');
+		$this->form_validation->set_rules('userfile', 'Proof of delivery', 'required');
 	}
 
 	private function _load_customer_validation()
@@ -126,12 +127,63 @@ class Transaction extends CI_Controller
 
 	public function delivered($VIN)
 	{
+		$this->_require_login();
 
+		$data['car'] = $this->car_model->get($VIN)[0];
+		$data['transaction'] = array(
+					'type' => 'delivered',
+					'car_id' => $VIN,
+					'client_id' => $data['car']['client_id'],
+					'employee_id' => $this->session->userdata('employee_id')
+				);
+
+		$data['transaction_id'] = $this->transaction_model->insert($data['transaction']);
+
+		$this->load->view('home/inc/header_view');
+		$this->load->view('transaction/delivered', $data);
+		$this->load->view('home/inc/footer_view');
+
+	}
+
+	public function attach_proof_of_delivery($id)
+	{
+		if (empty($_FILES['userfile']['name'])) {
+				// User did NOT attach a file!
+				redirect('/home/');
+			} else {
+				// User attached a file!
+				if ($this->_attach_document()) {
+					// File is uploaded successfully!
+					// Get file data
+					$file = $this->upload->data();
+					$this->transaction_model->update(['document' => $file['file_name']], $id);
+					redirect('/home/');
+				} else {
+					echo "Oops, something went wrong! The file you attached cannot be uploaded.";
+				}
+			}
 	}
 
 	public function delete($id)
 	{
 		$this->transaction_model->delete($id);
 		redirect('home');
+	}
+	
+	public function _attach_document()
+	{
+		$config =  array(
+      'upload_path'     => './uploads/transaction/',
+      'allowed_types' 		=> 'gif|jpg|png|pdf|txt|doc|docx|xls|xlsx',
+      'overwrite'       => FALSE
+    );
+
+    $this->load->library('upload', $config);
+
+		if ($this->upload->do_upload()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -134,6 +134,11 @@
                                 <td><?php echo $cli['name'] ?></td>
                                 <td><?php echo $t['date_added'] ?></td>
                                 <td class="right">
+                                    <?php if (!empty($t['document'])) : ?>
+                                    <a href="<?= site_url('uploads/transaction') ?>/<?php echo $t['document'] ?>" target="blank">
+                                        <span class="glyphicon glyphicon-paperclip"></span>
+                                    </a> | 
+                                    <?php endif ?>
                                     <a href="<?= site_url('transaction/delete') ?>/<?php echo $t['id'] ?>" class="delete-link">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
