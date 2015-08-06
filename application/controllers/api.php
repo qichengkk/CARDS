@@ -119,7 +119,7 @@ class Api extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[employee.email]');
         $this->form_validation->set_rules('pwd', 'Password', 'required|min_length[4]');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('role', 'Role', 'required|callback_required_double_check');
 
         if($this->form_validation->run() == false) {
             $this->output->set_output(json_encode(['result' => 0, 'error' => $this->form_validation->error_array()]));
@@ -186,8 +186,8 @@ class Api extends CI_Controller
 
         $this->output->set_content_type('application_json');
 
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[16]');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('role', 'Role', 'required|callback_required_double_check');
         if($pwd != "") {
             $this->form_validation->set_rules('pwd', 'Password', 'min_length[4]');
         }
@@ -333,7 +333,7 @@ class Api extends CI_Controller
     }
 
     function required_double_check($str) {
-        if ($str == "Select type..." || $str == "Select country...") {
+        if ($str == "Select type..." || $str == "Select country..." || $str == "Select role...") {
             $this->form_validation->set_message('required_double_check', 'The %s field is required.');
             return FALSE;
         } else {

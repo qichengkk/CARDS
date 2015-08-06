@@ -44,7 +44,14 @@
                     <div class="form-group col-xs-12">
                         <label class="control-label" for="role">Role:</label>
                         <?php if($this->session->userdata('role') == "Manager") {?>
-                            <input type="text" class="form-control" name="role" value=<?php echo $role_update?>>
+                            <select class="form-control" name="role">
+                                <option>Select role...</option>
+                                <option class="divider"></option>
+
+                                <option value="Manager" <?php if($role_update == "Manager") echo "selected"; ?>>Manager</option>
+                                <option value="Salesman" <?php if($role_update == "Salesman") echo "selected"; ?>>Salesman</option>
+                                <option value="Driver" <?php if($role_update == "Driver") echo "selected"; ?>>Driver</option>
+                            </select>
                         <?php } else { ?>
                             <input type="text" class="form-control" name="role" readonly value=<?php echo $role_update?>>
                         <?php } ?>

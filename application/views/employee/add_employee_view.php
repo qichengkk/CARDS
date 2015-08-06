@@ -28,7 +28,14 @@
                     </div>
 
                     <div class="form-group col-xs-12">
-                        <input type="text" class="form-control" name="role" placeholder="Role">
+                        <select class="form-control" name="role">
+                            <option>Select role...</option>
+                            <option class="divider"></option>
+
+                            <option value="Manager">Manager</option>
+                            <option value="Salesman">Salesman</option>
+                            <option value="Driver">Driver</option>
+                        </select>
                     </div>
 
                     <div class="form-group col-xs-12">
