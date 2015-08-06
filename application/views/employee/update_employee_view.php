@@ -25,20 +25,24 @@
                 <div id="update_form_error" class="alert alert-danger center"><!-- Dynamic --></div>
 
                 <form id="update_form" class="form" method="post" action="<?=site_url('api/update_employee/'.$id_update)?>">
-                    <label class="control-label col-xs-3" for="name">Name:</label>
+
                     <div class="form-group col-xs-12">
-                        <input type="text" class="form-control" name="name" value=<?php echo $name_update?>>
+                        <label class="control-label" for="name">Name:</label>
+                        <input type="text" class="form-control" name="name" value="<?php echo $name_update?>">
                     </div>
-                    <label class="control-label col-xs-3" for="email">Email:</label>
+
                     <div class="form-group col-xs-12">
+                        <label class="control-label" for="email">Email:</label>
                         <input type="email" class="form-control" name="email" readonly value=<?php echo $email_update?>>
                     </div>
-                    <label class="control-label col-xs-3" for="pwd">Password:</label>
+
                     <div class="form-group col-xs-12">
+                        <label class="control-label for="pwd">Password:</label>
                         <input type="password" class="form-control" name="pwd" placeholder="Leave blank if no changes">
                     </div>
-                    <label class="control-label col-xs-3" for="role">Role:</label>
+
                     <div class="form-group col-xs-12">
+                        <label class="control-label" for="role">Role:</label>
                         <?php if($this->session->userdata('role') == "Manager") {?>
                             <input type="text" class="form-control" name="role" value=<?php echo $role_update?>>
                         <?php } else { ?>

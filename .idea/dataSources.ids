@@ -7,6 +7,20 @@
     </database-info>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <schema name="" catalog="cards"/>
+    <table name="car" schema="" catalog="cards" type="TABLE">
+      <column name="VIN" sqlType="CHAR" precision="17" scale="0" nullable="false" jdbcType="1"/>
+      <column name="model_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="year" sqlType="YEAR" precision="0" scale="0" nullable="false" jdbcType="91"/>
+      <column name="mileage" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="color" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="estimated_price" sqlType="DECIMAL" precision="12" scale="2" nullable="false" jdbcType="3"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="VIN"/>
+      <foreign-key name="car_ibfk_1" columns="model_id" ref-table="model" ref-schema="" ref-catalog="cards" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="feature_ibfk_1" table="feature" schema="" catalog="cards" columns="car_id"/>
+    </table>
     <table name="ci_sessions" schema="" catalog="cards" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
       <column name="ip_address" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
@@ -47,6 +61,26 @@
       <index name="EId" unique="true" columns="EId"/>
       <index name="email" unique="true" columns="email"/>
     </table>
+    <table name="feature" schema="" catalog="cards" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="car_id" sqlType="CHAR" precision="17" scale="0" nullable="false" jdbcType="1"/>
+      <column name="engine" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="transmission" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cruise_control" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="powertrain" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="city_fuel_consumption" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="hw_fuel_consumption" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="air_conditioner" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="interior" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sunroof" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="satellite_radio" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="airbags" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="date_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="feature_ibfk_1" columns="car_id" ref-table="car" ref-schema="" ref-catalog="cards" ref-columns="VIN" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
     <table name="make" schema="" catalog="cards" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
@@ -66,8 +100,10 @@
       <column name="to_year" sqlType="YEAR" precision="0" scale="0" nullable="false" jdbcType="91"/>
       <column name="date_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="image" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="model_ibfk_1" columns="make_id" ref-table="make" ref-schema="" ref-catalog="cards" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="car_ibfk_1" table="car" schema="" catalog="cards" columns="model_id"/>
       <index name="id" unique="true" columns="id"/>
     </table>
   </data-source>

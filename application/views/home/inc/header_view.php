@@ -79,7 +79,7 @@
                 <?php if($this->session->userdata('role') == 'Manager') { ?>
                 <li>
                     <a href='#' class='dropdown-toggle' data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        more <span class="caret"></span>
+                        More <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href='<?=site_url('employee')?>'>Employees</a></li>

@@ -32,17 +32,16 @@ class Client_model extends CI_Model
 
     }
 
-//----------------------------- to do ----------------------------------------------------------------
     /**
      *
      * @parameter array $data
      *
-     * @usage $result = $this->employee_model->insert(['name' => 'John']);
+     * @usage $result = $this->client_model->insert(['name' => 'John']);
      *
      */
     public function insert($data)
     {
-        $this->db->insert('employee', $data);
+        $this->db->insert('client', $data);
         return $this->db->insert_id();
 
     }
@@ -51,26 +50,26 @@ class Client_model extends CI_Model
      *
      * @parameter array $data
      *
-     * @usage $result = $this->employee_model->update(['name' => 'Peggy'], 3);
+     * @usage $result = $this->client_model->update(['name' => 'Peggy'], 3);
      *
      */
-    public function update($data, $employee_id)
+    public function update($data, $client_id)
     {
-        $this->db->where(['EId' => $employee_id]);
-        $this->db->update('employee', $data);
+        $this->db->where(['CId' => $client_id]);
+        $this->db->update('client', $data);
         return $this->db->affected_rows();
     }
 
     /**
      *
-     * @parameter type employee_id
+     * @parameter type client_id
      *
-     * @usage $result = $this->employee_model->delete(1);
+     * @usage $result = $this->client_model->delete(1);
      *
      */
-    public function delete($employee_id)
+    public function delete($client_id)
     {
-        $this->db->delete('employee', ['EId' => $employee_id]);
+        $this->db->delete('client', ['CId' => $client_id]);
         return $this->db->affected_rows();
     }
 

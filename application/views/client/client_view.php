@@ -37,7 +37,7 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>ID</th>
+                        <!--<th>ID</th>-->
                         <th>Name</th>
                         <th>Type</th>
                         <th>Address</th>
@@ -62,12 +62,12 @@
 <script src="<?=base_url()?>public/js/home/template.js"> </script>
 <script src="<?=base_url()?>public/js/home/event.js"> </script>
 <script src="<?=base_url()?>public/js/home/result.js"> </script>
-<script src="<?=base_url()?>public/js/home/home.js"> </script>
+<script src="<?=base_url()?>public/js/home/client.js"> </script>
 
 <script>
     $(function() {
         // init the employee application
-        var home = new Home();
+        var client = new Client();
     });
 </script>
 

@@ -9,13 +9,13 @@ USE cards;
 -- ---------------------------
 -- 0. Create table ci_sessions
 -- ---------------------------
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
-  `id` varchar(40) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
-  `data` blob NOT NULL,
+CREATE TABLE IF NOT EXISTS ci_sessions (
+  id varchar(40) NOT NULL,
+  ip_address varchar(45) NOT NULL,
+  timestamp int(10) unsigned DEFAULT 0 NOT NULL,
+  data blob NOT NULL,
   PRIMARY KEY (id),
-  KEY `ci_sessions_timestamp` (`timestamp`)
+  KEY ci_sessions_timestamp (timestamp)
 );
 
 -- ------------------------
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS country (
 ) ENGINE = InnoDB;
 
 INSERT INTO country (name, cut_off_year)
-VALUES ('Canada', 100), ('USA', 10), ('Mexico', 15);
+VALUES ('Canada', 100), ('USA', 10), ('Mexico', 15), ('Japan', 15), ('Germany', 10);
 
 
 -- ------------------------

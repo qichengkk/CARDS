@@ -23,23 +23,23 @@
                     <form class="form">
                         <label class="control-label col-xs-3" for="name">Name:</label>
                         <div class="form-group col-xs-12">
-                            <input type="text" class="form-control" name="name" readonly value=<?php echo $name_show?> >
+                            <input type="text" class="form-control" name="name" readonly value="<?php echo $name_show?>" >
                         </div>
                         <label class="control-label col-xs-3" for="email">Email:</label>
                         <div class="form-group col-xs-12">
-                            <input type="email" class="form-control" name="email" readonly value=<?php echo $email_show?>>
+                            <input type="email" class="form-control" name="email" readonly value="<?php echo $email_show?>" >
                         </div>
                         <label class="control-label col-xs-3" for="role">Role:</label>
                         <div class="form-group col-xs-12">
-                            <input type="text" class="form-control" name="role" readonly value=<?php echo $role_show?>>
+                            <input type="text" class="form-control" name="role" readonly value="<?php echo $role_show?>">
                         </div>
                         <label class="control-label col-xs-3" for="role">Date added:</label>
                         <div class="form-group col-xs-12">
-                            <input type="text" class="form-control" name="role" readonly value=<?php echo $date_added_show?>>
+                            <input type="text" class="form-control" name="role" readonly value="<?php echo $date_added_show?>">
                         </div>
                         <label class="control-label col-xs-4" for="role">Date modified:</label>
                         <div class="form-group col-xs-12">
-                            <input type="text" class="form-control" name="role" readonly value=<?php echo $date_modified_show?>>
+                            <input type="text" class="form-control" name="role" readonly value="<?php echo $date_modified_show?>">
                         </div>
 
                         <div class="form-group col-xs-12">

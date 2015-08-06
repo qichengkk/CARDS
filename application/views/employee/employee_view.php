@@ -55,12 +55,12 @@
 <script src="<?=base_url()?>public/js/home/template.js"> </script>
 <script src="<?=base_url()?>public/js/home/event.js"> </script>
 <script src="<?=base_url()?>public/js/home/result.js"> </script>
-<script src="<?=base_url()?>public/js/home/home.js"> </script>
+<script src="<?=base_url()?>public/js/home/employee.js"> </script>
 
 <script>
     $(function() {
         // init the employee application
-        var home = new Home();
+        var employee= new Employee();
     });
 </script>
 

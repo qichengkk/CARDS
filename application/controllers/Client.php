@@ -21,90 +21,105 @@ class Client extends CI_Controller {
         }
     }
 
-    private function _require_manager_sales()
+    private function _require_salesman()
     {
         $this->_require_login();
-        if($this->session->userdata('role') != "Manager" && $this->session->userdata('role') != "Salesman") {
+        if ($this->session->userdata('role') != "Salesman" && $this->session->userdata('role') != "Manager") {
             redirect('/home');
         }
     }
 
+    /*private function _require_manager()
+    {
+        $this->_require_login();
+        if($this->session->userdata('role') != "Manager") {
+            redirect('/home');
+        }
+    }*/
+
 
     public function index()
     {
-        $this->_require_manager_sales();
+        $this->_require_salesman();
 
         $this->load->view('home/inc/header_view');
         $this->load->view('client/client_view');
         $this->load->view('home/inc/footer_view');
     }
 
-/*    public function add()
+    public function add()
     {
-        $this->_require_manager_sales();
+        $this->_require_salesman();
+
+        $this->load->model('country_model');
+        $data['countries'] = $this->country_model->get();
 
         $this->load->view('home/inc/header_view');
-        $this->load->view('employee/add_employee_view');
+        $this->load->view('client/add_client_view', $data);
         $this->load->view('home/inc/footer_view');
 
     }
 
-    public function show($employee_id)
+
+
+
+    public function show($client_id)
     {
-        $this->_require_manager_sales();
+        $this->_require_salesman();
 
-        $this->load->model('employee_model');
-        $result = $this->employee_model->get($employee_id);
+        $this->load->model('client_model');
+        $result = $this->client_model->get($client_id);
 
-        // set profile image with gravatar
-        $grav_url = $this->get_gravatar($result[0]['email'], 540);
 
         $data = array(
-            'id_show' => $employee_id,
-            'name_show' => $result[0]['name'],
-            'email_show' => $result[0]['email'],
-            'role_show' => $result[0]['role'],
-            'date_added_show' => $result[0]['date_added'],
-            'date_modified_show' => $result[0]['date_modified'],
-            'image_url' => $grav_url
+            'id' => $result[0]['CId'],
+            'name' => $result[0]['name'],
+            'type' => $result[0]['type'],
+            'address' => $result[0]['address'],
+            'country' => $result[0]['country'],
+            'phone' => $result[0]['phone'],
         );
 
-        $this->load->view('home/inc/header_view');
-        $this->load->view('employee/show_employee_view', $data);
-        $this->load->view('home/inc/footer_view');
-
-    }
-
-
-    public function update($employee_id)
-    {
-        $this->_require_manager_sales();
-
-        if($this->session->userdata('role') != "Manager" && $this->session->userdata('employee_id') != $employee_id) {
-            redirect('/home');
+        if($data['country'] == "Canada")
+            $data['cut_off_year'] = "Unlimited";
+        else {
+            $this->load->model('country_model');
+            $data['cut_off_year'] = $this->country_model->get($data['country'])[0]['cut_off_year'];
         }
+        
+        $this->load->view('home/inc/header_view');
+        $this->load->view('client/show_client_view', $data);
+        $this->load->view('home/inc/footer_view');
 
-        $this->load->model('employee_model');
-        $result = $this->employee_model->get($employee_id);
+    }
 
-        // set profile image with gravatar
-        $grav_url = $this->get_gravatar($result[0]['email'], 540);
+
+    public function update($client_id)
+    {
+        $this->_require_salesman();
+
+        $this->load->model('client_model');
+        $result = $this->client_model->get($client_id);
 
         $data = array(
-            'id_update' => $employee_id,
+            'id_update' => $result[0]['CId'],
             'name_update' => $result[0]['name'],
-            'email_update' => $result[0]['email'],
-            'role_update' => $result[0]['role'],
-            'image_url' => $grav_url
+            'type_update' => $result[0]['type'],
+            'address_update' => $result[0]['address'],
+            'country_update' => $result[0]['country'],
+            'phone_update' => $result[0]['phone'],
         );
 
+        $this->load->model('country_model');
+        $data['countries'] = $this->country_model->get();
+
+
         $this->load->view('home/inc/header_view');
-        //$this->load->view('employee/update_employee_view', ['id_update' => $employee_id]);
-        $this->load->view('employee/update_employee_view', $data);
+        $this->load->view('client/update_client_view', $data);
         $this->load->view('home/inc/footer_view');
 
 
-    }*/
+    }
 
 
 }

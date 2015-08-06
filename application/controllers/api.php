@@ -24,10 +24,22 @@ class Api extends CI_Controller
         }
     }
 
-    private function _require_manager()
+    private function _require_salesman()
     {
         if($this->_require_login() == false) {
-            echo 1;
+            return false;
+        }
+        if ($this->session->userdata('role') != "Salesman" && $this->session->userdata('role') != "Manager") {
+            $this->output->set_output(json_encode(['result' => 0, 'error' => 'You are not authorized.']));
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private function _require_manager()
+    {
+        if($this->_require_salesman() == false) {
             return false;
         }
         if($this->session->userdata('role') != "Manager") {
@@ -104,7 +116,7 @@ class Api extends CI_Controller
 
         $this->output->set_content_type('application_json');
 
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[16]');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[employee.email]');
         $this->form_validation->set_rules('pwd', 'Password', 'required|min_length[4]');
         $this->form_validation->set_rules('role', 'Role', 'required');
@@ -288,32 +300,155 @@ class Api extends CI_Controller
 
     public function get_client($client_id = null)
     {
-        if($this->_require_manager() == false) {
+        if($this->_require_salesman() == false) {
             return false;
         }
 
         $this->load->model('client_model');
-        $result = $this->client_model->get($client_id);
-        $this->output->set_output(json_encode($result));
+        $clients = $this->client_model->get($client_id);
+
+        foreach ($clients as &$client) {
+            $client['cut_off_year'] = $this->get_cut_off_year($client['country']);
+        }
+
+        $this->output->set_output(json_encode($clients));
 
     }
 
-
-    public function create_client()
+    private function get_cut_off_year($country_name)
     {
-        $this->_require_login();
+        $this->load->model('country_model');
+        $country = $this->country_model->get($country_name);
+
+        if($country_name == 'Canada')
+            return 'Unlimited';
+
+        foreach ($country as $c) {
+            if($c['name'] == $country_name)
+                return $c['cut_off_year'];
+        }
+
+        return 'Unknown';
+
+    }
+
+    function required_double_check($str) {
+        if ($str == "Select type..." || $str == "Select country...") {
+            $this->form_validation->set_message('required_double_check', 'The %s field is required.');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function add_client()
+    {
+        if($this->_require_salesman() == false) {
+            return false;
+        }
+
+        $this->output->set_content_type('application_json');
+
+/*        name VARCHAR(50) NOT NULL,
+        type VARCHAR(10) NOT NULL,
+        address VARCHAR(100) NOT NULL,
+        country VARCHAR(50) NOT NULL DEFAULT 'Canada',
+        phone VARCHAR(24) NOT NULL,*/
+
+        $this->form_validation->set_rules('client_name', 'Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('client_type', 'Type', 'required|callback_required_double_check');
+        $this->form_validation->set_rules('client_phone', 'Phone', 'required');
+        $this->form_validation->set_rules('client_address', 'Address', 'required');
+        /*$this->form_validation->set_rules('client_city', 'City', 'required');
+        $this->form_validation->set_rules('client_state', 'State', 'required');
+        $this->form_validation->set_rules('client_postal', 'Postal', 'required');*/
+        $this->form_validation->set_rules('client_country', 'Country', 'required|callback_required_double_check');
+
+        if($this->form_validation->run() == false) {
+            $this->output->set_output(json_encode(['result' => 0, 'error' => $this->form_validation->error_array()]));
+            return false;
+        }
+
+        $name = $this->input->post('client_name');
+        $type = $this->input->post('client_type');
+        $phone = $this->input->post('client_phone');
+        $address = $this->input->post('client_address');
+        $country = $this->input->post('client_country');
+
+        $this->load->model('client_model');
+        $client_id = $this->client_model->insert([
+            'name' => $name,
+            'type' => $type,
+            'address' => $address,
+            'country' => $country,
+            'phone' => $phone
+        ]);
+
+        if($client_id) {
+            $this->output->set_output(json_encode(['result' => 1]));
+            return false;
+        }
+
+        $this->output->set_output(json_encode(['result' => 0, 'error' => 'Client not created.']));
 
     }
 
     public function update_client()
     {
-        $this->_require_login();
+        if($this->_require_salesman() == false) {
+            return false;
+        }
+
+        $name = $this->input->post('client_name');
+        $type = $this->input->post('client_type');
+        $phone = $this->input->post('client_phone');
+        $address = $this->input->post('client_address');
+        $country = $this->input->post('client_country');
+
+        $this->output->set_content_type('application_json');
+
+        $this->form_validation->set_rules('client_name', 'Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('client_type', 'Type', 'required|callback_required_double_check');
+        $this->form_validation->set_rules('client_phone', 'Phone', 'required');
+        $this->form_validation->set_rules('client_address', 'Address', 'required');
+        $this->form_validation->set_rules('client_country', 'Country', 'required|callback_required_double_check');
+
+        if($this->form_validation->run() == false) {
+            $this->output->set_output(json_encode(['result' => 0, 'error' => $this->form_validation->error_array()]));
+            return false;
+        }
+
+
+        $this->load->model('client_model');
+        $result = $this->_model->update([
+            'name' => $name,
+            'password' => hash('sha256', $pwd. SALT),
+            'role' => $role
+        ], $employee_id);
+
+
+        $this->output->set_output(json_encode(['result' => 1]));
+        return false;
 
     }
 
     public function delete_client()
     {
-        $this->_require_login();
+        if($this->_require_salesman() == false) {
+            return false;
+        }
+
+        $id_delete = $this->input->post("client_id");
+
+        $this->load->model('client_model');
+        $result = $this->client_model->delete($id_delete);
+
+        if($result) {
+            $this->output->set_output(json_encode(['result' => 1]));
+            return false;
+        }
+
+        $this->output->set_output(json_encode(['result' => 0, 'error' => 'Client not deleted.']));
 
     }
 
