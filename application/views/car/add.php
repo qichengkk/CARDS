@@ -154,9 +154,9 @@
 								<option>Select supplier...</option>
 								<option class="divider"></option>
 
-								<option value="1">H Gregroire, St-Eustache, QC Canada</option>
-								<option value="2">John Scott, St-Leonard, QC Canada</option>
-								<option value="3">Prestige, Montreal, QC Canada</option>
+                                <?php foreach ($clients as $client): ?>
+                                    <option value="<?php echo $client['name'] ?>"><?php echo $client['name'] ?></option>
+                                <?php endforeach ?>
 
 								<option class="divider"></option>
 								<option>Not in list</option>
@@ -243,8 +243,9 @@ $(document).ready(function(){
 	// Hide client form
 	// ----------------
 	if ($('#field-for-client-select').val() == "Not in list") {
-		$('#fields-for-client').show();
-		$('fields-for-client-select').hide();
+		//$('#fields-for-client').show();
+		//$('fields-for-client-select').hide();
+        window.location.href = '<?=site_url('client/add')?>';
 	} else {
 		$('#fields-for-client').hide();
 		$('fields-for-client-select').show();
@@ -253,8 +254,9 @@ $(document).ready(function(){
 	// $('#fields-for-client').hide();
 	$('#field-for-client-select').on('change', function() {
 		if ($(this).val() == "Not in list") {
-			$('#fields-for-client').show();
-			$('#fields-for-client-select').hide();
+			//$('#fields-for-client').show();
+			//$('#fields-for-client-select').hide();
+            window.location.href = '<?=site_url('client/add')?>';
 		};
 	});
 	// ----------------

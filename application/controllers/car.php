@@ -27,6 +27,7 @@ class Car extends CI_Controller
 		$this->load->model('model_model');
 		$this->load->model('car_model');
 		$this->load->model('feature_model');
+        $this->load->model('client_model');
 	}
 
 	private function _require_login()
@@ -120,6 +121,7 @@ class Car extends CI_Controller
 			$data['makes'] = $this->make_model->get();
 			$data['models'] = $this->model_model->get();
 			$data['colors'] = $this->colors;
+            $data['clients'] = $this->client_model->get();
 
 			$this->load->view('home/inc/header_view');
 			$this->load->view('car/add', $data);
@@ -161,6 +163,7 @@ class Car extends CI_Controller
 		$data['car'] = $this->car_model->get($VIN)[0];
 		$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
 		$data['colors'] = $this->colors;
+        $data['clients'] = $this->client_model->get();
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('home/inc/header_view');

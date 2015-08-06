@@ -186,7 +186,7 @@ VALUES ('Canada', 100), ('USA', 10), ('Mexico', 15), ('Japan', 15), ('Germany', 
 -- ------------------------
 CREATE TABLE IF NOT EXISTS client (
   CId INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
-  name VARCHAR(50) NOT NULL,
+  name VARCHAR(50) UNIQUE NOT NULL,
   type VARCHAR(10) NOT NULL,
   address VARCHAR(100) NOT NULL,
   country VARCHAR(50) NOT NULL DEFAULT 'Canada',

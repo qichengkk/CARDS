@@ -86,7 +86,7 @@ class Client extends CI_Controller {
             $this->load->model('country_model');
             $data['cut_off_year'] = $this->country_model->get($data['country'])[0]['cut_off_year'];
         }
-        
+
         $this->load->view('home/inc/header_view');
         $this->load->view('client/show_client_view', $data);
         $this->load->view('home/inc/footer_view');
