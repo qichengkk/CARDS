@@ -65,7 +65,7 @@ var Template = function() {
         output += '<tr id="'+ obj['CId'] +'">';
 
         output += '<td><span class="glyphicon glyphicons-nameplate-alt"></span></td>td>';
-        //output += '<td>' + obj['CId'] + '</td>';
+        output += '<td>' + obj['CId'] + '</td>';
         output += '<td>' + obj['name'] + '</td>';
         output += '<td>' + obj['type'] + '</td>';
         output += '<td>' + obj['address'] + '</td>';

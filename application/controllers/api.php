@@ -393,7 +393,7 @@ class Api extends CI_Controller
 
     }
 
-    public function update_client()
+    public function update_client($client_id)
     {
         if($this->_require_salesman() == false) {
             return false;
@@ -420,11 +420,13 @@ class Api extends CI_Controller
 
 
         $this->load->model('client_model');
-        $result = $this->_model->update([
+        $result = $this->client_model->update([
             'name' => $name,
-            'password' => hash('sha256', $pwd. SALT),
-            'role' => $role
-        ], $employee_id);
+            'type' => $type,
+            'address' => $address,
+            'country' => $country,
+            'phone' => $phone
+        ], $client_id);
 
 
         $this->output->set_output(json_encode(['result' => 1]));
