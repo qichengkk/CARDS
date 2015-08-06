@@ -235,9 +235,9 @@ class Car extends CI_Controller
 		$this->_require_login();
 
 		$data['car'] = $this->car_model->get($VIN)[0];
-		$data['model'] = $this->model_model->get($data['car']['model_id'])[0];
-		$data['make'] = $this->make_model->get($data['model']['make_id'])[0];
-		$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
+		//$data['model'] = $this->model_model->get($data['car']['model_id'])[0];
+		//$data['make'] = $this->make_model->get($data['model']['make_id'])[0];
+		//$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
 		$data['transactions'] = $this->transaction_model->get_by_car_id($VIN);
 
 		$this->load->view('home/inc/header_view');

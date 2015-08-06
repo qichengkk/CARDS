@@ -5,29 +5,29 @@
             <div class='col-md-12'>
 
                 <h1 class="">
-                    <?php echo $car['year']." ".$make['name']." ".$model['name']." ".$model['serie'] ?>
+                    <?php echo $car['year']." ".$car['make']." ".$car['model']." ".$car['serie'] ?>
                 </h1>
 
                 <hr />
 
                 <div class="col-sm-12 center">
                     <ul class="status-bar">
-                        <li class="<?php if (end($transactions)['type'] == 'purchased') { echo 'active';} ?>">
+                        <li class="<?php if ($car['transaction'] == 'purchased') { echo 'active';} ?>">
                             <span class="circle">1</span><br/>
                             Inventory
                         </li>
                         <li class="divider"></li>
-                        <li class="<?php if (end($transactions)['type'] == 'sold') { echo 'active';} ?>">
+                        <li class="<?php if ($car['transaction'] == 'sold') { echo 'active';} ?>">
                             <span class="circle">2</span><br/>
                             Sold
                         </li>
                         <li class="divider"></li>
-                        <li class="<?php if (end($transactions)['type'] == 'in-transit') { echo 'active';} ?>">
+                        <li class="<?php if ($car['transaction'] == 'in-transit') { echo 'active';} ?>">
                             <span class="circle">3</span><br/>
                             Transit
                         </li>
                         <li class="divider"></li>
-                        <li class="<?php if (end($transactions)['type'] == 'delivered') { echo 'active';} ?>">
+                        <li class="<?php if ($car['transaction'] == 'delivered') { echo 'active';} ?>">
                             <span class="circle">4</span><br/>
                             Delivered
                         </li>
@@ -50,20 +50,20 @@
                 <div class="col-sm-3">
                     <h2>Specs</h2>
                     <p>
-                        Engine: <?php echo $feature['engine'] ?><br/>
-                        Transmission: <?php echo $feature['transmission'] ?><br/>
-                        Drivetrain: <?php echo $feature['powertrain'] ?>
+                        Engine: <?php echo $car['engine'] ?><br/>
+                        Transmission: <?php echo $car['transmission'] ?><br/>
+                        Drivetrain: <?php echo $car['powertrain'] ?>
                     </p>
                 </div>
 
                 <div class="col-sm-3">
                     <h2>Features</h2>
                     <p>
-                        Cruise control: <?php if ($feature['cruise_control'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
-                        A/C: <?php if ($feature['air_conditioner'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
-                        Sunroof: <?php if ($feature['sunroof'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
-                        Satellite radio: <?php if ($feature['satellite_radio'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
-                        Airbags: <?php if ($feature['airbags'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Cruise control: <?php if ($car['cruise_control'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        A/C: <?php if ($car['ac'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Sunroof: <?php if ($car['sunroof'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Satellite radio: <?php if ($car['radio'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
+                        Airbags: <?php if ($car['airbags'] == 0) { echo "No"; } else { echo "Yes"; } ?><br/>
                     </p>
                 </div>
 
@@ -107,7 +107,7 @@
                 </div>
 
 
-                <?php if ($this->session->userdata('role') == "Manager") { ?>
+                <?php if ($this->session->userdata('role') == "Manager" || $this->session->userdata('role') == "Salesman") { ?>
                 <hr/>
 
                 <div class="col-sm-12">
@@ -133,7 +133,11 @@
                                 <td><?php echo $emp['name'] ?></td>
                                 <td><?php echo $cli['name'] ?></td>
                                 <td><?php echo $t['date_added'] ?></td>
-                                <td>X</td>
+                                <td class="right">
+                                    <a href="<?= site_url('transaction/delete') ?>/<?php echo $t['id'] ?>" class="delete-link">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

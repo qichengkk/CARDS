@@ -49,7 +49,7 @@
     <td class="right">
         <?php if ($this->session->userdata('role') == 'Driver' && $car['transaction'] == 'sold') : ?>
         <!-- For driver  & sold car only -->
-        <a href="<?= site_url('transaction/for-delivery') ?>/<?php echo $car['VIN'] ?>" class="btn btn-primary min-w40">Select</a>
+        <a href="<?= site_url('transaction/for_delivery') ?>/<?php echo $car['VIN'] ?>" class="btn btn-primary min-w40">Select</a>
         <?php endif ?>
 
         <?php if ($this->session->userdata('role') == 'Driver' && $car['transaction'] == 'in-transit') : ?>

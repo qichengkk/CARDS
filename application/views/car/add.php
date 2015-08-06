@@ -24,7 +24,7 @@
 						</div>
 
 						<div class="form-group col-xs-12">
-							<select class="form-control" name="make_id">
+							<select class="form-control" name="make_id" disabled>
 								<?php foreach ($makes as $make): ?>
 								<option value="<?php echo $make['id'] ?>" <?php if ($make['name'] == 'Porsche') { echo "selected"; } ?>>
 									<?php echo $make['name'] ?>
@@ -77,14 +77,6 @@
 						</div>
 
 					</fieldset>
-
-					<!-- Show/Hide Buton for Features
-					<div class="center">
-						<a href="#fields-for-features" id="add-more-features" class="btn btn-link">Add more feature...</a>
-						<br />
-						<br />
-					</div>
-					-->
 
 					<!-- Features -->
 					<fieldset id="fields-for-features">
@@ -162,9 +154,9 @@
 							<select id="field-for-client-select" class="form-control" name="client_id" onchange='show_client_form()'>
 								<option>Select supplier...</option>
 
-								<option value="1">H Gregroire, St-Eustache, QC Canada</option>
-								<option value="2">John Scott, St-Leonard, QC Canada</option>
-								<option value="3">Prestige, Montreal, QC Canada</option>
+								<?php foreach ($clients as $client) : ?>
+								<option value="<?php echo $client['CId'] ?>"><?php echo $client['name'] ?></option>
+								<?php endforeach ?>
 
 								<option value="X">Not in list</option>
 							</select>
@@ -244,17 +236,6 @@
 
 <script>
 $(document).ready(function(){
-
-	// Hide feature form
-	// -----------------
-	/*
-	$('#fields-for-features').hide();
-	$('#add-more-features').click(function(e) {
-		$(this).parent().hide();
-		$('#fields-for-features').show();
-	});
-	*/
-	// -----------------
 
 	// Hide client form
 	// ----------------
