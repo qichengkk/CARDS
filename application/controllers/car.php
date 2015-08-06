@@ -27,12 +27,23 @@ class Car extends CI_Controller
 		$this->load->model('model_model');
 		$this->load->model('car_model');
 		$this->load->model('feature_model');
+		$this->load->model('client_model');
+		$this->load->model('transaction_model');
+		$this->load->model('employee_model');
 	}
 
 	private function _require_login()
 	{
 		if ($this->session->userdata('employee_id') == false) {
 			redirect('/');
+		}
+	}
+
+	private function _require_driver()
+	{
+		$this->_require_login();
+		if ($this->session->userdata('role') != "Driver") {
+			redirect('/home');
 		}
 	}
 
@@ -68,6 +79,22 @@ class Car extends CI_Controller
 		$this->form_validation->set_rules('color', 'Color', 'required');
 	}
 
+	private function _load_supplier_validation()
+	{
+		$this->form_validation->set_rules('client_name', 'Supplier name', 'required');
+		$this->form_validation->set_rules('client_address', 'Supplier address', 'required');
+		$this->form_validation->set_rules('client_phone', 'Supplier phone', 'required');
+		$this->form_validation->set_rules('client_country', 'Supplier country', 'required');
+	}
+
+	private function _load_customer_validation()
+	{
+		$this->form_validation->set_rules('client_name', 'Customer name', 'required');
+		$this->form_validation->set_rules('client_address', 'Customer address', 'required');
+		$this->form_validation->set_rules('client_phone', 'Customer phone', 'required');
+		$this->form_validation->set_rules('client_country', 'Customer country', 'required');
+	}
+
 	private function _get_car_input()
 	{
 		return array(
@@ -84,29 +111,72 @@ class Car extends CI_Controller
 	private function _get_feature_input()
 	{
 		return array(
-				'engine' 		=> $this->input->post('engine'),
+				'engine' 					=> $this->input->post('engine'),
 				'transmission' 		=> $this->input->post('transmission'),
-				'powertrain' 		=> $this->input->post('powertrain'),
-				'city_fuel_consumption' 		=> $this->input->post('city_fuel_consumption'),
-				'hw_fuel_consumption' 		=> $this->input->post('hw_fuel_consumption'),
-				'cruise_control' 		=> $this->input->post('cruise_control'),
-				'air_conditioner' 		=> $this->input->post('air_conditioner'),
-				'airbags' 		=> $this->input->post('airbags'),
-				'satellite_radio' 		=> $this->input->post('satellite_radio'),
-				'sunroof' 		=> $this->input->post('sunroof'),
-				'interior' 		=> $this->input->post('interior')
+				'powertrain' 			=> $this->input->post('powertrain'),
+				'city_fuel_consumption' => $this->input->post('city_fuel_consumption'),
+				'hw_fuel_consumption' 	=> $this->input->post('hw_fuel_consumption'),
+				'cruise_control' 	=> $this->input->post('cruise_control'),
+				'air_conditioner' => $this->input->post('air_conditioner'),
+				'airbags' 				=> $this->input->post('airbags'),
+				'satellite_radio' => $this->input->post('satellite_radio'),
+				'sunroof' 				=> $this->input->post('sunroof'),
+				'interior' 				=> $this->input->post('interior')
+			);
+	}
+
+	private function _get_client_input()
+	{
+		return array(
+				'name' 		=> $this->input->post('client_name'),
+				'type' 		=> $this->input->post('client_type'),
+				'address' => $this->input->post('client_address'),
+				'country' => $this->input->post('client_country'),
+				'phone' 	=> $this->input->post('client_phone')
 			);
 	}
 
 	public function index()
 	{
-		$this->_require_login();
+		$this->_require_manager();
 
-		$data['cars'] = $this->car_model->get();
-		# TOTO: different get by employee role!
+		$data['cars'] = $this->car_model->get_all();
 
 		$this->load->view('home/inc/header_view');
 		$this->load->view('car/index', $data);
+		$this->load->view('home/inc/footer_view');
+	}
+
+	public function inventory()
+	{
+		$this->_require_salesman();
+
+		$data['cars'] = $this->car_model->get_all_inventory();
+
+		$this->load->view('home/inc/header_view');
+		$this->load->view('car/inventory', $data);
+		$this->load->view('home/inc/footer_view');
+	}
+
+	public function sold()
+	{
+		$this->_require_login();
+
+		$data['cars'] = $this->car_model->get_all_sold();
+
+		$this->load->view('home/inc/header_view');
+		$this->load->view('car/sold', $data);
+		$this->load->view('home/inc/footer_view');
+	}
+
+	public function delivered()
+	{
+		$this->_require_driver();
+
+		$data['cars'] = $this->car_model->get_all_delivered();
+
+		$this->load->view('home/inc/header_view');
+		$this->load->view('car/delivered', $data);
 		$this->load->view('home/inc/footer_view');
 	}
 
@@ -114,12 +184,16 @@ class Car extends CI_Controller
 	{
 		$this->_require_salesman();
 		$this->_load_form_helper();
+		if ($this->input->post('client_id') == 'X') {
+			$this->_load_supplier_validation();
+		}
 
 		if ($this->form_validation->run() == false) {
 
 			$data['makes'] = $this->make_model->get();
 			$data['models'] = $this->model_model->get();
 			$data['colors'] = $this->colors;
+			$data['clients'] = $this->client_model->get();
 
 			$this->load->view('home/inc/header_view');
 			$this->load->view('car/add', $data);
@@ -134,6 +208,23 @@ class Car extends CI_Controller
 			$this->car_model->insert($data['car']);
 			$this->feature_model->insert($data['feature']);
 
+			if ($this->input->post('client_id') == "X") {
+				$data['client'] = $this->_get_client_input();
+				$client_id = $this->client_model->insert($data['client']);
+			} else {
+				$client_id = $this->post->input('client_id');
+			}
+
+			$data['transaction'] = array(
+					'type' 			=> 'purchase',
+					'car_id' 		=> $data['car']['VIN'],
+					'client_id' => $client_id,
+					'price' 		=> $this->input->post('purchase_price'),
+					'employee_id' => $this->session->userdata('employee_id')
+				);
+
+			$this->transaction_model->insert($data['transaction']);
+
 			redirect('/car/show/'.$data['car']['VIN']);
 
 		}
@@ -147,6 +238,7 @@ class Car extends CI_Controller
 		$data['model'] = $this->model_model->get($data['car']['model_id'])[0];
 		$data['make'] = $this->make_model->get($data['model']['make_id'])[0];
 		$data['feature'] = $this->feature_model->get_by_car_id($VIN)[0];
+		$data['transactions'] = $this->transaction_model->get_by_car_id($VIN);
 
 		$this->load->view('home/inc/header_view');
 		$this->load->view('car/show', $data);

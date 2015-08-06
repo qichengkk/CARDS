@@ -42,7 +42,7 @@ class Client_model extends CI_Model
      */
     public function insert($data)
     {
-        $this->db->insert('employee', $data);
+        $this->db->insert('client', $data);
         return $this->db->insert_id();
 
     }

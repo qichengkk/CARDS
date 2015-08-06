@@ -26,7 +26,9 @@
 						<div class="form-group col-xs-12">
 							<select class="form-control" name="make_id">
 								<?php foreach ($makes as $make): ?>
-								<option value="<?php echo $make['id'] ?>"><?php echo $make['name'] ?></option>
+								<option value="<?php echo $make['id'] ?>" <?php if ($make['name'] == 'Porsche') { echo "selected"; } ?>>
+									<?php echo $make['name'] ?>
+								</option>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -34,7 +36,6 @@
 						<div class="form-group col-xs-12">
 							<select class="form-control" name="model_id">
 								<option>Select a model...</option>
-								<option class="divider"></option>
 
 								<?php foreach ($models as $model): ?>
 								<option value="<?php echo $model['id'] ?>"><?php echo $model['name']." ".$model['serie'] ?></option>
@@ -53,17 +54,23 @@
 						</div>
 
 						<div class="form-group col-xs-4">
-							<label for="mileage">Estimated price</label>
-							<input type="text" class="form-control" name="estimated_price" placeholder="Estimated Price">
-						</div>
-
-						<div class="form-group col-xs-12">
+							<label>Color</label>
 							<select class="form-control" name="color">
 								<?php foreach ($colors as $color): ?>
 								<option value="<?php echo $color ?>"><?php echo $color ?></option>
 								<?php endforeach ?>
 							</select>
-						</div>						
+						</div>		
+
+						<div class="form-group col-xs-6">
+							<label for="mileage">Purchase price</label>
+							<input type="text" class="form-control" name="purchase_price" placeholder="Estimated Price">
+						</div>		
+
+						<div class="form-group col-xs-6">
+							<label for="mileage">Estimated price</label>
+							<input type="text" class="form-control" name="estimated_price" placeholder="Estimated Price">
+						</div>							
 
 						<div class="form-group col-xs-12">
 							<textarea class="form-control" name="description" placeholder="Description (optional)"></textarea>
@@ -71,11 +78,13 @@
 
 					</fieldset>
 
+					<!-- Show/Hide Buton for Features
 					<div class="center">
 						<a href="#fields-for-features" id="add-more-features" class="btn btn-link">Add more feature...</a>
 						<br />
 						<br />
 					</div>
+					-->
 
 					<!-- Features -->
 					<fieldset id="fields-for-features">
@@ -152,30 +161,37 @@
 						<div id="fields-for-client-select" class="form-group col-xs-12">
 							<select id="field-for-client-select" class="form-control" name="client_id" onchange='show_client_form()'>
 								<option>Select supplier...</option>
-								<option class="divider"></option>
 
 								<option value="1">H Gregroire, St-Eustache, QC Canada</option>
 								<option value="2">John Scott, St-Leonard, QC Canada</option>
 								<option value="3">Prestige, Montreal, QC Canada</option>
 
-								<option class="divider"></option>
-								<option>Not in list</option>
+								<option value="X">Not in list</option>
 							</select>
 						</div>
 
 						<div id="fields-for-client">
 							<!-- Hidden by default. Visible when client is not in list. -->
 
-							<div class="form-group col-xs-12">
+							<div class="form-group col-xs-8">
 								<input type="text" class="form-control" name="client_name" placeholder="Name">
+							</div>
+
+							<div class="form-group col-xs-4">
+								<select class="form-control" name="client_type">
+									<option value="owner">Independant owner</option>
+									<option value="deader">Dealer</option>
+									<option value="auction">Auction</option>
+									<option value="showroom">Showroom</option>
+								</select>
 							</div>
 
 							<!-- Address -->
 							<div class="form-group col-xs-12">
-								<input type="text" class="form-control" name="client_address" placeholder="Address">
+								<input type="text" class="form-control" name="client_address" placeholder="123 Avenue, City, Province">
 							</div>
 
-							<!-- City, Province -->
+							<!-- City, Province, Postal Code/Zip 
 							<div class="form-group col-xs-8">
 								<input type="text" class="form-control" name="client_city" placeholder="City">
 							</div>
@@ -184,29 +200,27 @@
 								<input type="text" class="form-control" name="client_state" placeholder="Province/State">
 							</div>
 
-							<!-- Postal Code/Zip, Country -->
 							<div class="form-group col-xs-6">
 								<input type="text" class="form-control" name="client_postal" placeholder="Postal/Zip Code">
 							</div>
-
-							<div class="form-group col-xs-6">
-							<select class="form-control" name="client_id">
-								<option>Select country...</option>
-								<option class="divider"></option>
-
-								<option value="1">Canada</option>
-								<option value="2">USA</option>
-								<option value="3">China</option>
-							</select>
-							</div>
+							-->
 
 							<!-- Contact -->
-							<div class="form-group col-xs-6">
+							<div class="form-group col-xs-8">
 								<input type="text" class="form-control" name="client_phone" placeholder="Phone">
 							</div>
 
-							<div class="form-group col-xs-6">
-								<input type="number" class="form-control" name="cut_off_year" min="0" max="99" placeholder="Cut-off year">
+							<!-- Country -->
+							<div class="form-group col-xs-4">
+								<select class="form-control" name="client_country">
+									<option>Select country...</option>
+									<option value="Canada">Canada</option>
+									<option value="USA">USA</option>
+									<option value="China">China</option>
+									<option value="Germany">Germany</option>
+									<option value="Japan">Japan</option>
+									<option value="Mexico">Mexico</option>
+								</select>
 							</div>
 
 						</div>
@@ -233,11 +247,13 @@ $(document).ready(function(){
 
 	// Hide feature form
 	// -----------------
+	/*
 	$('#fields-for-features').hide();
 	$('#add-more-features').click(function(e) {
 		$(this).parent().hide();
 		$('#fields-for-features').show();
 	});
+	*/
 	// -----------------
 
 	// Hide client form
@@ -252,7 +268,7 @@ $(document).ready(function(){
 
 	// $('#fields-for-client').hide();
 	$('#field-for-client-select').on('change', function() {
-		if ($(this).val() == "Not in list") {
+		if ($(this).val() == "X") {
 			$('#fields-for-client').show();
 			$('#fields-for-client-select').hide();
 		};

@@ -12,22 +12,22 @@
 
                 <div class="col-sm-12 center">
                     <ul class="status-bar">
-                        <li class="active">
+                        <li class="<?php if (end($transactions)['type'] == 'purchased') { echo 'active';} ?>">
                             <span class="circle">1</span><br/>
                             Inventory
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="<?php if (end($transactions)['type'] == 'sold') { echo 'active';} ?>">
                             <span class="circle">2</span><br/>
                             Sold
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="<?php if (end($transactions)['type'] == 'in-transit') { echo 'active';} ?>">
                             <span class="circle">3</span><br/>
                             Transit
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="<?php if (end($transactions)['type'] == 'delivered') { echo 'active';} ?>">
                             <span class="circle">4</span><br/>
                             Delivered
                         </li>
@@ -69,6 +69,7 @@
 
                 <hr />
 
+                <!--
                 <div class="col-sm-12">
                     <h2>Pictures</h2>
                     <div class="well">
@@ -76,31 +77,67 @@
                     </div>
                 </div>
 
-                <?php if ($this->session->userdata('role') == "Salesman" || $this->session->userdata('role') == "Manager") { ?>
                 <hr />
+                -->
 
                 <div class="col-sm-6">
                     <h2>Supplier information</h2>
+                    <?php
+                        $supplier = $this->client_model->get($transactions[0]['client_id'])[0];
+                    ?>
                     <p>
-                        Name: <br/>
-                        Address: <br/>
-                        Phone:
+                        <strong><?php echo $supplier['name'] ?></strong><br/>
+                        <?php echo $supplier['address'].", ".$supplier['country'] ?><br/>
+                        <?php echo $supplier['phone'] ?>
                     </p>
                 </div>
 
                 <div class="col-sm-6">
                     <h2>Customer information</h2>
+                    <?php if (count($transactions) > 1) : ?>
+                    <?php
+                        $client = $this->client_model->get(end($transactions)['client_id'])[0];
+                    ?>
                     <p>
-                        Name: <br/>
-                        Address: <br/>
-                        Phone:
+                        <strong><?php echo $client['name'] ?></strong><br/>
+                        <?php echo $client['address'].", ".$supplier['country'] ?><br/>
+                        <?php echo $client['phone'] ?>
                     </p>
+                    <?php endif ?>
                 </div>
 
+
+                <?php if ($this->session->userdata('role') == "Manager") { ?>
                 <hr/>
 
                 <div class="col-sm-12">
                     <h2>Detailed transactions</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>By</th>
+                                <th>From/To</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($transactions as $t): ?>
+                            <?php
+                                $emp = $this->employee_model->get($t['employee_id'])[0];
+                                $cli = $this->client_model->get($t['client_id'])[0];
+                            ?>
+                            <tr>
+                                <td><?php echo ucfirst($t['type']) ?></td>
+                                <td><?php echo $emp['name'] ?></td>
+                                <td><?php echo $cli['name'] ?></td>
+                                <td><?php echo $t['date_added'] ?></td>
+                                <td>X</td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
                 </div>
                 <?php } ?>
 
