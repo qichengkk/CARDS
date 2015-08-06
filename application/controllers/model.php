@@ -122,7 +122,7 @@ class Model extends CI_Controller
 	{
 		$config =  array(
       'upload_path'     => './uploads/model/',
-      'allowed_types' 		=> 'gif|jpg|png',
+      'allowed_types' 		=> 'gif|jpg|png|pdf|txt|doc|docx|xls|xlsx',
       'overwrite'       => FALSE
     );
 

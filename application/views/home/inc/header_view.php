@@ -45,9 +45,7 @@
 
                     <ul class="dropdown-menu">
                         <li><a href='<?=site_url('home')?>'>Home</a></li>
-                        <li><a href='<?=site_url('car')?>'>Cars</a></li>
                         <li><a href='<?=site_url('client')?>'>Clients</a></li>
-                        <li><a href='../transactions/index.html'>Transactions</a></li>
                         <li><a href='../reports/index.html'>Reports</a></li>
                         <?php if($this->session->userdata('role') == 'Manager') { ?>
                             <li><a href='<?=site_url('employee')?>'>Employees</a></li>
@@ -66,30 +64,45 @@
                 <li>
                     <a href='<?=site_url('home/logout')?>'>
                         <span class='glyphicon glyphicon-off'></span>
-                        <span class="hidden-xs">Log out</span>
+                        <span class="hidden-xs"></span>
                     </a>
                 </li>
             </ul>
 
             <ul class='nav navbar-nav navbar-center hidden-xs'>
-                <li><a href='<?=site_url('home')?>'><span class='glyphicon glyphicon-home'></span></a></li>
-                <li><a href='<?=site_url('car')?>'>Cars</a></li>
-                <li><a href='<?=site_url('transaction')?>'>Transactions</a></li>
-                <li><a href='<?=site_url('report')?>'>Reports</a></li>
-                <?php if($this->session->userdata('role') == 'Manager') { ?>
+                <?php if($this->session->userdata('role') == 'Manager' || $this->session->userdata('role') == 'Salesman') : ?>
+                <li>
+                    <a href='<?=site_url('home')?>'>
+                        <span class='glyphicon glyphicon-home'></span> Cars
+                    </a>
+                </li>
+
+                <li>
+                    <a href='<?=site_url('report')?>'>
+                        <span class="glyphicon glyphicon-stats"></span> Reports
+                    </a>
+                </li>
+                <?php endif ?>
+
+                <?php if($this->session->userdata('role') == 'Manager') : ?>
+                <li>
+                    <a href='<?=site_url('employee')?>'>
+                        <span class="glyphicon glyphicon-th-list"></span> Staff
+                    </a>
+                </li>
+
                 <li>
                     <a href='#' class='dropdown-toggle' data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        More <span class="caret"></span>
+                        <span class="glyphicon glyphicon-option-vertical"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href='<?=site_url('employee')?>'>Employees</a></li>
                         <li><a href='<?=site_url('client')?>'>Client & Supplier</a></li>
                         <li class="divider"></li>
                         <li><a href='<?=site_url('make')?>'>Vehicle make</a></li>
                         <li><a href='<?=site_url('model')?>'>Vehicle model</a></li>
                     </ul>
                 </li>
-                <?php } ?>
+                <?php endif ?>
 
             </ul>
 

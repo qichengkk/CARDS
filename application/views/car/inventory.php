@@ -20,11 +20,11 @@
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
                     <?php if ($this->session->userdata('role') == 'Manager') : ?>
-                        <a href="<?= site_url('car/') ?>" type="button" class="btn btn-default active">All</a>
+                        <a href="<?= site_url('car/') ?>" type="button" class="btn btn-default">All</a>
                     <?php endif ?>
 
                     <?php if ($this->session->userdata('role') == 'Manager' || $this->session->userdata('role') == 'Salesman') : ?>
-                        <a href="<?= site_url('car/inventory') ?>" type="button" class="btn btn-default">Inventory</a>
+                        <a href="<?= site_url('car/inventory') ?>" type="button" class="btn btn-default active">Inventory</a>
                     <?php endif ?>
 
                         <a href="<?= site_url('car/sold') ?>" type="button" class="btn btn-default">Sold</a>

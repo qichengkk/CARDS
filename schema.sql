@@ -205,4 +205,23 @@ VALUES
   ('CANADIAN INTERNATIONAL AUTOSHOW', 'showroom', '85 RENFREW DRIVE MARKHAM ONTARIO', 'Canada', '905-940-2800', NOW(), NOW()),
   ('ADESA Montreal', 'auction', '300 Albert Mondou St. Eustache, QC', 'Canada', '450-472-4400', NOW(), NOW());
 
+-- ------------------------
+-- 8. Create table activity
+-- ------------------------
+CREATE TABLE IF NOT EXISTS transaction (
+  id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+  type VARCHAR(50) NOT NULL,
+  car_id CHAR(17) NOT NULL,
+  client_id INT UNSIGNED NOT NULL,
+  price DECIMAL(12, 2),
+  tax DECIMAL(12, 2),
+  employee_id INT UNSIGNED NOT NULL,
+  document VARCHAR(255),
+  date_added TIMESTAMP,
+  date_modified DATETIME,
 
+  PRIMARY KEY (id),
+  FOREIGN KEY (car_id) REFERENCES car(VIN) ON DELETE CASCADE,
+  FOREIGN KEY (client_id) REFERENCES client(CId),
+  FOREIGN KEY (employee_id) REFERENCES employee(Eid)
+) ENGINE = InnoDB;

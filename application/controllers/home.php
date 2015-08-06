@@ -23,9 +23,20 @@ class Home extends CI_Controller {
 
     public function index()
     {
+        $current_user_role = $this->session->userdata('role');
+
+        if ($current_user_role == 'Driver') {
+            redirect('/car/sold');
+        } elseif ($current_user_role == 'Salesman') {
+            redirect('/car/inventory');
+        } else {
+            redirect('car/');
+        }
+        /*
         $this->load->view('home/inc/header_view');
         $this->load->view('home/home_view');
         $this->load->view('home/inc/footer_view');
+        */
     }
 
     public function logout()

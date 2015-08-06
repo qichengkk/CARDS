@@ -9,3 +9,6 @@
 /public/css/*.map
 /public/css/bootstrap-mod.css
 /public/css/variable.css
+
+# Test files
+/test.sql
