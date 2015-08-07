@@ -62,11 +62,11 @@ VALUES
 -- ------
 INSERT INTO client (name, type, address, country, phone)
 VALUES
-  ('Palais des congrès de Montréal', 'showroom', '201, avenue Viger West, Montreal, QC', 'Canada', '514-123-4567'),
-  ('CANADIAN INTERNATIONAL AUTOSHOW', 'showroom', '85 RENFREW DRIVE MARKHAM ONTARIO', 'Canada', '905-940-2800'),
-  ('ADESA Montreal', 'auction', '300 Albert Mondou St. Eustache, QC', 'Canada', '450-472-4400'),
-  ('Weissach Performance', 'dealer', '1757 W 2nd Ave, Vancouver, BC', 'Canada', '604-738-3911'),
-  ('Porsche Centre Edmonton', 'dealer', '17007 111 Avenue Northwest, Edmonton, AB T5S 0J5', 'Canada', '1-877-629-1492');
+  ('Palais des congrès de Montréal', 'Showroom', '201, avenue Viger West, Montreal, QC', 'Canada', '514-123-4567'),
+  ('CANADIAN INTERNATIONAL AUTOSHOW', 'Showroom', '85 RENFREW DRIVE MARKHAM ONTARIO', 'Canada', '905-940-2800'),
+  ('ADESA Montreal', 'Auction', '300 Albert Mondou St. Eustache, QC', 'Canada', '450-472-4400'),
+  ('Weissach Performance', 'Dealer', '1757 W 2nd Ave, Vancouver, BC', 'Canada', '604-738-3911'),
+  ('Porsche Centre Edmonton', 'Dealer', '17007 111 Avenue Northwest, Edmonton, AB T5S 0J5', 'Canada', '1-877-629-1492');
 
 -- ---
 -- Car

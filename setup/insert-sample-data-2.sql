@@ -5,21 +5,21 @@
 -- to replace with real stuff
 INSERT INTO client (name, type, address, country, phone)
 VALUES
-('Erick Martinez', 'dealer', '3753 ave. Venecia, Hermosillo Sonora   21391', 'Mexico', '(+52)686-558-3702'),
-('Stephane Bruyere', 'owner', '40 Rue Saint-Charles Ouest, Longueuil QC  J4J 1W9', 'Canada', '450-651-6777'),
-('Michael Colbert', 'dealer', '109 Douglas Crescent,  Langley BC V3A 0A2', 'Canada', '604-510-5812'),
-('Charles Owen', 'auction', '6541 Lexington Street,  El Cajon CA 92014', 'USA', '619-966-9368'),
-('Oyuki Kasami', 'dealer', '184 Nishi-Shinsaibashi, Chuo-ku Osaka 1006812 ', 'Japan', '(+81) 662818786'),
-('Jürgen Kann', 'auction', '4 Geleitstraße Weimar, Germany CP 99423', 'Germany', '(+49) 3643850737'),
-('Ana Muller', 'owner', '2 Marseiller Strasse Hamburg, Germany CP 20355', 'Germany', '(+49) 4028464388‎'),
-('Gilles Ferguson', 'owner', '41 Second Street West Cornwall, Ontario K6J 1G3', 'Canada', '613 932-6673'),
-('Ricardo Gomez', 'auction', '456 rio presidio las lomas, Puerto Vallarta Nay 35310', 'Mexico', '(+52)333-268-2145'),
-('Steve Miller', 'owner', '45 Hull Shore Dr, Hull MA 02045', 'USA', '781-925-4523'),
-('Li Motor Sport', 'showroom', '63 RENMIN LU, QINGDAO SHI', 'China', '827-987-2223'),
-('Mao Miao', 'dealer', '36 Baoshian, Shanghai', 'China', '353-987-309'),
-('Jiaying Porsche', 'dealer', '8 XUJIAZHAI, HUAQIAOCUN ', 'China', '351-333-2233'),
-('Tokyo Porsche', 'dealer', '5-3, Yaesu 1-Chome', 'Japan', '090-3490-1363'),
-('Chuo-ku', 'showroom', '1-5-3 Yaesu, Chuo-ku', 'Japan', '090-1790-1357');
+('Erick Martinez', 'Dealer', '3753 ave. Venecia, Hermosillo Sonora   21391', 'Mexico', '(+52)686-558-3702'),
+('Stephane Bruyere', 'Owner', '40 Rue Saint-Charles Ouest, Longueuil QC  J4J 1W9', 'Canada', '450-651-6777'),
+('Michael Colbert', 'Dealer', '109 Douglas Crescent,  Langley BC V3A 0A2', 'Canada', '604-510-5812'),
+('Charles Owen', 'Auction', '6541 Lexington Street,  El Cajon CA 92014', 'USA', '619-966-9368'),
+('Oyuki Kasami', 'Dealer', '184 Nishi-Shinsaibashi, Chuo-ku Osaka 1006812 ', 'Japan', '(+81) 662818786'),
+('Jürgen Kann', 'Duction', '4 Geleitstraße Weimar, Germany CP 99423', 'Germany', '(+49) 3643850737'),
+('Ana Muller', 'Owner', '2 Marseiller Strasse Hamburg, Germany CP 20355', 'Germany', '(+49) 4028464388‎'),
+('Gilles Ferguson', 'Owner', '41 Second Street West Cornwall, Ontario K6J 1G3', 'Canada', '613 932-6673'),
+('Ricardo Gomez', 'Auction', '456 rio presidio las lomas, Puerto Vallarta Nay 35310', 'Mexico', '(+52)333-268-2145'),
+('Steve Miller', 'Owner', '45 Hull Shore Dr, Hull MA 02045', 'USA', '781-925-4523'),
+('Li Motor Sport', 'Showroom', '63 RENMIN LU, QINGDAO SHI', 'China', '827-987-2223'),
+('Mao Miao', 'Dealer', '36 Baoshian, Shanghai', 'China', '353-987-309'),
+('Jiaying Porsche', 'Dealer', '8 XUJIAZHAI, HUAQIAOCUN ', 'China', '351-333-2233'),
+('Tokyo Porsche', 'Dealer', '5-3, Yaesu 1-Chome', 'Japan', '090-3490-1363'),
+('Chuo-ku', 'Showroom', '1-5-3 Yaesu, Chuo-ku', 'Japan', '090-1790-1357');
 
 -- More cars
 INSERT INTO car (VIN, model_id, year, mileage, color, estimated_price, date_added)
