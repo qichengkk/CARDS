@@ -45,7 +45,7 @@ class Transaction extends CI_Controller
 
 		// Rules
 		$this->form_validation->set_rules('sell_price', 'Price', 'required');
-		$this->form_validation->set_rules('userfile', 'Proof of delivery', 'required');
+		//$this->form_validation->set_rules('userfile', 'Proof of delivery', 'required');
 	}
 
 	private function _load_customer_validation()
@@ -89,7 +89,7 @@ class Transaction extends CI_Controller
 				$data['client'] = $this->_get_client_input();
 				$client_id = $this->client_model->insert($data['client']);
 			} else {
-				$client_id = $this->post->input('client_id');
+				$client_id = $this->input->post('client_id');
 			}
 
 			$price = $this->input->post('sell_price') + $this->input->post('additional_fees');
@@ -122,7 +122,7 @@ class Transaction extends CI_Controller
 				'employee_id' => $this->session->userdata('employee_id')
 			);
 		$this->transaction_model->insert($data['transaction']);
-		redirect('/home/');
+		redirect('/car/sold/'."#".$VIN);
 	}
 
 	public function delivered($VIN)
@@ -147,9 +147,11 @@ class Transaction extends CI_Controller
 
 	public function attach_proof_of_delivery($id)
 	{
+		$transaction = $this->transaction_model->get($id);
+
 		if (empty($_FILES['userfile']['name'])) {
 				// User did NOT attach a file!
-				redirect('/home/');
+				redirect('/car/delivered/'."#".$transaction['car_id']);
 			} else {
 				// User attached a file!
 				if ($this->_attach_document()) {
@@ -157,7 +159,7 @@ class Transaction extends CI_Controller
 					// Get file data
 					$file = $this->upload->data();
 					$this->transaction_model->update(['document' => $file['file_name']], $id);
-					redirect('/home/');
+					redirect('/car/delivered/'."#".$transaction['car_id']);
 				} else {
 					echo "Oops, something went wrong! The file you attached cannot be uploaded.";
 				}

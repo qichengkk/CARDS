@@ -1,4 +1,4 @@
-<tr>
+<tr id="<?php echo $car['VIN'] ?>">
     <td>
         <a href="<?= site_url('car/show') ?>/<?php echo $car['VIN'] ?>" class="btn btn-link777">
             <span class="glyphicon glyphicon-search"></span>

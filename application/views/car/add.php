@@ -8,10 +8,9 @@
 
 				<hr>
 
-				<!-- div id="new_make_form_error" class="alert alert-danger center" --><!-- Dynamic --><!-- /div -->
-				<?php echo validation_errors(); ?>
-
-				<!-- form id="new_model_form" class="form" method="post" accept-charset="utf-8" action="add" enctype="multipart/form-data" -->
+				<?php if (!empty(validation_errors())) : ?>
+				<div class="alert alert-danger"><?php echo validation_errors(); ?></div>
+				<?php endif ?>
 
 				<form id="new_car_form" class="form" method="post" accept-charset="utf-8" action="<?= site_url('car/add') ?>">
 
@@ -106,12 +105,12 @@
 
 						<div class="form-group col-xs-6">
 							<label for="city_fuel_consumption">City</label>
-							<input type="number" class="form-control" name="city_fuel_consumption">
+							<input type="number" class="form-control" name="city_fuel_consumption" min="1.0" max="30.0">
 						</div>
 
 						<div class="form-group col-xs-6">
 							<label for="hw_fuel_consumption">Highway</label>
-							<input type="number" class="form-control" name="hw_fuel_consumption">
+							<input type="number" class="form-control" name="hw_fuel_consumption" min="1.0" max="30.0">
 						</div>
 
 						<p class="sub-legend"><strong>Comfort</strong></p>
@@ -183,20 +182,6 @@
 								<input type="text" class="form-control" name="client_address" placeholder="123 Avenue, City, Province">
 							</div>
 
-							<!-- City, Province, Postal Code/Zip 
-							<div class="form-group col-xs-8">
-								<input type="text" class="form-control" name="client_city" placeholder="City">
-							</div>
-
-							<div class="form-group col-xs-4">
-								<input type="text" class="form-control" name="client_state" placeholder="Province/State">
-							</div>
-
-							<div class="form-group col-xs-6">
-								<input type="text" class="form-control" name="client_postal" placeholder="Postal/Zip Code">
-							</div>
-							-->
-
 							<!-- Contact -->
 							<div class="form-group col-xs-8">
 								<input type="text" class="form-control" name="client_phone" placeholder="Phone">
@@ -239,10 +224,10 @@ $(document).ready(function(){
 
 	// Hide client form
 	// ----------------
-	if ($('#field-for-client-select').val() == "Not in list") {
-		//$('#fields-for-client').show();
-		//$('fields-for-client-select').hide();
-        window.location.href = '<?=site_url('client/add')?>';
+	if ($('#field-for-client-select').val() == "X") {
+		$('#fields-for-client').show();
+		$('fields-for-client-select').hide();
+    // window.location.href = '<?=site_url('client/add')?>';
 	} else {
 		$('#fields-for-client').hide();
 		$('fields-for-client-select').show();
@@ -250,16 +235,10 @@ $(document).ready(function(){
 
 	// $('#fields-for-client').hide();
 	$('#field-for-client-select').on('change', function() {
-<<<<<<< HEAD
-		if ($(this).val() == "Not in list") {
-			//$('#fields-for-client').show();
-			//$('#fields-for-client-select').hide();
-            window.location.href = '<?=site_url('client/add')?>';
-=======
 		if ($(this).val() == "X") {
 			$('#fields-for-client').show();
 			$('#fields-for-client-select').hide();
->>>>>>> include_client
+      // window.location.href = '<?=site_url('client/add')?>';
 		};
 	});
 	// ----------------

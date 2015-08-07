@@ -147,7 +147,7 @@ class Car_model extends CI_Model
 						) AS t ON t.car_id = c.VIN
 					LEFT JOIN client AS cl ON cl.CId = t.client_id
 					LEFT JOIN employee AS e ON e.EId = t.employee_id
-				ORDER BY t.date_added ASC
+				ORDER BY t.date_added DESC
 			");
 
 		return $query->result_array();
@@ -180,7 +180,7 @@ class Car_model extends CI_Model
 					LEFT JOIN client AS cl ON cl.CId = t.client_id
 					LEFT JOIN employee AS e ON e.EId = t.employee_id
 				WHERE t.type = 'purchased'
-				ORDER BY t.date_added ASC
+				ORDER BY m.name ASC, t.date_added DESC
 			");
 
 		return $query->result_array();
@@ -213,7 +213,7 @@ class Car_model extends CI_Model
 					LEFT JOIN client AS cl ON cl.CId = t.client_id
 					LEFT JOIN employee AS e ON e.EId = t.employee_id
 				WHERE t.type = 'sold' OR t.type = 'in-transit' OR t.type = 'delivered'
-				ORDER BY t.date_added ASC
+				ORDER BY m.name ASC, t.date_added ASC
 			");
 
 		return $query->result_array();
@@ -246,7 +246,7 @@ class Car_model extends CI_Model
 					LEFT JOIN client AS cl ON cl.CId = t.client_id
 					LEFT JOIN employee AS e ON e.EId = t.employee_id
 				WHERE t.type = 'delivered'
-				ORDER BY t.date_added ASC
+				ORDER BY t.date_added DESC
 			");
 
 		return $query->result_array();

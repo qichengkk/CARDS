@@ -8,10 +8,9 @@
 
 				<hr>
 
-				<!-- div id="new_make_form_error" class="alert alert-danger center" --><!-- Dynamic --><!-- /div -->
-				<?php echo validation_errors(); ?>
-
-				<!-- form id="new_model_form" class="form" method="post" accept-charset="utf-8" action="add" enctype="multipart/form-data" -->
+				<?php if (!empty(validation_errors())) : ?>
+				<div class="alert alert-danger"><?php echo validation_errors(); ?></div>
+				<?php endif ?>
 
 				<form id="new_car_form" class="form" method="post" accept-charset="utf-8" action="<?= site_url('car/update') ?>/<?php echo $car['VIN'] ?> ">
 
@@ -210,10 +209,10 @@ $(document).ready(function(){
 
 	// Hide client form
 	// ----------------
-	if ($('#field-for-client-select').val() == "Not in list") {
-		//$('#fields-for-client').show();
-		//$('fields-for-client-select').hide();
-        window.location.href = '<?=site_url('client/add')?>';
+	if ($('#field-for-client-select').val() == "X") {
+		$('#fields-for-client').show();
+		$('fields-for-client-select').hide();
+    // window.location.href = '<?=site_url('client/add')?>';
 	} else {
 		$('#fields-for-client').hide();
 		$('fields-for-client-select').show();
@@ -221,10 +220,10 @@ $(document).ready(function(){
 
 	// $('#fields-for-client').hide();
 	$('#field-for-client-select').on('change', function() {
-		if ($(this).val() == "Not in list") {
-			//$('#fields-for-client').show();
-			//$('#fields-for-client-select').hide();
-            window.location.href = '<?=site_url('client/add')?>';
+		if ($(this).val() == "X") {
+			$('#fields-for-client').show();
+			$('#fields-for-client-select').hide();
+      // window.location.href = '<?=site_url('client/add')?>';
 		};
 	});
 	// ----------------

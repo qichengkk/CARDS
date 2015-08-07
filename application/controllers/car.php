@@ -69,7 +69,7 @@ class Car extends CI_Controller
 		$this->load->library('form_validation');
 
 		// Validation display style
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+		$this->form_validation->set_error_delimiters('<p>', '</p>');
 
 		// Validation rules
 		$this->form_validation->set_rules('VIN', 'VIN', 'required');
@@ -212,11 +212,11 @@ class Car extends CI_Controller
 				$data['client'] = $this->_get_client_input();
 				$client_id = $this->client_model->insert($data['client']);
 			} else {
-				$client_id = $this->post->input('client_id');
+				$client_id = $this->input->post('client_id');
 			}
 
 			$data['transaction'] = array(
-					'type' 			=> 'purchase',
+					'type' 			=> 'purchased',
 					'car_id' 		=> $data['car']['VIN'],
 					'client_id' => $client_id,
 					'price' 		=> $this->input->post('purchase_price'),
