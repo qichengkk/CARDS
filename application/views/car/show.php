@@ -100,7 +100,7 @@
                     ?>
                     <p>
                         <strong><?php echo $client['name'] ?></strong><br/>
-                        <?php echo $client['address'].", ".$supplier['country'] ?><br/>
+                        <?php echo $client['address'].", ".$client['country'] ?><br/>
                         <?php echo $client['phone'] ?>
                     </p>
                     <?php endif ?>
