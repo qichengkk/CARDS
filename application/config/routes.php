@@ -60,3 +60,4 @@ $route['model'] = 'model';
 $route['client'] = 'client';
 $route['car'] = 'car';
 $route['transaction'] = 'transaction';
+$route['report'] = 'report';
