@@ -25,10 +25,11 @@
                             <option>Select type...</option>
                             <option class="divider"></option>
 
-                            <option value="auction" <?php if ($type_update == "auction") echo "selected"; ?>>Auction</option>
-                            <option value="person" <?php if ($type_update == "person") echo "selected"; ?>>Person</option>
-                            <option value="port" <?php if ($type_update == "port") echo "selected"; ?>>Port</option>
-                            <option value="showroom" <?php if ($type_update == "showroom") echo "selected"; ?>>Showroom</option>
+                            <option value="Owner" <?php if ($type_update == "Owner") echo "selected"; ?>>Owner</option>
+                            <option value="Dealer" <?php if ($type_update == "Dealer") echo "selected"; ?>>Dealer</option>
+                            <option value="Auction" <?php if ($type_update == "Auction") echo "selected"; ?>>Auction</option>
+                            <option value="Showroom" <?php if ($type_update == "Showroom") echo "selected"; ?>>Showroom</option>
+
                         </select>
                     </div>
 

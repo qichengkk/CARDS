@@ -28,7 +28,7 @@ class Home extends CI_Controller {
         if ($current_user_role == 'Driver') {
             redirect('/car/sold');
         } elseif ($current_user_role == 'Salesman') {
-            redirect('/car/inventory');
+            redirect('/car/purchased');
         } else {
             redirect('car/');
         }

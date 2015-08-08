@@ -43,7 +43,7 @@ class Car extends CI_Controller
 	private function _require_driver()
 	{
 		$this->_require_login();
-		if ($this->session->userdata('role') != "Driver") {
+		if ($this->session->userdata('role') != "Driver" && $this->session->userdata('role') != "Manager") {
 			redirect('/home');
 		}
 	}
@@ -140,49 +140,80 @@ class Car extends CI_Controller
 			);
 	}
 
-	public function index()
-	{
-		$this->_require_manager();
 
-		$data['cars'] = $this->car_model->get_all();
+    private function load_view_by_status($status)
+    {
+        $data['cars'] = $this->car_model->get_all_by_status($status);
+        $data['status'] = $status;
 
-		$this->load->view('home/inc/header_view');
-		$this->load->view('car/index', $data);
-		$this->load->view('home/inc/footer_view');
-	}
+        $this->load->view('home/inc/header_view');
+        $this->load->view('car/index', $data);
+        $this->load->view('home/inc/footer_view');
+    }
 
-	public function inventory()
+    public function index()
+    {
+        $this->purchased();
+    }
+
+	public function purchased()
 	{
 		$this->_require_salesman();
-
-		$data['cars'] = $this->car_model->get_all_inventory();
-
-		$this->load->view('home/inc/header_view');
-		$this->load->view('car/inventory', $data);
-		$this->load->view('home/inc/footer_view');
+        $this->load_view_by_status("purchased");
 	}
 
 	public function sold()
 	{
 		$this->_require_login();
-
-		$data['cars'] = $this->car_model->get_all_sold();
-
-		$this->load->view('home/inc/header_view');
-		$this->load->view('car/sold', $data);
-		$this->load->view('home/inc/footer_view');
+        $this->load_view_by_status("sold");
 	}
+
+    public function transit()
+    {
+        $this->_require_login();
+        $this->load_view_by_status("transit");
+    }
 
 	public function delivered()
 	{
-		$this->_require_driver();
-
-		$data['cars'] = $this->car_model->get_all_delivered();
-
-		$this->load->view('home/inc/header_view');
-		$this->load->view('car/delivered', $data);
-		$this->load->view('home/inc/footer_view');
+		$this->_require_login();
+        $this->load_view_by_status("delivered");
 	}
+
+
+    /*public function index()
+    {
+        $this->_require_manager();
+        $data['cars'] = $this->car_model->get_all();
+        $this->load->view('home/inc/header_view');
+        $this->load->view('car/index', $data);
+        $this->load->view('home/inc/footer_view');
+    }
+    public function inventory()
+    {
+        $this->_require_salesman();
+        $data['cars'] = $this->car_model->get_all_inventory();
+        $this->load->view('home/inc/header_view');
+        $this->load->view('car/inventory', $data);
+        $this->load->view('home/inc/footer_view');
+    }
+    public function sold()
+    {
+        $this->_require_login();
+        $data['cars'] = $this->car_model->get_all_sold();
+        $this->load->view('home/inc/header_view');
+        $this->load->view('car/sold', $data);
+        $this->load->view('home/inc/footer_view');
+    }
+    public function delivered()
+    {
+        $this->_require_driver();
+        $data['cars'] = $this->car_model->get_all_delivered();
+        $this->load->view('home/inc/header_view');
+        $this->load->view('car/delivered', $data);
+        $this->load->view('home/inc/footer_view');
+    }*/
+
 
 	public function add()
 	{

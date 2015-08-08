@@ -26,13 +26,13 @@
                     <!--type(showroom, auction, person, port)-->
                     <div class="form-group col-xs-6">
                         <select class="form-control" name="client_type">
-                            <option>Select type...</option>
+                            <option disabled selected>Select type...</option>
                             <option class="divider"></option>
 
-                            <option value="auction">Auction</option>
-                            <option value="person">Person</option>
-                            <option value="port">Port</option>
-                            <option value="showroom">Showroom</option>
+                            <option value="Owner">Owner</option>
+                            <option value="Dealer">Dealer</option>
+                            <option value="Auction">Auction</option>
+                            <option value="Showroom">Showroom</option>
                         </select>
                     </div>
 
@@ -63,7 +63,7 @@
 
                     <div class="form-group col-xs-12">
                         <select class="form-control" name="client_country">
-                            <option>Select country...</option>
+                            <option disabled selected>Select country...</option>
                             <option class="divider"></option>
 
                             <?php foreach ($countries as $country): ?>

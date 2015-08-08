@@ -151,7 +151,7 @@
 
 						<div id="fields-for-client-select" class="form-group col-xs-12">
 							<select id="field-for-client-select" class="form-control" name="client_id" onchange='show_client_form()'>
-								<option disabled selected>Select supplier...</option>
+								<option>Select supplier...</option>
 								
 								<?php foreach ($clients as $client) : ?>
 								<option value="<?php echo $client['CId'] ?>"><?php echo $client['name'] ?></option>

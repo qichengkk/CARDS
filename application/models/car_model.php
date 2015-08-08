@@ -153,8 +153,12 @@ class Car_model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function get_all_inventory()
+
+	public function get_all_by_status($status)
 	{
+        if($status == "transit")
+            $status = "in-transit";
+
 		$query = $this->db->query("
 				SELECT
 					c.VIN AS VIN, c.year AS year, c.mileage AS mileage, c.color AS color, c.estimated_price AS estimated_price, c.description AS description,
@@ -179,14 +183,14 @@ class Car_model extends CI_Model
 						) AS t ON t.car_id = c.VIN
 					LEFT JOIN client AS cl ON cl.CId = t.client_id
 					LEFT JOIN employee AS e ON e.EId = t.employee_id
-				WHERE t.type = 'purchased'
+				WHERE t.type = '".$status."'
 				ORDER BY m.name ASC, t.date_added DESC
 			");
 
 		return $query->result_array();
 	}
 
-	public function get_all_sold()
+	/*public function get_all_sold()
 	{
 		$query = $this->db->query("
 				SELECT
@@ -219,6 +223,7 @@ class Car_model extends CI_Model
 		return $query->result_array();
 	}
 
+
 	public function get_all_delivered()
 	{
 		$query = $this->db->query("
@@ -250,7 +255,7 @@ class Car_model extends CI_Model
 			");
 
 		return $query->result_array();
-	}
+	}*/
 
 	public function insert($data)
 	{
@@ -272,5 +277,3 @@ class Car_model extends CI_Model
 	}
 
 }
-
-?>
