@@ -253,12 +253,12 @@ ul.status-bar {
   display: table;
   table-layout: fixed;
   width: 100%;
-  height: 200px; }
+  height: 100px; }
   .bar-chart-h li {
     position: relative;
     display: table-cell;
     vertical-align: bottom;
-    height: 200px; }
+    height: 100px; }
     .bar-chart-h li span.title {
       display: block;
       padding: .2em 0;

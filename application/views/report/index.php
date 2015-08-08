@@ -8,115 +8,51 @@
                     Reports
                 </h1>
 
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <?php if ($this->session->userdata('role') == 'Manager' || $this->session->userdata('role') == 'Salesman') : ?>
+                            <a href="<?= site_url('report/sales_profit') ?>" type="button" class="btn btn-default active">Sales & Profit</a>
+                        <?php endif ?>
+
+                        <?php if ($this->session->userdata('role') == 'Manager') : ?>
+                            <a href="<?= site_url('report/employee_performance') ?>" type="button" class="btn btn-default">Employee performance</a>
+                        <?php endif ?>
+
+                        <!--<a href="<?/*= site_url('report/client') */?>" type="button" class="btn btn-default">Client</a>-->
+
+                    </div>
+                </div>
+
                 <hr />
             </div>
 
             <div class="col-md-12">
+                <h2>Sales per month</h2>
 
                 <ul class="bar-chart-h">
-                    <li>
-                        <span class="bar" style="height: 10%">10</span>
-                        <span class="title">JAN</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 18%">18</span>
-                        <span class="title">FEB</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 21%">21</span>
-                        <span class="title">MAR</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 35%">35</span>
-                        <span class="title">APR</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 67%">67</span>
-                        <span class="title">MAY</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 89%">89</span>
-                        <span class="title">JUN</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 72%">72</span>
-                        <span class="title">JUL</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 70%">70</span>
-                        <span class="title">AUG</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 62%">62</span>
-                        <span class="title">SEP</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 58%">58</span>
-                        <span class="title">OCT</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 41%">41</span>
-                        <span class="title">NOV</span>
-                    </li>
-                    <li>
-                        <span class="bar" style="height: 29%">29</span>
-                        <span class="title">DEC</span>
-                    </li>
+                    <?php foreach($sales as $sale): ?>
+                        <li>
+                            <span class="bar" style="height: <?php echo $sale['num']/$max_num * 100?>%"><?php echo $sale['num']?></span>
+                            <span class="title"><?php echo $sale['month']?></span>
+                        </li>
+                    <?php endforeach ?>
+
                 </ul>
 
             </div>
 
             <div class="col-md-12">
+                <h2>Profit per month</h2>
 
                 <ul class="bar-chart-v">
-                    <li>
-                        <span class="title">JAN</span>
-                        <span class="bars"><span class="bar" style="width: 10%">10</span></span>
-                    </li>
-                    <li>
-                        <span class="title">FEB</span>
-                        <span class="bars"><span class="bar" style="width: 18%">18</span></span>
-                    </li>
-                    <li>
-                        <span class="title">MAR</span>
-                        <span class="bars"><span class="bar" style="width: 21%">21</span></span>
-                    </li>
-                    <li>
-                        <span class="title">APR</span>
-                        <span class="bars"><span class="bar" style="width: 35%">35</span></span>
-                    </li>
-                    <li>
-                        <span class="title">MAY</span>
-                        <span class="bars"><span class="bar" style="width: 67%">67</span></span>
-                    </li>
-                    <li>
-                        <span class="title">JUN</span>
-                        <span class="bars"><span class="bar" style="width: 89%">89</span></span>
-                    </li>
-                    <li>
-                        <span class="title">JUL</span>
-                        <span class="bars"><span class="bar" style="width: 72%">72</span></span>
-                    </li>
-                    <li>
-                        <span class="title">AUG</span>
-                        <span class="bars"><span class="bar" style="width: 70%">70</span></span>
-                    </li>
-                    <li>
-                        <span class="title">SEP</span>
-                        <span class="bars"><span class="bar" style="width: 62%">62</span></span>
-                    </li>
-                    <li>
-                        <span class="title">OCT</span>
-                        <span class="bars"><span class="bar" style="width: 58%">58</span></span>
-                    </li>
-                    <li>
-                        <span class="title">NOV</span>
-                        <span class="bars"><span class="bar" style="width: 41%">41</span></span>
-                    </li>
-                    <li>
-                        <span class="title">DEC</span>
-                        <span class="bars"><span class="bar" style="width: 29%">29</span></span>
-                    </li>
+
+                    <?php foreach($profit as $p): ?>
+                        <li>
+                            <span class="title"><?php echo $p['month']?></span>
+                            <span class="bar" style="width: 10%"><?php echo $p['profit']?></span>
+                        </li>
+                    <?php endforeach ?>
+
                 </ul>
 
             </div>
