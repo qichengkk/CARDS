@@ -34,7 +34,7 @@
 
 						<div class="form-group col-xs-12">
 							<select class="form-control" name="model_id">
-								<option>Select a model...</option>
+								<option disabled selected>Select a model...</option>
 
 								<?php foreach ($models as $model): ?>
 								<option value="<?php echo $model['id'] ?>"><?php echo $model['name']." ".$model['serie'] ?></option>
@@ -63,7 +63,7 @@
 
 						<div class="form-group col-xs-6">
 							<label for="mileage">Purchase price</label>
-							<input type="text" class="form-control" name="purchase_price" placeholder="Estimated Price">
+							<input type="text" class="form-control" name="purchase_price" placeholder="Purchased Price">
 						</div>		
 
 						<div class="form-group col-xs-6">
@@ -151,7 +151,7 @@
 
 						<div id="fields-for-client-select" class="form-group col-xs-12">
 							<select id="field-for-client-select" class="form-control" name="client_id" onchange='show_client_form()'>
-								<option>Select supplier...</option>
+								<option disabled selected>Select supplier...</option>
 								
 								<?php foreach ($clients as $client) : ?>
 								<option value="<?php echo $client['CId'] ?>"><?php echo $client['name'] ?></option>
@@ -170,10 +170,10 @@
 
 							<div class="form-group col-xs-4">
 								<select class="form-control" name="client_type">
-									<option value="owner">Independant owner</option>
-									<option value="deader">Dealer</option>
-									<option value="auction">Auction</option>
-									<option value="showroom">Showroom</option>
+									<option value="Owner">Owner</option>
+									<option value="Dealer">Dealer</option>
+									<option value="Auction">Auction</option>
+									<option value="Showroom">Showroom</option>
 								</select>
 							</div>
 
@@ -191,12 +191,11 @@
 							<div class="form-group col-xs-4">
 								<select class="form-control" name="client_country">
 									<option>Select country...</option>
-									<option value="Canada">Canada</option>
-									<option value="USA">USA</option>
-									<option value="China">China</option>
-									<option value="Germany">Germany</option>
-									<option value="Japan">Japan</option>
-									<option value="Mexico">Mexico</option>
+
+                                    <?php foreach ($countries as $country) : ?>
+                                        <option value="<?php echo $country['name'] ?>"><?php echo $country['name'] ?></option>
+                                    <?php endforeach ?>
+
 								</select>
 							</div>
 
@@ -227,7 +226,6 @@ $(document).ready(function(){
 	if ($('#field-for-client-select').val() == "X") {
 		$('#fields-for-client').show();
 		$('fields-for-client-select').hide();
-    // window.location.href = '<?=site_url('client/add')?>';
 	} else {
 		$('#fields-for-client').hide();
 		$('fields-for-client-select').show();
@@ -238,7 +236,6 @@ $(document).ready(function(){
 		if ($(this).val() == "X") {
 			$('#fields-for-client').show();
 			$('#fields-for-client-select').hide();
-      // window.location.href = '<?=site_url('client/add')?>';
 		};
 	});
 	// ----------------

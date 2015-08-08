@@ -27,6 +27,7 @@ class Car extends CI_Controller
 		$this->load->model('model_model');
 		$this->load->model('car_model');
 		$this->load->model('feature_model');
+        $this->load->model('country_model');
 		$this->load->model('client_model');
 		$this->load->model('transaction_model');
 		$this->load->model('employee_model');
@@ -77,6 +78,8 @@ class Car extends CI_Controller
 		$this->form_validation->set_rules('year', 'Year', 'required');
 		$this->form_validation->set_rules('mileage', 'Mileage', 'required');
 		$this->form_validation->set_rules('color', 'Color', 'required');
+        $this->form_validation->set_rules('purchase_price', 'Purchase price', 'required');
+        $this->form_validation->set_rules('client_id', "Client", 'required');
 	}
 
 	private function _load_supplier_validation()
@@ -85,6 +88,7 @@ class Car extends CI_Controller
 		$this->form_validation->set_rules('client_address', 'Supplier address', 'required');
 		$this->form_validation->set_rules('client_phone', 'Supplier phone', 'required');
 		$this->form_validation->set_rules('client_country', 'Supplier country', 'required');
+        $this->form_validation->set_rules('client_type', 'Supplier type', 'required');
 	}
 
 	private function _load_customer_validation()
@@ -194,6 +198,7 @@ class Car extends CI_Controller
 			$data['models'] = $this->model_model->get();
 			$data['colors'] = $this->colors;
 			$data['clients'] = $this->client_model->get();
+            $data['countries'] = $this->country_model->get();
 
 			$this->load->view('home/inc/header_view');
 			$this->load->view('car/add', $data);

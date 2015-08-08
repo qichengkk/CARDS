@@ -48,13 +48,13 @@ class Home extends CI_Controller {
 
     // ------------------------------------------------------------------------
 
-    public function test()
+    /*public function test()
     {
         echo 1;
         //$q = $this->db->get('employee');
         $q = $this->db->get_where('employee', ['eid' => 1]);
         print_r($q->result());
-    }
+    }*/
 
 
 }
