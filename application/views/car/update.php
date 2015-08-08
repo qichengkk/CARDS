@@ -212,7 +212,6 @@ $(document).ready(function(){
 	if ($('#field-for-client-select').val() == "X") {
 		$('#fields-for-client').show();
 		$('fields-for-client-select').hide();
-    // window.location.href = '<?=site_url('client/add')?>';
 	} else {
 		$('#fields-for-client').hide();
 		$('fields-for-client-select').show();
@@ -223,7 +222,6 @@ $(document).ready(function(){
 		if ($(this).val() == "X") {
 			$('#fields-for-client').show();
 			$('#fields-for-client-select').hide();
-      // window.location.href = '<?=site_url('client/add')?>';
 		};
 	});
 	// ----------------

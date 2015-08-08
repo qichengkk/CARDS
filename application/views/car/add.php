@@ -151,7 +151,7 @@
 
 						<div id="fields-for-client-select" class="form-group col-xs-12">
 							<select id="field-for-client-select" class="form-control" name="client_id" onchange='show_client_form()'>
-								<option>Select supplier...</option>
+								<option disabled selected>Select supplier...</option>
 								
 								<?php foreach ($clients as $client) : ?>
 								<option value="<?php echo $client['CId'] ?>"><?php echo $client['name'] ?></option>
@@ -190,7 +190,7 @@
 							<!-- Country -->
 							<div class="form-group col-xs-4">
 								<select class="form-control" name="client_country">
-									<option>Select country...</option>
+									<option disabled selected>Select country...</option>
 
                                     <?php foreach ($countries as $country) : ?>
                                         <option value="<?php echo $country['name'] ?>"><?php echo $country['name'] ?></option>

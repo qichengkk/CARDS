@@ -22,8 +22,7 @@
                     <div class="form-group col-xs-6">
                         <label class="control-label" for="type">Type:</label>
                         <select class="form-control" name="client_type">
-                            <option>Select type...</option>
-                            <option class="divider"></option>
+                            <option selected disabled>Select type...</option>
 
                             <option value="Owner" <?php if ($type_update == "Owner") echo "selected"; ?>>Owner</option>
                             <option value="Dealer" <?php if ($type_update == "Dealer") echo "selected"; ?>>Dealer</option>
@@ -49,14 +48,14 @@
                     <div class="form-group col-xs-12">
                         <label class="control-label" for="country">Country:</label>
                         <select class="form-control" name="client_country">
-                            <option>Select country...</option>
-                            <option class="divider"></option>
+                            <option selected disabled>Select country...</option>
 
                             <?php foreach ($countries as $country): ?>
                                 <option value="<?php echo $country['name'] ?>"
                                     <?php if($country_update == $country['name']) echo "selected"; ?>><?php echo $country['name'] ?>
                                 </option>
                             <?php endforeach ?>
+
                         </select>
                     </div>
 

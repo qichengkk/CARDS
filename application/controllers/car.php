@@ -78,8 +78,6 @@ class Car extends CI_Controller
 		$this->form_validation->set_rules('year', 'Year', 'required');
 		$this->form_validation->set_rules('mileage', 'Mileage', 'required');
 		$this->form_validation->set_rules('color', 'Color', 'required');
-        $this->form_validation->set_rules('purchase_price', 'Purchase price', 'required');
-        $this->form_validation->set_rules('client_id', "Client", 'required');
 	}
 
 	private function _load_supplier_validation()
@@ -219,6 +217,9 @@ class Car extends CI_Controller
 	{
 		$this->_require_salesman();
 		$this->_load_form_helper();
+        $this->form_validation->set_rules('purchase_price', 'Purchase price', 'required');
+        $this->form_validation->set_rules('client_id', "Client", 'required');
+
 		if ($this->input->post('client_id') == 'X') {
 			$this->_load_supplier_validation();
 		}
