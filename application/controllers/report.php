@@ -9,92 +9,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Report extends CI_Controller
 {
-    private $months = array(
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    );
-
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('transaction_model');
-        $this->load->model('car_model');
-        $this->load->model('client_model');
-        $this->load->model('employee_model');
+        $this->load->model('report_model');
     }
 
 	public function index()
 	{
-		$this->sales_profit();
-	}
+        //---------------for charts and graphs-------------------------------------
+		$data['sales'] = $this->report_model->get_sales_stat();
+        $data['profit'] = $this->report_model->get_profit_stat();
+        $data['employees'] = $this->report_model->get_employees_stat();
+        $data['clients'] = $this->report_model->get_clients_stat();
 
-    public function sales_profit()
-    {
-        //------------------------sales----------------------------------------------------------
+        //----------------single values only---------------------------------------
+        $data['car_inventory'] = $this->report_model->get_car_number("purchased");
+        $data['car_sold'] = $this->report_model->get_car_number("sold");
+        $data['overall_profit'] = $this->report_model->get_overall_profit();;
 
-        //$current_month = (new DateTime())->format('n');
-
-        $query = $this->db->query("
-            SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, count(*) AS num
-            FROM transaction
-            WHERE type = 'sold'
-            GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12");
-
-        $result = $query->result_array();
-        $max_num = 0;
-
-        foreach ($result as &$m) :
-            $m['month'] = $this->months[$m['month'] - 1];
-            if($m['num'] > $max_num) {
-                $max_num = $m['num'];
-            }
-        endforeach;
-
-        $data['sales'] = $result;
-        $data['max_num'] = $max_num;
-        //print_r(($data)); return;
-
-        //------------------------profit-----------------------------------------------------------
-        $query = $this->db->query("
-            SELECT r1.month AS month, (r1.income - r2.outcome) AS profit
-            FROM (
-              SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, sum(price) as income
-              FROM transaction
-              WHERE type = 'sold'
-              GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r1
-
-              NATURAL JOIN
-
-              (SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, sum(price) as outcome
-              FROM transaction
-              WHERE type = 'purchased'
-              GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r2");
-
-
-        $result = $query->result_array();
-        $max_p = 0;
-        foreach ($result as &$m) :
-            $m['month'] = $this->months[$m['month'] - 1];
-            if($m['profit'] > $max_p) {
-                $max_p = $m['profit'];
-            }
-        endforeach;
-
-        $data['profit'] = $result;
-        $data['max_p'] = $max_p;
-
-        //print_r($data);return;
-
+        //print_r($data['sales']); return;
         $this->load->view('home/inc/header_view');
         $this->load->view('report/index', $data);
         $this->load->view('home/inc/footer_view');
+	}
 
 
-    }
 
-    public function employee_performance()
-    {
 
-    }
 
 }
 

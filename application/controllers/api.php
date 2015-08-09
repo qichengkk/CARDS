@@ -482,4 +482,43 @@ class Api extends CI_Controller
 
     }
 
+
+
+    /*************************************************************
+     *
+     *
+     *
+     *  api functions for Report
+     *
+     *************************************************************
+     */
+
+    public function sales_profit_stat()
+    {
+        $this->_require_salesman();
+
+        $months = array (
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        );
+
+        //------------------------sales----------------------------------------------------------
+
+
+        //------------------------profit-----------------------------------------------------------
+
+
+    }
+
+    public function employees_stat()
+    {
+        $this->_require_manager();
+
+    }
+
+    public function clients_stat()
+    {
+        $this->_require_salesman();
+
+    }
+
 }
