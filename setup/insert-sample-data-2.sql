@@ -11,7 +11,7 @@ VALUES
 ('Charles Owen', 'Auction', '6541 Lexington Street,  El Cajon CA 92014', 'USA', '619-966-9368'),
 ('Oyuki Kasami', 'Dealer', '184 Nishi-Shinsaibashi, Chuo-ku Osaka 1006812 ', 'Japan', '(+81) 662818786'),
 ('Jürgen Kann', 'Duction', '4 Geleitstraße Weimar, Germany CP 99423', 'Germany', '(+49) 3643850737'),
-('Ana Muller', 'Owner', '2 Marseiller Strasse Hamburg, Germany CP 20355', 'Germany', '(+49) 4028464388‎'),
+('Ana Muller', 'Owner', '2 Marseiller Strasse Hamburg, Germany CP 20355', 'Germany', '(+49) 4802930409'),
 ('Gilles Ferguson', 'Owner', '41 Second Street West Cornwall, Ontario K6J 1G3', 'Canada', '613 932-6673'),
 ('Ricardo Gomez', 'Auction', '456 rio presidio las lomas, Puerto Vallarta Nay 35310', 'Mexico', '(+52)333-268-2145'),
 ('Steve Miller', 'Owner', '45 Hull Shore Dr, Hull MA 02045', 'USA', '781-925-4523'),

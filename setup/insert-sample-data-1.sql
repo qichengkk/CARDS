@@ -73,14 +73,10 @@ VALUES
 -- ---
 INSERT INTO car (VIN, model_id, year, mileage, color, estimated_price, description, date_added)
 VALUES
-	('1P4GH5539NR525672', 12, 2012, 24910, 'Black', 101900.00,
-		'New Pirelli P-Zero tires on custom after-market wheels, orignal wheels also included. Meticulously maintained and collection worthy.', '2015-08-01 00:00:00'),
-	('1GTV2UEH3EZ156199', 3, 2011, 19800, 'Red', 36110.00,
-		'','2015-08-01 00:00:00'),
-	('1P4GH5539NR738621', 10, 2012, 137291, 'Jet Black', 119999.00,
-		'New Pirelli P-Zero tires on custom after-market wheels, orignal wheels also included. Meticulously maintained and collection worthy.', '2015-08-01 00:00:00'),
-	('1LNHL2GC5BR785426', 10, 2009, 137291, 'Silver Metalic', 30771.00,
-		'NOUVEL ARRIVAGE! PORSCHE CAYENNE GTS 2009 AUTOMATIQUE! COMME NEUF! MOTEUR V-8 DE 4.8L. DÉVELOPPANT 405 CHEVAUX!', '2015-08-01 00:00:00');
+	('1P4GH5539NR525672', 12, 2012, 24910, 'Black', 101900.00, 'New Pirelli P-Zero tires on custom after-market wheels, orignal wheels also included. Meticulously maintained and collection worthy.', '2015-08-01 00:00:00'),
+	('1GTV2UEH3EZ156199', 3, 2011, 19800, 'Red', 36110.00, '','2015-08-01 00:00:00'),
+	('1P4GH5539NR738621', 10, 2012, 137291, 'Jet Black', 119999.00, 'New Pirelli P-Zero tires on custom after-market wheels, orignal wheels also included. Meticulously maintained and collection worthy.', '2015-08-01 00:00:00'),
+	('1LNHL2GC5BR785426', 10, 2009, 137291, 'Silver Metalic', 30771.00, 'NOUVEL ARRIVAGE! PORSCHE CAYENNE GTS 2009 AUTOMATIQUE! COMME NEUF! MOTEUR V-8 DE 4.8L. DÉVELOPPANT 405 CHEVAUX!', '2015-08-01 00:00:00');
 
 -- -------
 -- Feature
