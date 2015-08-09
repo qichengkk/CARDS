@@ -48,39 +48,51 @@
       <file leaf-file-name="Report.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Report.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.75" vertical-offset="42" max-vertical-offset="720">
-              <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
+            <state vertical-scroll-proportion="-18.25" vertical-offset="42" max-vertical-offset="780">
+              <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
               <folding>
-                <marker date="1439078970000" expanded="true" signature="87:266" placeholder="SELECT r1.mo..." />
-                <marker date="1439078970000" expanded="true" signature="266:911" placeholder="SELECT r1.mo..." />
+                <marker date="1439080852000" expanded="true" signature="87:266" placeholder="SELECT r1.mo..." />
+                <marker date="1439080852000" expanded="true" signature="266:912" placeholder="SELECT r1.mo..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/report_model.php">
+      <file leaf-file-name="Report_model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Report_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.5" vertical-offset="462" max-vertical-offset="2535">
-              <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+            <state vertical-scroll-proportion="-17.0" vertical-offset="1917" max-vertical-offset="2595">
+              <caret line="155" column="35" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
               <folding>
                 <element signature="e#6#94#0#PHP" expanded="true" />
-                <marker date="1439079136000" expanded="true" signature="413:793" placeholder="SELECT count..*..." />
-                <marker date="1439079136000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
-                <marker date="1439079136000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
-                <marker date="1439079136000" expanded="true" signature="413:807" placeholder="SELECT count..*..." />
-                <marker date="1439079136000" expanded="true" signature="475:747" placeholder="SELECT t1.* ..transaction..." />
-                <marker date="1439079136000" expanded="true" signature="585:702" placeholder="SELECT max(i..transaction..." />
-                <marker date="1439079136000" expanded="true" signature="1030:1037" placeholder="SELECT count..*..." />
-                <marker date="1439079136000" expanded="true" signature="1030:1675" placeholder="SELECT sum(r..floor..." />
-                <marker date="1439079136000" expanded="true" signature="1116:1363" placeholder="SELECT (8 - ..." />
-                <marker date="1439079136000" expanded="true" signature="1415:1668" placeholder="SELECT (8 - ..." />
-                <marker date="1439079136000" expanded="true" signature="1829:1916" placeholder="------------..." />
-                <marker date="1439079136000" expanded="true" signature="2025:2261" placeholder="SELECT (8 - ..." />
-                <marker date="1439079136000" expanded="true" signature="2648:3301" placeholder="SELECT r1.mo..." />
-                <marker date="1439079136000" expanded="true" signature="3591:4244" placeholder="SELECT r1.mo..." />
-                <marker date="1439079136000" expanded="true" signature="4411:5064" placeholder="SELECT r1.mo..." />
+                <marker date="1439080900000" expanded="true" signature="413:793" placeholder="SELECT count..*..." />
+                <marker date="1439080900000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
+                <marker date="1439080900000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
+                <marker date="1439080900000" expanded="true" signature="413:807" placeholder="SELECT count..*..." />
+                <marker date="1439080900000" expanded="true" signature="475:747" placeholder="SELECT t1.* ..transaction..." />
+                <marker date="1439080900000" expanded="true" signature="585:702" placeholder="SELECT max(i..transaction..." />
+                <marker date="1439080900000" expanded="true" signature="1030:1037" placeholder="SELECT count..*..." />
+                <marker date="1439080900000" expanded="true" signature="1030:1675" placeholder="SELECT sum(r..floor..." />
+                <marker date="1439080900000" expanded="true" signature="1116:1363" placeholder="SELECT (8 - ..." />
+                <marker date="1439080900000" expanded="true" signature="1415:1668" placeholder="SELECT (8 - ..." />
+                <marker date="1439080900000" expanded="true" signature="1829:1916" placeholder="------------..." />
+                <marker date="1439080900000" expanded="true" signature="2025:2261" placeholder="SELECT (8 - ..." />
+                <marker date="1439080900000" expanded="true" signature="2648:3301" placeholder="SELECT r1.mo..." />
+                <marker date="1439080900000" expanded="true" signature="3590:3636" placeholder="SELECT count..client..." />
+                <marker date="1439080900000" expanded="true" signature="3817:3901" placeholder="SELECT count..client..." />
+                <marker date="1439080900000" expanded="true" signature="4077:4125" placeholder="SELECT count..employee..." />
+                <marker date="1439080900000" expanded="true" signature="4308:4388" placeholder="SELECT role,..employee..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySQL - cards@localhost" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://db-console:/42816bef/96b73a8f-ffe9-4273-bcae-8f37cbd6cef0/">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.0" vertical-offset="0" max-vertical-offset="120">
+              <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,10 +100,12 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/report/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2932331" vertical-offset="375" max-vertical-offset="2625">
-              <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.59398496" vertical-offset="2050" max-vertical-offset="3435">
+              <caret line="163" column="78" selection-start-line="163" selection-start-column="78" selection-end-line="163" selection-end-column="78" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,8 +163,8 @@
         <option value="$PROJECT_DIR$/application/views/client/update_client_view.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/application/controllers/Api.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Report.php" />
         <option value="db-console:/42816bef/96b73a8f-ffe9-4273-bcae-8f37cbd6cef0/" />
+        <option value="$PROJECT_DIR$/application/controllers/Report.php" />
         <option value="$PROJECT_DIR$/application/models/Report_model.php" />
         <option value="$PROJECT_DIR$/application/views/report/index.php" />
       </list>
@@ -485,11 +499,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22132471" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22132471" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739726" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -928,56 +942,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Report.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.75" vertical-offset="42" max-vertical-offset="720">
-          <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
-          <folding>
-            <marker date="1439078970000" expanded="true" signature="87:266" placeholder="SELECT r1.mo..." />
-            <marker date="1439078970000" expanded="true" signature="266:911" placeholder="SELECT r1.mo..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://db-console:/42816bef/96b73a8f-ffe9-4273-bcae-8f37cbd6cef0/">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="0" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="79" />
+        <state vertical-scroll-proportion="-1.0" vertical-offset="0" max-vertical-offset="120">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/report_model.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/Report.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.5" vertical-offset="462" max-vertical-offset="2535">
-          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+        <state vertical-scroll-proportion="-18.25" vertical-offset="42" max-vertical-offset="780">
+          <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+          <folding>
+            <marker date="1439080852000" expanded="true" signature="87:266" placeholder="SELECT r1.mo..." />
+            <marker date="1439080852000" expanded="true" signature="266:912" placeholder="SELECT r1.mo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Report_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0" vertical-offset="1917" max-vertical-offset="2595">
+          <caret line="155" column="35" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
-            <marker date="1439079136000" expanded="true" signature="413:793" placeholder="SELECT count..*..." />
-            <marker date="1439079136000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
-            <marker date="1439079136000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
-            <marker date="1439079136000" expanded="true" signature="413:807" placeholder="SELECT count..*..." />
-            <marker date="1439079136000" expanded="true" signature="475:747" placeholder="SELECT t1.* ..transaction..." />
-            <marker date="1439079136000" expanded="true" signature="585:702" placeholder="SELECT max(i..transaction..." />
-            <marker date="1439079136000" expanded="true" signature="1030:1037" placeholder="SELECT count..*..." />
-            <marker date="1439079136000" expanded="true" signature="1030:1675" placeholder="SELECT sum(r..floor..." />
-            <marker date="1439079136000" expanded="true" signature="1116:1363" placeholder="SELECT (8 - ..." />
-            <marker date="1439079136000" expanded="true" signature="1415:1668" placeholder="SELECT (8 - ..." />
-            <marker date="1439079136000" expanded="true" signature="1829:1916" placeholder="------------..." />
-            <marker date="1439079136000" expanded="true" signature="2025:2261" placeholder="SELECT (8 - ..." />
-            <marker date="1439079136000" expanded="true" signature="2648:3301" placeholder="SELECT r1.mo..." />
-            <marker date="1439079136000" expanded="true" signature="3591:4244" placeholder="SELECT r1.mo..." />
-            <marker date="1439079136000" expanded="true" signature="4411:5064" placeholder="SELECT r1.mo..." />
+            <marker date="1439080900000" expanded="true" signature="413:793" placeholder="SELECT count..*..." />
+            <marker date="1439080900000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
+            <marker date="1439080900000" expanded="true" signature="413:794" placeholder="SELECT count..*..." />
+            <marker date="1439080900000" expanded="true" signature="413:807" placeholder="SELECT count..*..." />
+            <marker date="1439080900000" expanded="true" signature="475:747" placeholder="SELECT t1.* ..transaction..." />
+            <marker date="1439080900000" expanded="true" signature="585:702" placeholder="SELECT max(i..transaction..." />
+            <marker date="1439080900000" expanded="true" signature="1030:1037" placeholder="SELECT count..*..." />
+            <marker date="1439080900000" expanded="true" signature="1030:1675" placeholder="SELECT sum(r..floor..." />
+            <marker date="1439080900000" expanded="true" signature="1116:1363" placeholder="SELECT (8 - ..." />
+            <marker date="1439080900000" expanded="true" signature="1415:1668" placeholder="SELECT (8 - ..." />
+            <marker date="1439080900000" expanded="true" signature="1829:1916" placeholder="------------..." />
+            <marker date="1439080900000" expanded="true" signature="2025:2261" placeholder="SELECT (8 - ..." />
+            <marker date="1439080900000" expanded="true" signature="2648:3301" placeholder="SELECT r1.mo..." />
+            <marker date="1439080900000" expanded="true" signature="3590:3636" placeholder="SELECT count..client..." />
+            <marker date="1439080900000" expanded="true" signature="3817:3901" placeholder="SELECT count..client..." />
+            <marker date="1439080900000" expanded="true" signature="4077:4125" placeholder="SELECT count..employee..." />
+            <marker date="1439080900000" expanded="true" signature="4308:4388" placeholder="SELECT role,..employee..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/report/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2932331" vertical-offset="375" max-vertical-offset="2625">
-          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.59398496" vertical-offset="2050" max-vertical-offset="3435">
+          <caret line="163" column="78" selection-start-line="163" selection-start-column="78" selection-end-line="163" selection-end-column="78" />
           <folding>
             <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

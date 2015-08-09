@@ -116,49 +116,53 @@ class Report_model extends CI_Model
 
     }
 
-    public function get_employees_stat()
+    public function get_client_number()
     {
         $query = $this->db->query("
-            SELECT r1.month AS month, (r1.income - r2.outcome) AS profit
-            FROM (
-              SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, sum(price) as income
-              FROM transaction
-              WHERE type = 'sold'
-              GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r1
+            SELECT count(*) as num
+            FROM client");
 
-              NATURAL JOIN
+        $result= $query->result_array();
 
-              (SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, sum(price) as outcome
-              FROM transaction
-              WHERE type = 'purchased'
-              GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r2");
-
-        $data= $query->result_array();
-
-        return $data;
+        return $result[0]['num'];
     }
 
     public function get_clients_stat()
     {
         $query = $this->db->query("
-            SELECT r1.month AS month, (r1.income - r2.outcome) AS profit
-            FROM (
-              SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, sum(price) as income
-              FROM transaction
-              WHERE type = 'sold'
-              GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r1
+            SELECT country, count(*) AS num
+            FROM client
+            GROUP BY country");
 
-              NATURAL JOIN
+        $result = $query->result_array();
 
-              (SELECT (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12 AS month, sum(price) as outcome
-              FROM transaction
-              WHERE type = 'purchased'
-              GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r2");
-
-        $data= $query->result_array();
-
-        return $data;
+        return $result;
     }
+
+
+    public function get_employee_number()
+    {
+        $query = $this->db->query("
+            SELECT count(*) as num
+            FROM employee");
+
+        $result= $query->result_array();
+
+        return $result[0]['num'];
+    }
+
+    public function get_employees_stat()
+    {
+        $query = $this->db->query("
+            SELECT role, count(*) AS num
+            FROM employee
+            GROUP BY role");
+
+        $result = $query->result_array();
+
+        return $result;
+    }
+
 
 
 }

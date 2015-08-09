@@ -12,11 +12,11 @@
                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
                         <?php if ($this->session->userdata('role') == 'Manager' || $this->session->userdata('role') == 'Salesman') : ?>
                             <a id="btn_sales_profit" type="button" onclick="show_sales_profit()" class="btn btn-default active">Sales & Profit</a>
+                            <a id="btn_clients" type="button" onclick="show_clients()" class="btn btn-default">Clients</a>
                         <?php endif ?>
 
                         <?php if ($this->session->userdata('role') == 'Manager') : ?>
                             <a id="btn_employees" type="button" onclick="show_employees()" class="btn btn-default">Employees</a>
-                            <a id="btn_clients" type="button" onclick="show_clients()" class="btn btn-default">Clients</a>
                         <?php endif ?>
                     </div>
                 </div>
@@ -104,14 +104,68 @@
                 </div>
             </div>
 
-            <!-- views for employees -->
-            <div id = "employees">
-                wtf
-            </div>
-
             <!-- views for clients -->
             <div id = "clients">
-                wtf
+                <div class="col-md-6">
+                    <h2>General information</h2>
+                    <p>
+                        Total number of clients: <strong><?php echo $client_num ?></strong>
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                    <h2>Clients by country</h2>
+                    <br/><br/>
+
+                    <ul class="bar-chart-h">
+
+                        <!-- get max num -->
+                        <?php $max_num = 0; foreach($clients as $client):
+                            if($client['num'] > $max_num) {
+                                $max_num = $client['num'];
+                            }?>
+                        <?php endforeach ?>
+
+                        <?php foreach($clients as $client): ?>
+                            <li>
+                                <span class="bar" style="height: <?php echo $client['num']/$max_num * 100?>%"><?php echo $client['num']?></span>
+                                <span class="title"><?php echo $client['country']?></span>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- views for employees -->
+            <div id = "employees">
+                <div class="col-md-6">
+                    <h2>General information</h2>
+                    <p>
+                        Total number of employees: <strong><?php echo $employee_num ?></strong>
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                    <h2>Employees by role</h2>
+                    <br/><br/>
+
+                    <ul class="bar-chart-h">
+
+                        <!-- get max num -->
+                        <?php $max_num = 0; foreach($employees as $employee):
+                            if($employee['num'] > $max_num) {
+                                $max_num = $employee['num'];
+                            }?>
+                        <?php endforeach ?>
+
+                        <?php foreach($employees as $employee): ?>
+                            <li>
+                                <span class="bar" style="height: <?php echo $employee['num']/$max_num * 100?>%"><?php echo $employee['num']?></span>
+                                <span class="title"><?php echo $employee['role']?></span>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
             </div>
 
         </div>
