@@ -4,8 +4,8 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<h1>Add new car to inventory</h1>
-
+				<h1>Update car: <small><?php echo $car['year']." ".$car['make']." ".$car['model']." ".$car['serie'] ?></small>
+                </h1>
 				<hr>
 
 				<?php if (!empty(validation_errors())) : ?>
