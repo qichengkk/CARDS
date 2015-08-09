@@ -54,7 +54,6 @@
                                 Delivered
                             </li>
                         </a>
-
                     </ul>
                 </div>
 

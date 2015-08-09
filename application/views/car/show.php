@@ -5,6 +5,10 @@
             <div class='col-md-12'>
 
                 <h1 class="">
+                    <a href="" onClick="history.go(-1);return true;" class="btn btn-success">
+                        <span class="glyphicon glyphicon-step-backward">Return</span>
+                    </a>
+
                     <?php echo $car['year']." ".$car['make']." ".$car['model']." ".$car['serie'] ?>
                 </h1>
 
