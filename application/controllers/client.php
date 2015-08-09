@@ -87,6 +87,8 @@ class Client extends CI_Controller {
             $data['cut_off_year'] = $this->country_model->get($data['country'])[0]['cut_off_year'];
         }
 
+        $data['cars'] = $this->client_model->get_car_by_client($client_id);
+
         $this->load->view('home/inc/header_view');
         $this->load->view('client/show_client_view', $data);
         $this->load->view('home/inc/footer_view');

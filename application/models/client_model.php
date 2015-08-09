@@ -32,6 +32,21 @@ class Client_model extends CI_Model
 
     }
 
+    public function get_car_by_client($client_id)
+    {
+        $query = $this->db->query("
+            SELECT t.type AS type, c.vin, c.year, make.name AS make_name, model.name, model.serie, t.date_added
+            FROM transaction AS t, car AS c, model, make
+            WHERE (t.type = 'purchased' OR t.type = 'sold') AND t.client_id = '".$client_id."'
+                    AND c.VIN = t.car_id AND c.model_id = model.id AND model_id = make.id");
+
+        $result = $query->result_array();
+
+        //print_r($result); return;
+
+        return $result;
+    }
+
     /**
      *
      * @parameter array $data
