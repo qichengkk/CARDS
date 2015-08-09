@@ -43,6 +43,7 @@ class Report_model extends CI_Model
 
     public function get_overall_profit()
     {
+        /*
         $query = $this->db->query("
             SELECT sum(r1.income - r2.outcome) AS overall_profit
             FROM (
@@ -57,6 +58,14 @@ class Report_model extends CI_Model
               FROM transaction
               WHERE type = 'purchased'
               GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r2");
+        */
+
+        $query = $this->db->query("
+            SELECT sum(t1.price - t2.price) AS overall_profit
+            FROM
+              (SELECT car_id, price, date_added FROM transaction WHERE type = 'sold') AS t1
+              LEFT JOIN (SELECT car_id, price FROM transaction WHERE type = 'purchased') AS t2 ON t2.car_id = t1.car_id
+          ");
 
         $result = $query->result_array();
 
@@ -89,7 +98,7 @@ class Report_model extends CI_Model
     public function get_profit_stat()
     {
         //------------------------profit-----------------------------------------------------------
-
+        /*
         $query = $this->db->query("
             SELECT r1.month AS month, (r1.income - r2.outcome) AS profit
             FROM (
@@ -104,6 +113,14 @@ class Report_model extends CI_Model
               FROM transaction
               WHERE type = 'purchased'
               GROUP BY (8 - floor(DATEDIFF(last_day(NOW()), date_added) / 30)) % 12) as r2");
+        */
+        $query = $this->db->query("
+            SELECT (8 - floor(DATEDIFF(last_day(NOW()), t1.date_added) / 30)) % 12 AS month, sum(t1.price - t2.price) AS profit
+            FROM
+              (SELECT car_id, price, date_added FROM transaction WHERE type = 'sold') AS t1
+              LEFT JOIN (SELECT car_id, price FROM transaction WHERE type = 'purchased') AS t2 ON t2.car_id = t1.car_id
+            GROUP BY ((8 - floor(DATEDIFF(last_day(NOW()), t1.date_added) / 30)) % 12)
+          ");
 
 
         $result = $query->result_array();
